@@ -5,8 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class ScanNewData {
-    //to scan data
-    //scan data
+
     public static void ScanData(){
         
         try{

@@ -4,7 +4,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class ConstructDataFrame {
+
+public class ConstructDataFrame {//constructor
+    //instance variables
     public String name;
     public String deaprtment;
     public String CurrentCGPA;
@@ -12,9 +14,14 @@ public class ConstructDataFrame {
     public String Actual_graduation_salary;
     
     public static void SearchRecord(){
+        Scanner group11 = new Scanner(System.in);
+        
+        System.out.println("Enter file name:");
+        String fileName=group11.next().trim();
         
         try{
-            Scanner uni= new Scanner(new FileInputStream("SampleCsv.csv"));
+   
+            Scanner uni= new Scanner(new FileInputStream(fileName));
             
             //uni.useDelimiter(",");
             System.out.println("Adding new data....");
@@ -33,7 +40,7 @@ public class ConstructDataFrame {
                 SaveDataFrame k = new SaveDataFrame(name,department,CurrentCGPA,Expected_graduation_salary,Actual_graduation_salary);
                 SaveDataFrame.saveRecord();
             }
-            
+            System.out.println("");
             uni.close();
         }catch(FileNotFoundException e){
             System.out.println("File not found!!");

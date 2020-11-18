@@ -14,9 +14,10 @@ public class ConstructDataFrame {
     public static void SearchRecord(){
         
         try{
-            Scanner uni= new Scanner(new FileInputStream("uni.txt"));
+            Scanner uni= new Scanner(new FileInputStream("SampleCsv.csv"));
             
             //uni.useDelimiter(",");
+            System.out.println("Adding new data....");
             while(uni.hasNextLine()){
                 
                 String uniRow=uni.nextLine();

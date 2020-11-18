@@ -22,7 +22,7 @@ public class SaveDataFrame extends ConstructDataFrame {
     }
     
     public static void saveRecord() throws FileNotFoundException{
-        FileOutputStream fos = new FileOutputStream("output.csv",true);
+        FileOutputStream fos = new FileOutputStream("DataStorage.csv",true);
         PrintWriter pw = new PrintWriter(fos);
         pw.println(name +"," +department +"," +CGPA +"," +Exp_Salary +"," +Act_Salary);
         pw.close();

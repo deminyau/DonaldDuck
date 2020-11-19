@@ -5,12 +5,10 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class ScanNewData {
-
     public static void ScanData(){
         
         try{
             Scanner uni= new Scanner(new FileInputStream("DataStorage.csv"));
-
             
             while(uni.hasNextLine()){
                 

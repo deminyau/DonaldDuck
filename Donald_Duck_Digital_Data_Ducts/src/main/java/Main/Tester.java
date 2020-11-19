@@ -14,10 +14,11 @@ public class Tester {
         
         if(step==1){
             
-        ConstructDataFrame a = new ConstructDataFrame();
-        a.SearchRecord();
-        ScanNewData b = new ScanNewData();
-        b.ScanData();
+            ConstructDataFrame a = new ConstructDataFrame();
+            a.SearchRecord();
+            ScanNewData b = new ScanNewData();
+            b.ScanData();
+        
         }else if(step==2){
             
         }

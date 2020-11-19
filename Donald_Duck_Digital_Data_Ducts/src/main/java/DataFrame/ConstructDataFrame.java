@@ -18,6 +18,7 @@ public class ConstructDataFrame {//constructor
         
         System.out.println("Enter file name:");
         String fileName=group11.next().trim();
+        System.out.println("");
         
         try{
    

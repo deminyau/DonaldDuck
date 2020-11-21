@@ -5,30 +5,32 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 
-public class ConstructDataFrame {//constructor
-    //instance variables
-    public String name;
-    public String deaprtment;
-    public String CurrentCGPA;
-    public String Expected_graduation_salary;
-    public String Actual_graduation_salary;
+public class ConstructDataFrame extends ConnectorPart_1{
     
-    public static void SearchRecord(){
-        Scanner group11 = new Scanner(System.in);
-        
-        System.out.println("Enter file name:");
-        String fileName=group11.next().trim();
+    public static String name;
+    public static String deprtment;
+    public static String CurrentCGPA;
+    public static String Expected_graduation_salary;
+    public static String Actual_graduation_salary;
+    public static Scanner group11 = new Scanner(System.in);
+    public static String filepath;
+    
+    public static void ReadFile (){ //Method read a csv file which is to collect new data
+        System.out.println("Enter file name: ");
+        filepath=group11.next();
         System.out.println("");
+    }
+    
+    public static void ScanFileCsvAndWriteTocsvFile(){ //Method to scan the file just read and write to an output file(DataStorage.csv)
         
         try{
-   
-            Scanner uni= new Scanner(new FileInputStream(fileName));
+            Scanner csv= new Scanner(new FileInputStream(filepath));
             
-            //uni.useDelimiter(",");
+            System.out.println("-----------------------------------------------------------------------------------------------------------");
             System.out.println("Adding new data....");
-            while(uni.hasNextLine()){
+            while(csv.hasNextLine()){
                 
-                String uniRow=uni.nextLine();
+                String uniRow=csv.nextLine();
                 String[] uniColumns=uniRow.split(",");
                 String name=uniColumns[0];
                 String department=uniColumns[1];
@@ -40,9 +42,9 @@ public class ConstructDataFrame {//constructor
                 
                 SaveDataFrame k = new SaveDataFrame(name,department,CurrentCGPA,Expected_graduation_salary,Actual_graduation_salary);
                 SaveDataFrame.saveRecord();
+                
             }
-            System.out.println("");
-            uni.close();
+            csv.close();
         }catch(FileNotFoundException e){
             System.out.println("File not found!!");
         }

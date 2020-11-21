@@ -1,5 +1,6 @@
 package Main;
 
+import DataFrame.ConnectorPart_1;
 import DataFrame.ConstructDataFrame;
 import DataFrame.ScanNewData;
 import java.util.Scanner;
@@ -14,11 +15,10 @@ public class Tester {
         
         if(step==1){
             
-            ConstructDataFrame a = new ConstructDataFrame();
-            a.SearchRecord();
-            ScanNewData b = new ScanNewData();
-            b.ScanData();
-        
+           ConnectorPart_1 c1 = new ConnectorPart_1();
+           c1.display1();
+           c1.display2();
+           
         }else if(step==2){
             
         }

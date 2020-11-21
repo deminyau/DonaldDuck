@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 
-public class SaveDataFrame extends ConstructDataFrame {
+public class SaveDataFrame extends ConstructDataFrame {//Connect with ConstructData
     
     private static String name;
     private static String department;

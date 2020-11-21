@@ -4,15 +4,18 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class ScanNewData {
-    public static void ScanData(){
+public class ScanNewData extends ConnectorPart_1{
+    public static void ScanNewDataFromOutputFile(){ //Read new data from ouput file(DataStorage)
+        
+        System.out.println("-----------------------------------------------------------------------------------------------------------");
+        System.out.println("Data in DataStorage: ");
         
         try{
-            Scanner uni= new Scanner(new FileInputStream("DataStorage.csv"));
+            Scanner csv= new Scanner(new FileInputStream("DataStorage.csv"));
             
-            while(uni.hasNextLine()){
+            while(csv.hasNextLine()){
                 
-                String uniRow=uni.nextLine();
+                String uniRow=csv.nextLine();
                 String[] uniColumns=uniRow.trim().split(",");
                 String name=uniColumns[0];
                 String department=uniColumns[1];
@@ -22,7 +25,7 @@ public class ScanNewData {
                 
                 System.out.printf("%s\t%-23s\t%-10s\t%-30s\t%-20s\n",name,department,CurrentCGPA,Expected_graduation_salary,Actual_graduation_salary);
             }   
-            uni.close();
+            csv.close();
         }catch(FileNotFoundException e){
             System.out.println("File not found!!");
         }

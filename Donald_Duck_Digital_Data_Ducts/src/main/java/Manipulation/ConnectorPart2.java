@@ -1,0 +1,30 @@
+package Manipulation;
+
+import java.io.IOException;
+
+public class ConnectorPart2 {
+    public void DisplayPart1(){
+        ConcatenateDataFrame cdf = new ConcatenateDataFrame();
+        //cdf.ConcatenateData();
+    }
+    
+    public void DisplayPart2() throws IOException{
+        ObtainRowOrColumnData od = new ObtainRowOrColumnData();
+        od.ObtainRecordInColumn();
+        od.ObtainRecordInRow();
+    }
+    
+    public void DisplayPart3(){
+        
+    }
+    
+    public void DisplayPart4() throws IOException{
+        RemoveDuplicatedRowInData rdr = new RemoveDuplicatedRowInData();
+        rdr.DeleteDuplicatedRow();
+    }
+    
+    public void DisplayPart5() throws IOException{
+        //RemoveData rd = new RemoveData();
+        //rd.deleteRecord();
+    }
+}

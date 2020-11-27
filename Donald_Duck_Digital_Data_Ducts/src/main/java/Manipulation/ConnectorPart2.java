@@ -5,7 +5,9 @@ import java.io.IOException;
 public class ConnectorPart2 {
     public void DisplayPart1(){
         ConcatenateDataFrame cdf = new ConcatenateDataFrame();
-        //cdf.ConcatenateData();
+        cdf.ReadFile1();
+        cdf.ReadFile2();
+        cdf.ConcatenateData();
     }
     
     public void DisplayPart2() throws IOException{
@@ -24,7 +26,8 @@ public class ConnectorPart2 {
     }
     
     public void DisplayPart5() throws IOException{
-        //RemoveData rd = new RemoveData();
-        //rd.deleteRecord();
+        RemoveNullDataFrame rndf = new RemoveNullDataFrame();
+        rndf.ReadFile3();
+        rndf.deleteRecord();
     }
 }

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b6fa3cd3-cad9-416e-a62f-db01d3d3cb7f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Sample2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Sample2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SampleCsv.csv" beforeDir="false" afterPath="$PROJECT_DIR$/SampleCsv.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataFrame/ConnectorPart_1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataFrame/ConnectorPart_1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataFrame/ConstructDataFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataFrame/ConstructDataFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataFrame/ScanNewData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataFrame/ScanNewData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main/Tester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main/Tester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Manipulation/ConnectorPart2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manipulation/ConnectorPart2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Manipulation/RemoveDuplicatedRowInData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manipulation/RemoveDuplicatedRowInData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/.netbeans_automatic_build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DataFrame/ConnectorPart_1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataFrame/ConnectorPart_1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DataFrame/ConstructDataFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataFrame/ConstructDataFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DataFrame/SaveDataFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataFrame/SaveDataFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DataFrame/ScanNewData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataFrame/ScanNewData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main/Tester.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main/Tester.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Manipulation/ConcatenateDataFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Manipulation/ConcatenateDataFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Manipulation/ConnectorPart2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Manipulation/ConnectorPart2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Manipulation/DataSorting.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Manipulation/DataSorting.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Manipulation/ObtainRowOrColumnData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Manipulation/ObtainRowOrColumnData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Manipulation/RemoveDuplicatedRowInData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Manipulation/RemoveDuplicatedRowInData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Manipulation/RemoveNullDataFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Manipulation/RemoveNullDataFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/.netbeans_automatic_build" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ksP41qz0BbxbBDAkQYMGe5x9wL" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Tester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main.Tester" />
+      <module name="Donald_Duck_Digital_Data_Ducts" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Tester" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b6fa3cd3-cad9-416e-a62f-db01d3d3cb7f" name="Default Changelist" comment="" />
+      <created>1606486131661</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606486131661</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1398" height="639" key="GridCell.Tab.0.bottom" timestamp="1606542987930">
+      <screen x="0" y="25" width="1440" height="795" />
+    </state>
+    <state width="1398" height="639" key="GridCell.Tab.0.bottom/0.25.1440.795@0.25.1440.795" timestamp="1606542987930" />
+    <state width="1398" height="639" key="GridCell.Tab.0.center" timestamp="1606542987929">
+      <screen x="0" y="25" width="1440" height="795" />
+    </state>
+    <state width="1398" height="639" key="GridCell.Tab.0.center/0.25.1440.795@0.25.1440.795" timestamp="1606542987929" />
+    <state width="1398" height="639" key="GridCell.Tab.0.left" timestamp="1606542987929">
+      <screen x="0" y="25" width="1440" height="795" />
+    </state>
+    <state width="1398" height="639" key="GridCell.Tab.0.left/0.25.1440.795@0.25.1440.795" timestamp="1606542987929" />
+    <state width="1398" height="639" key="GridCell.Tab.0.right" timestamp="1606542987930">
+      <screen x="0" y="25" width="1440" height="795" />
+    </state>
+    <state width="1398" height="639" key="GridCell.Tab.0.right/0.25.1440.795@0.25.1440.795" timestamp="1606542987930" />
+  </component>
+</project>

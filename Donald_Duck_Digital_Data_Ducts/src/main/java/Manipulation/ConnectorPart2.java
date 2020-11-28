@@ -21,9 +21,10 @@ public class ConnectorPart2 {
         ds.ReadFile4();
         ds.Sorting();
     }
-    
+
     public void DisplayPart4() throws IOException{
         RemoveDuplicatedRowInData rdr = new RemoveDuplicatedRowInData();
+        rdr.ReadFile4();
         rdr.DeleteDuplicatedRow();
     }
     

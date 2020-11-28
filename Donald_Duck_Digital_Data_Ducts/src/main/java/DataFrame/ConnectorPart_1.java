@@ -5,7 +5,7 @@ public class ConnectorPart_1 {
     public void display1(){
         ConstructDataFrame cd = new ConstructDataFrame();
         cd.ReadFile();
-        cd.ScanFileCsvAndWriteTocsvFile();
+        cd.ScanFileCsvAndWriteToCsvFile();
     }
     
     public void display2(){

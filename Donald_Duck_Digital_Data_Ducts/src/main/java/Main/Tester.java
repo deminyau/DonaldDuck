@@ -23,14 +23,13 @@ public class Tester {
            c1.display2();
            
         }else if(step==2){
-            System.out.println("");
+            System.out.println();
             System.out.println("1 - Concatenate data");
             System.out.println("2 - Obtain specific data");
             System.out.println("3 - Data sorting");
             System.out.println("4 - Remove duplicated data in row");
             System.out.println("5 - Remove data with null value");
-            System.out.println("Enter step to proceed(1-6): ");
-            System.out.println("");
+            System.out.println("Enter step to proceed(1-5): ");
             step=group11.nextInt();
                 if(step==1){
                     ConnectorPart2 c2 = new ConnectorPart2();

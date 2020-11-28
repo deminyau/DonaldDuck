@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class ConstructDataFrame extends ConnectorPart_1{
     
     public static String name;
-    public static String deprtment;
+    public static String department;
     public static String CurrentCGPA;
     public static String Expected_graduation_salary;
     public static String Actual_graduation_salary;
@@ -18,10 +18,10 @@ public class ConstructDataFrame extends ConnectorPart_1{
     public static void ReadFile (){ //Method read a csv file which is to collect new data
         System.out.println("Enter file name: ");
         filepath=group11.next();
-        System.out.println("");
+        System.out.println();
     }
     
-    public static void ScanFileCsvAndWriteTocsvFile(){ //Method to scan the file just read and write to an output file(DataStorage.csv)
+    public static void ScanFileCsvAndWriteToCsvFile(){ //Method to scan the file just read and write to an output file(DataStorage.csv)
         
         try{
             Scanner csv= new Scanner(new FileInputStream(filepath));

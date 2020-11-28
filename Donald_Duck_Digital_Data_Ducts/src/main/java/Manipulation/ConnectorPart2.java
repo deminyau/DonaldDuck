@@ -17,7 +17,9 @@ public class ConnectorPart2 {
     }
     
     public void DisplayPart3(){
-        
+        DataSorting ds = new DataSorting();
+        ds.ReadFile4();
+        ds.Sorting();
     }
     
     public void DisplayPart4() throws IOException{

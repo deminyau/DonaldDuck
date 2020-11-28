@@ -166,7 +166,7 @@ public class DataSorting extends ConnectorPart2{
             if(ascordsc>0){
                 for (int i = 1; i < y; i++){
                     for (int j = 0; j < y-1; j++) {
-                        if (TempArray[j].compareTo(TempArray[j+1])>0){
+                        if (TempArray[j].compareToIgnoreCase(TempArray[j+1])>0){
                             //swap between rows in file
                             TempArray2= file[j+1];//j+1 because first row of column names already skipped, things at TempArray[0] represents the row at file[1][]
                             file[j+1]=file[j+2];
@@ -182,7 +182,7 @@ public class DataSorting extends ConnectorPart2{
            else if(ascordsc<0){
                for (int i = 1; i < y; i++){
                     for (int j = 0; j < y-1; j++) {
-                        if (TempArray[j].compareTo(TempArray[j+1])<0){
+                        if (TempArray[j].compareToIgnoreCase(TempArray[j+1])<0){
                             String temp = TempArray[j]; 
                             TempArray[j] = TempArray[j+1]; 
                             TempArray[j+1] = temp; 
@@ -214,9 +214,9 @@ public class DataSorting extends ConnectorPart2{
     public static boolean IsFloat(String x){ 
         try {  
             Float.parseFloat(x);  
-                return true;}
-            catch(NumberFormatException e){  
-                return false;  
+            return true;}
+        catch(NumberFormatException e){  
+            return false;  
             }
     }
 }

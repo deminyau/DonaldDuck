@@ -2,20 +2,17 @@ package DataFrame;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 
 public class ConstructDataFrame extends ConnectorPart_1{
     
-    public static String name;
-    public static String department;
-    public static String CurrentCGPA;
-    public static String Expected_graduation_salary;
-    public static String Actual_graduation_salary;
     public static Scanner group11 = new Scanner(System.in);
     public static String filepath;
     
-    public static void ReadFile (){ //Method read a csv file which is to collect new data
+    public static void ReadFile(){ //Method read a csv file which is to collect new data
         System.out.println("Enter file name: ");
         filepath=group11.next();
         System.out.println();
@@ -24,10 +21,11 @@ public class ConstructDataFrame extends ConnectorPart_1{
     public static void ScanFileCsvAndWriteToCsvFile(){ //Method to scan the file just read and write to an output file(DataStorage.csv)
         
         try{
-            Scanner csv= new Scanner(new FileInputStream(filepath));
+            Scanner csv = new Scanner(new FileInputStream(filepath));
             
             System.out.println("-----------------------------------------------------------------------------------------------------------");
-            System.out.println("Adding new data....");
+            System.out.println("                                        Adding new data                                                    ");
+            System.out.println("-----------------------------------------------------------------------------------------------------------");
             while(csv.hasNextLine()){
                 
                 String uniRow=csv.nextLine();
@@ -48,6 +46,5 @@ public class ConstructDataFrame extends ConnectorPart_1{
         }catch(FileNotFoundException e){
             System.out.println("File not found!!");
         }
-        
     }
 }

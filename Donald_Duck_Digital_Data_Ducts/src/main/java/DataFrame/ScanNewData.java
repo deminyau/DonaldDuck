@@ -7,24 +7,35 @@ import java.util.Scanner;
 public class ScanNewData extends ConnectorPart_1{
     public static void ScanNewDataFromOutputFile(){ //Read new data from output file(DataStorage)
         
+        System.out.println("");
         System.out.println("-----------------------------------------------------------------------------------------------------------");
-        System.out.println("Data in DataStorage: ");
+        System.out.println("                                             Data in Storage                                               ");
+        System.out.println("-----------------------------------------------------------------------------------------------------------");
         
         try{
             Scanner csv= new Scanner(new FileInputStream("DataStorage.csv"));
             
-            while(csv.hasNextLine()){
-                
-                String uniRow=csv.nextLine();
-                String[] uniColumns=uniRow.trim().split(",");
-                String name=uniColumns[0];
-                String department=uniColumns[1];
-                String CurrentCGPA=uniColumns[2];
-                String Expected_graduation_salary=uniColumns[3];
-                String Actual_graduation_salary=uniColumns[4];
-                
-                System.out.printf("%s\t%-23s\t%-10s\t%-30s\t%-20s\n",name,department,CurrentCGPA,Expected_graduation_salary,Actual_graduation_salary);
-            }   
+            int column = 0; 
+            int row  = 0;
+            
+            while (csv.hasNextLine()){
+                String s1 = csv.nextLine();
+                String [] s1_spilt = s1.split(",");
+                row = s1_spilt.length;
+                column ++;
+            }
+            
+            Scanner csv2= new Scanner(new FileInputStream("DataStorage.csv")); 
+            String [][] file = new String [column][row];
+            for (int i=0;i<column;i++){
+                String s1 = csv2.nextLine();
+                String [] s1_split = s1.split(",");
+                for (int j = 0; j<row; j++){
+                    file[i][j] = s1_split[j];
+                    System.out.printf("%-30s", file[i][j]);
+                }
+                System.out.println("");
+            } 
             csv.close();
         }catch(FileNotFoundException e){
             System.out.println("File not found!!");

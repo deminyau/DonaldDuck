@@ -15,6 +15,7 @@ public class Tester {
         System.out.println("2-Managing data");
         System.out.println("Enter step(1-6) to be proceed: ");
         int step=group11.nextInt();
+        System.out.println("");
         
         if(step==1){
             

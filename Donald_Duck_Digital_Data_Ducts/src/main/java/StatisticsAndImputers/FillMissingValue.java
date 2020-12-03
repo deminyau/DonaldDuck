@@ -11,13 +11,14 @@ public class FillMissingValue extends ConnectorPart3{
     
     private static void ReadCsv(){
         
-        System.out.print("Enter file name that you want to use: ");
+        System.out.println("Enter file name that you want to use: ");
         filepath=group11.next();
         System.out.println("");
     }
     
     public static void FillValue() throws FileNotFoundException{
         ReadCsv();
+        try{
         File a = new File(filepath);
         Scanner sc1 = new Scanner (a);
         int column1 = 0; int row1  = 0;
@@ -71,5 +72,8 @@ public class FillMissingValue extends ConnectorPart3{
             pw.println();
         }
         pw.close();
+        }catch(FileNotFoundException e){
+            System.out.println("File not found!!");
+        }
     }
 }

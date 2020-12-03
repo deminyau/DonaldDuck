@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class ScanNewData extends ConnectorPart_1{
+public class ScanNewData extends ConnectorPart1{
     public static void ScanNewDataFromOutputFile(){ //Read new data from output file(DataStorage)
         
         System.out.println("");

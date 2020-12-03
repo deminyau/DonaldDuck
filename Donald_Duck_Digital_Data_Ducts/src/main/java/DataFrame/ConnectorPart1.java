@@ -1,6 +1,6 @@
 package DataFrame;
 
-public class ConnectorPart_1 {
+public class ConnectorPart1 {
     
     public void display1(){
         ConstructDataFrame cd = new ConstructDataFrame();

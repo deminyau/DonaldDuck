@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 
-public class ConstructDataFrame extends ConnectorPart_1{
+public class ConstructDataFrame extends ConnectorPart1{
     
     public static Scanner group11 = new Scanner(System.in);
     public static String filepath;

@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Donald_Duck_Digital_Data_Ducts" target="15" />
+      <module name="Donald_Duck_Digital_Data_Ducts" target="14" />
     </bytecodeTargetLevel>
   </component>
 </project>

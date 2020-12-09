@@ -1,5 +1,6 @@
 package Manipulation;
 
+import static Main.TesterDonald.group11;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -9,17 +10,15 @@ import java.util.Scanner;
 public class ConcatenateDataFrame extends ConnectorPart2{
     public static String filepath1;
     public static String filepath2;
-    public static String filepathtogo;
-    public static Scanner group11 = new Scanner(System.in);
     
-    public static void ReadFile1(){
-        System.out.println("Enter output file name : ");
+    public static void ReadFile2(){
+        System.out.println("Enter name of file as output: ");
         filepath1=group11.next();
         System.out.println("");
     }
     
-    public static void ReadFile2(){
-        System.out.println("Enter input file name: ");
+    public static void ReadFile3(){
+        System.out.println("Enter name of file to be inputed: ");
         filepath2=group11.next();
     }
     
@@ -27,7 +26,9 @@ public class ConcatenateDataFrame extends ConnectorPart2{
         System.out.println("");
         try{
             Scanner csv1= new Scanner(new FileInputStream(filepath1));
-            int column1=0; int row1=0;
+            int column1=0; 
+            int row1=0;
+            
             while (csv1.hasNextLine()){
                 String s1 = csv1.nextLine();
                 String [] s1_spilt = s1.split(",");
@@ -36,7 +37,8 @@ public class ConcatenateDataFrame extends ConnectorPart2{
             }
             
             Scanner csv2= new Scanner(new FileInputStream(filepath2));
-            int column2 = 0; int row2  = 0;
+            int column2=0; 
+            int row2=0;
             
             while (csv2.hasNextLine()){
                 String s2 = csv2.nextLine();
@@ -78,7 +80,8 @@ public class ConcatenateDataFrame extends ConnectorPart2{
                          pw.print(file2[i][row] + ",");
                          row++;
                     }
-                    System.out.println(""); pw.println();
+                    System.out.println(""); 
+                    pw.println();
                 } 
                 pw.close();
             }else if (row1 == row2){

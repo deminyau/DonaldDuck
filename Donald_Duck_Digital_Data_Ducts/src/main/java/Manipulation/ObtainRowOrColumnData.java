@@ -1,16 +1,16 @@
 package Manipulation;
 
-import static DataFrame.ScanNewData.ScanNewDataFromOutputFile;
+import static DataFrame.ConstructDataframeFromCsvFile.ScanDataFromFile;
+import static DataFrame.ConstructDataframeFromCsvFile.filename;
+import static Main.TesterDonald.group11;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class ObtainRowOrColumnData extends ConnectorPart2 {
-    public static Scanner group11 = new Scanner(System.in);
-    public static String Newfilepath;
     
     public static void ObtainRecordInRow(){
-        ScanNewDataFromOutputFile();
+        ScanDataFromFile();
         
         System.out.println("");
         System.out.println("");
@@ -19,9 +19,9 @@ public class ObtainRowOrColumnData extends ConnectorPart2 {
         System.out.println("Enter end number for range: ");
         int RowRange2=group11.nextInt();
         System.out.println("");
-       
+        
         try {
-            Scanner csv= new Scanner(new FileInputStream("DataStorage.csv"));
+            Scanner csv= new Scanner(new FileInputStream(filename));
             int column = 0; 
             int row  = 0;
             
@@ -32,7 +32,7 @@ public class ObtainRowOrColumnData extends ConnectorPart2 {
                 column ++;
             }
             
-            Scanner csv2= new Scanner(new FileInputStream("DataStorage.csv")); 
+            Scanner csv2= new Scanner(new FileInputStream(filename)); 
             String [][] file = new String [column][row];
             for (int i=0;i<column;i++){
                 String s1 = csv2.nextLine();
@@ -64,8 +64,8 @@ public class ObtainRowOrColumnData extends ConnectorPart2 {
         }
     }
     
-      public static void ObtainRecordInColumn(){
-        ScanNewDataFromOutputFile();
+    public static void ObtainRecordInColumn(){
+        ScanDataFromFile();
         
         System.out.println("");
         System.out.println("");
@@ -78,7 +78,7 @@ public class ObtainRowOrColumnData extends ConnectorPart2 {
         System.out.println("");
          
             try {
-                Scanner csv= new Scanner(new FileInputStream("DataStorage.csv"));
+                Scanner csv= new Scanner(new FileInputStream(filename));
                 int column = 0; 
                 int row  = 0;
                 
@@ -89,7 +89,7 @@ public class ObtainRowOrColumnData extends ConnectorPart2 {
                     column++;
                 }
             
-                Scanner csv2= new Scanner(new FileInputStream("DataStorage.csv")); 
+                Scanner csv2= new Scanner(new FileInputStream(filename)); 
                 String[][] file = new String [column][row];
                 
                 for(int i=0;i<column;i++){

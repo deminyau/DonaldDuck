@@ -1,6 +1,8 @@
 package Manipulation;
 
-import static Manipulation.ConcatenateDataFrame.group11;
+import static Main.TesterDonald.group11;
+import static Manipulation.ConcatenateDataFrame.ReadFile3;
+import static Manipulation.ConcatenateDataFrame.filepath2;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -26,11 +28,11 @@ public class RemoveDuplicatedRowInData extends ConnectorPart2 {
     public static void DeleteDuplicatedRow() {
 
         GotoNewCsv();
-
+        ReadFile3();
         try {
 
             Scanner group11 = new Scanner(System.in);
-            Scanner csv = new Scanner(new FileInputStream(filepath4));
+            Scanner csv = new Scanner(new FileInputStream(filepath2));
             int numberOfRow = 0;
             int numberOfColumn = 0;
 
@@ -41,7 +43,7 @@ public class RemoveDuplicatedRowInData extends ConnectorPart2 {
                 numberOfRow++;
             }
 
-            Scanner csv2 = new Scanner(new FileInputStream(filepath4));
+            Scanner csv2 = new Scanner(new FileInputStream(filepath2));
             String[][] arrangement = new String[numberOfRow][numberOfColumn];
             for (int i = 0; i < numberOfRow; i++) { //copy data into an array
                 String s1 = csv2.nextLine();

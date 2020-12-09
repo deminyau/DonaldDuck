@@ -14,19 +14,32 @@ public class TesterDonald {
     public static int step;
     public static void ChoiceMessage1(){
         System.out.println("");
+        System.out.println("--------Page 1--------");
         System.out.println("1 - Adding new data");
         System.out.println("2 - Managing data");
         System.out.println("3 - Statistic");
         System.out.println("4 - Scalers");
         System.out.println("5 - K-Nearest Neighbors(k-nn)");
         System.out.println("-1 - Exit");
-        System.out.println("Enter step(1-6) to be proceed: ");
+        System.out.println("Enter step(1-5) to be proceed: ");
         step=group11.nextInt();
     }
     
+    public static int stepA;
+    public static void ChoiceMessageAND(){
+        System.out.println("--------Page Adding new data--------");
+        System.out.println("1 - Key in data ");
+        System.out.println("2 - Display data from csv file");
+        System.out.println("(-1) - Back to previous step");
+        System.out.println("Enter step to proceed(1/2): ");
+        stepA=group11.nextInt();
+        System.out.println("");
+    }
+    
     public static int stepB;
-    public static void ChoiceMessage2(){
+    public static void ChoiceMessageMD(){
         System.out.println();
+        System.out.println("--------Page Managing data--------");
         System.out.println("1 - Concatenate data");
         System.out.println("2 - Obtain specific data");
         System.out.println("3 - Data sorting");
@@ -39,7 +52,8 @@ public class TesterDonald {
     }
     
     public static int stepC;
-    public static void ChoiceMessage3(){
+    public static void ChoiceMessageS(){
+        System.out.println("--------Page Statistic--------");
         System.out.println("1 - Get overall statistics");
         System.out.println("2 - Fill missing values");
         System.out.println("(-1) - Back to previous step");
@@ -65,30 +79,40 @@ public class TesterDonald {
         System.out.println("");
         do{
           if(step==1){
-            System.out.println("Are u sure u want to proceed? If YES please enter (1).If NO please enter (-1) to back to the previous step: ");
-            int stepA=group11.nextInt();
-            System.out.println("");
-            
-            if(stepA==1){
-               ConnectorPart1 c1 = new ConnectorPart1();
-               c1.display1();
-               c1.display2();
-            }else if(stepA==-1){
+                do{
+                    ChoiceMessageAND();
+                    if(stepA==1){
+                        AreYouSureMessage();
+                        if(aus==1){
+                            ConnectorPart1 c1 = new ConnectorPart1();
+                            c1.DisplayPart1a();
+                        }else if(aus==-1){
+                            continue;
+                        }else{
+                            InvalidMessage();
+                        }
+                    }else if(stepA==2){
+                        AreYouSureMessage();
+                        if(aus==1){
+                            ConnectorPart1 c1 = new ConnectorPart1();
+                            c1.DisplayPart1b();
+                        }else if(aus==-1){
+                            continue;
+                        }else{
+                            InvalidMessage();
+                        }
+                    }
+                }while(stepA!=-1);
                 ChoiceMessage1();
-                step=group11.nextInt();
-            }else{
-                System.out.println("Invalid value!!!");
-                System.out.println("");
-            }
-           
+
           }else if(step==2){
                 do{
-                    ChoiceMessage2();
+                    ChoiceMessageMD();
                     if(stepB==1){ 
                         AreYouSureMessage();
                         if(aus==1){
                             ConnectorPart2 c2 = new ConnectorPart2();
-                            c2.DisplayPart1();
+                            c2.DisplayPart2a();
                         }else if(aus==-1){
                             continue;
                         }else{
@@ -98,7 +122,7 @@ public class TesterDonald {
                         AreYouSureMessage();
                         if(aus==1){
                             ConnectorPart2 c2 = new ConnectorPart2();
-                            c2.DisplayPart2();
+                            c2.DisplayPart2b();
                         }else if(aus==-1){
                             continue;
                         }else{
@@ -108,7 +132,7 @@ public class TesterDonald {
                         AreYouSureMessage();
                         if(aus==1){
                             ConnectorPart2 c2 = new ConnectorPart2();
-                            c2.DisplayPart3();
+                            c2.DisplayPart2c();
                         }else if(aus==-1){
                             continue;
                         }else{
@@ -118,7 +142,7 @@ public class TesterDonald {
                         AreYouSureMessage();
                         if(aus==1){
                             ConnectorPart2 c2 = new ConnectorPart2();
-                            c2.DisplayPart4();
+                            c2.DisplayPart2d();
                         }else if(aus==-1){
                             continue;
                         }else{
@@ -128,7 +152,7 @@ public class TesterDonald {
                         AreYouSureMessage();
                         if(aus==1){
                             ConnectorPart2 c2 = new ConnectorPart2();
-                            c2.DisplayPart5();
+                            c2.DisplayPart2e();
                         }else if(aus==-1){
                             continue;
                         }else{
@@ -139,12 +163,12 @@ public class TesterDonald {
                 ChoiceMessage1();
           }else if(step==3){
                 do{
-                   ChoiceMessage3();  
+                   ChoiceMessageS();  
                     if(stepC==1){
                         AreYouSureMessage();
                         if(aus==1){
                             ConnectorPart3 c3 = new ConnectorPart3();
-                            c3.displaypart3a();
+                            c3.Displaypart3a();
                         }else if(aus==-1){
                             continue;
                         }else{
@@ -154,7 +178,7 @@ public class TesterDonald {
                         AreYouSureMessage();
                         if(aus==1){
                             ConnectorPart3 c3 = new ConnectorPart3();
-                            c3.displaypart3b();
+                            c3.Displaypart3b();
                         }else if(aus==-1){
                             continue;
                         }else{
@@ -171,13 +195,15 @@ public class TesterDonald {
             
             if(stepD==1){
                 ConnectorPart4 c4 = new ConnectorPart4();
-                c4.displayPart4();
+                c4.DisplayPart4();
             }else if(stepD==-1){
                 ChoiceMessage1();
             }else{
-                System.out.println("Invalid value!!!");
+                InvalidMessage();
                 System.out.println("");
             }
+          }else if(step==5){
+              
           }
         }while(step!=-1);
         System.out.println("Please use me next time.Bye bye!!");

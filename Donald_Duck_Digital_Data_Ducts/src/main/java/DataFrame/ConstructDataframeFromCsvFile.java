@@ -1,19 +1,27 @@
 package DataFrame;
 
+import static Main.TesterDonald.group11;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class ScanNewData extends ConnectorPart1{
-    public static void ScanNewDataFromOutputFile(){ //Read new data from output file(DataStorage)
-        
-        System.out.println("");
+public class ConstructDataframeFromCsvFile extends ConnectorPart1 {
+    
+    public static String filename;
+    public static void ReadFile(){
+        System.out.println("This file is used to display records.");
+        System.out.print("Enter file: ");
+        filename=group11.next();
+    }
+    
+    public static void ScanDataFromFile(){
+        ReadFile();
         System.out.println("-----------------------------------------------------------------------------------------------------------");
-        System.out.println("                                             Data in Storage                                               ");
-        System.out.println("-----------------------------------------------------------------------------------------------------------");
+        System.out.println("Data in DataStorage: ");
         
+        int totalRecord=0;
         try{
-            Scanner csv= new Scanner(new FileInputStream("DataStorage.csv"));
+            Scanner csv= new Scanner(new FileInputStream(filename));
             
             int column = 0; 
             int row  = 0;
@@ -23,9 +31,10 @@ public class ScanNewData extends ConnectorPart1{
                 String [] s1_spilt = s1.split(",");
                 row = s1_spilt.length;
                 column ++;
+                totalRecord++;
             }
             
-            Scanner csv2= new Scanner(new FileInputStream("DataStorage.csv")); 
+            Scanner csv2= new Scanner(new FileInputStream(filename)); 
             String [][] file = new String [column][row];
             for (int i=0;i<column;i++){
                 String s1 = csv2.nextLine();
@@ -35,8 +44,11 @@ public class ScanNewData extends ConnectorPart1{
                     System.out.printf("%-30s", file[i][j]);
                 }
                 System.out.println("");
-            } 
+            }             
+            System.out.print("Total records: "+(totalRecord-1));
+            System.out.println("");
             csv.close();
+            
         }catch(FileNotFoundException e){
             System.out.println("File not found!!");
         }

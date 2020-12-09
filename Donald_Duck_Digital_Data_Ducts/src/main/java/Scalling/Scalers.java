@@ -1,6 +1,6 @@
 package Scalling;
 
-import static DataFrame.ConstructDataFrame.group11;
+import static Main.TesterDonald.group11;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;

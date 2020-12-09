@@ -9,7 +9,7 @@ public class MathMethod extends ConnectorPart3 {
     public static Scanner group11 = new Scanner(System.in);
 
     private static void ReadCsv2() {
-        System.out.print("Enter file name that you want to use: ");
+        System.out.println("Enter file name that you want to use: ");
         filepath2 = group11.next();
         System.out.println();
     }

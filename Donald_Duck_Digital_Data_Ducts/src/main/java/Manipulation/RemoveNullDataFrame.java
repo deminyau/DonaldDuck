@@ -1,6 +1,9 @@
 package Manipulation;
 
-import static Manipulation.ConcatenateDataFrame.group11;
+
+import static Main.TesterDonald.group11;
+import static Manipulation.ConcatenateDataFrame.ReadFile3;
+import static Manipulation.ConcatenateDataFrame.filepath2;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -18,12 +21,6 @@ public class RemoveNullDataFrame extends ConnectorPart2{
         System.out.println("");
     }
     
-    public static void ReadFile3(){
-        System.out.print("Enter file name that u want to use: ");
-        filepath3=group11.next();
-        System.out.println("");
-    }
-    
     public static void deleteRecord(){
         System.out.print("Enter the number of null columns to be deleted: ");
         int NumColumn=group11.nextInt();
@@ -36,9 +33,9 @@ public class RemoveNullDataFrame extends ConnectorPart2{
         }
 
         GotoNewCsv();
-        
+        ReadFile3();
         try{
-            Scanner csv= new Scanner(new FileInputStream(filepath3));
+            Scanner csv= new Scanner(new FileInputStream(filepath2));
             int column1=0; 
             int row1=0;
         
@@ -49,7 +46,7 @@ public class RemoveNullDataFrame extends ConnectorPart2{
                   column1 ++;
             }
             
-            Scanner csv2= new Scanner(new FileInputStream(filepath3));
+            Scanner csv2= new Scanner(new FileInputStream(filepath2));
             String[][] line = new String [column1][row1];
             for(int i = 0; i<column1 ; i++){
                 String s1 = csv2.nextLine();

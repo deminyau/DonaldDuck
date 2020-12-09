@@ -1,15 +1,17 @@
 package DataFrame;
 
+import java.io.IOException;
+
 public class ConnectorPart1 {
     
-    public void display1(){
-        ConstructDataFrame cd = new ConstructDataFrame();
-        cd.ReadFile();
-        cd.ScanFileCsvAndWriteToCsvFile();
+    public void DisplayPart1a(){
+        ConstructDataframeFromCsvFile cd = new ConstructDataframeFromCsvFile();
+        cd.ScanDataFromFile();
+        
     }
     
-    public void display2(){
-        ScanNewData snd = new ScanNewData();
-        snd.ScanNewDataFromOutputFile();
+    public void DisplayPart1b() throws IOException{
+        SaveDataframeToCsvFile sd = new SaveDataframeToCsvFile();
+        sd.UserInputData();
     }
 }

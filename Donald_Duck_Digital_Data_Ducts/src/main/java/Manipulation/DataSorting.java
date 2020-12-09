@@ -1,26 +1,20 @@
 package Manipulation;
 
+import static Manipulation.ConcatenateDataFrame.ReadFile3;
+import static Manipulation.ConcatenateDataFrame.filepath2;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class DataSorting extends ConnectorPart2{
     
-    public static Scanner group11 = new Scanner(System.in);
-    public static String filepath4;
-    
-    public static void ReadFile4(){
-        System.out.println("Enter file name that u want to use: ");
-        filepath4=group11.next();
-        System.out.println("");
-    }
-    
     public static void Sorting(){
+        ReadFile3();
         int column = 0; 
         int row  = 0;
         String[][]file=null;
         try {
-            Scanner csv= new Scanner(new FileInputStream(filepath4));
+            Scanner csv= new Scanner(new FileInputStream(filepath2));
             
             while (csv.hasNextLine()){
                 String s1 = csv.nextLine();
@@ -29,7 +23,7 @@ public class DataSorting extends ConnectorPart2{
                 row ++;
             }
             
-            Scanner csv2= new Scanner(new FileInputStream(filepath4)); 
+            Scanner csv2= new Scanner(new FileInputStream(filepath2)); 
             file = new String [row][column];
             //System.out.println(row+" "+column);
             for (int i=0;i<row;i++){

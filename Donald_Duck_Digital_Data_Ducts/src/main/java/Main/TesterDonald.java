@@ -1,6 +1,7 @@
 package Main;
 
 import DataFrame.ConnectorPart1;
+import K_Nearest_Neighbors.ConnectorPart5;
 import Manipulation.ConnectorPart2;
 import Scalling.ConnectorPart4;
 import StatisticsAndImputers.ConnectorPart3;
@@ -203,7 +204,18 @@ public class TesterDonald {
                 System.out.println("");
             }
           }else if(step==5){
+            System.out.println("Are u sure u want to proceed? If yes please enter (1). If NO please enter (-1) to back to the previous step: ");
+            int stepE=group11.nextInt();
               
+            if(stepE==1){
+                ConnectorPart5 c5 = new ConnectorPart5();
+                c5.DisplayPart5();
+            }else if(stepE==-1){
+                ChoiceMessage1();
+            }else{
+                InvalidMessage();
+                System.out.println("");
+            }
           }
         }while(step!=-1);
         System.out.println("Please use me next time.Bye bye!!");

@@ -11,25 +11,26 @@ public class SaveDataframeToCsvFile {
     public static String filepath;
     public static void ReadCsv(){
         
-        System.out.print("Enter file name that you want to use: ");
+        System.out.println("Enter file name that you want to use: ");
         filepath=group11.next();
         System.out.println("");
         
     }
     public static void UserInputData() throws IOException{
-        
+        System.out.println("");
         System.out.println("How many row of data you want to key in?");
-        System.out.print("Enter value: ");
+        System.out.println("Enter value: ");
         int NumOfRow = group11.nextInt();
+        System.out.println("");
         System.out.println("How many column of data you want to key in?");
-        System.out.print("Enter value: ");
+        System.out.println("Enter value: ");
         int NumOfColumn = group11.nextInt();
         
         String[][] data = new String[NumOfRow][NumOfColumn];
         
         for (int i=0;i<NumOfRow;i++){
             for (int j=0;j<NumOfColumn;j++){
-                System.out.print("Enter value for row "+(i+1)+" column " +(j+1) +" : " );
+                System.out.println("Enter value for row "+(i+1)+" column " +(j+1) +" : " );
                 data[i][j] = group11.next();
             }
         }

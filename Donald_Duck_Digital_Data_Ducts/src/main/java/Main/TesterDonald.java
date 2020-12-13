@@ -29,8 +29,8 @@ public class TesterDonald {
     public static int stepA;
     public static void ChoiceMessageAND(){
         System.out.println("--------Page Adding new data--------");
-        System.out.println("1 - Key in data ");
-        System.out.println("2 - Display data from csv file");
+        System.out.println("1 - Display data from csv file");
+        System.out.println("2 - Key in data ");
         System.out.println("(-1) - Back to previous step");
         System.out.println("Enter step to proceed(1/2): ");
         stepA=group11.nextInt();

@@ -10,7 +10,7 @@ public class ConstructDataframeFromCsvFile extends ConnectorPart1 {
     public static String filename;
     public static void ReadFile(){
         System.out.println("This file is used to display records.");
-        System.out.print("Enter file: ");
+        System.out.println("Enter file: ");
         filename=group11.next();
     }
     

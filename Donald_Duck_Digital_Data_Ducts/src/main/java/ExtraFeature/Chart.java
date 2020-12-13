@@ -64,12 +64,12 @@ public class Chart {
                 }
             }
             csv.close();
-            System.out.println("Total number graudates for software engineering: " + se);
-            System.out.println("Total number graudates for artificial intelligence: " + ai);
-            System.out.println("Total number graudates for computer and system network: " + csn);
-            System.out.println("Total number graudates for multimedia: " + mm);
-            System.out.println("Total number graudates for information system: " + is);
-            System.out.println("Total number graudates for data science: " + ds);
+            System.out.println("Total number graduates for software engineering: " + se);
+            System.out.println("Total number graduates for artificial intelligence: " + ai);
+            System.out.println("Total number graduates for computer and system network: " + csn);
+            System.out.println("Total number graduates for multimedia: " + mm);
+            System.out.println("Total number graduates for information system: " + is);
+            System.out.println("Total number graduates for data science: " + ds);
 
         } catch (FileNotFoundException e) {
             System.out.println("File not found!!");

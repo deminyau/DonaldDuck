@@ -17,7 +17,7 @@ public class Chart {
     public static int se = 0, ai = 0, csn = 0, mm = 0, is = 0, ds = 0;
 
     public static void ReadNumberOfGraduates() {
-        System.out.print("Enter file name: ");
+        System.out.println("Enter file name: ");
         String name = group11.next();
 
         String a = "Software Engineering";
@@ -58,7 +58,7 @@ public class Chart {
                         mm++;
                     } else if (file[i][j].equalsIgnoreCase(f)) {
                         is++;
-                    } else {
+                    } else if (file[i][j].equalsIgnoreCase(g)){
                         ds++;
                     }
                 }

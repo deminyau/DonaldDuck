@@ -1,6 +1,7 @@
 package Main;
 
 import DataFrame.ConnectorPart1;
+import ExtraFeature.Chart;
 import K_Nearest_Neighbors.ConnectorPart5;
 import Manipulation.ConnectorPart2;
 import Scalling.ConnectorPart4;
@@ -21,6 +22,7 @@ public class TesterDonald {
         System.out.println("3 - Statistic");
         System.out.println("4 - Scalers");
         System.out.println("5 - K-Nearest Neighbors(k-nn)");
+        System.out.println("6 - Generate charts");
         System.out.println("-1 - Exit");
         System.out.println("Enter step(1-5) to be proceed: ");
         step=group11.nextInt();
@@ -216,6 +218,19 @@ public class TesterDonald {
                 InvalidMessage();
                 System.out.println("");
             }
+          }else if(step==6){
+              System.out.println("Are u sure u want to proceed? If yes please enter (1). If NO please enter (-1) to back to the previous step: ");
+              int stepF=group11.nextInt();
+              if(stepF==1){
+                  Chart c = new Chart();
+                  c.ReadNumberOfGraduates();
+                  c.getBarChart();
+              }else if(stepF==-1){
+                ChoiceMessage1();
+            }else{
+                InvalidMessage();
+                System.out.println("");
+            }  
           }
         }while(step!=-1);
         System.out.println("Please use me next time.Bye bye!!");

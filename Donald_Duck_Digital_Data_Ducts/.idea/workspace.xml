@@ -23,20 +23,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6fa3cd3-cad9-416e-a62f-db01d3d3cb7f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/StatisticsAndImputers/MathMethod.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/jcommon_1_0_23.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/jfreechart_1_0_19.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ExtraFeature/Chart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TestingYDM/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TestingYDM/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TestingYDM/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TestingYDM/.idea/libraries/jcommon_1_0_23.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TestingYDM/.idea/libraries/jfreechart_1_0_19.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TestingYDM/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TestingYDM/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TestingYDM/TestingYDM.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TestingYDM/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TestingYDM/src/main/java/Testing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Donald_Duck_Digital_Data_Ducts.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Donald_Duck_Digital_Data_Ducts.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/StatisticsAndImputers/ConnectorPart3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/StatisticsAndImputers/ConnectorPart3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.netbeans_automatic_build" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataFrame/SaveDataFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataFrame/SaveDataFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main/Tester.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main/TesterDonald.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main/TesterDonald.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Manipulation/DataSorting.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Manipulation/DataSorting.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Manipulation/ObtainRowOrColumnData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Manipulation/ObtainRowOrColumnData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/StatisticsAndImputers/ConnectorPart3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/StatisticsAndImputers/ConnectorPart3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/.netbeans_automatic_build" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,13 +54,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="ProjectId" id="1ksP41qz0BbxbBDAkQYMGe5x9wL" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -67,8 +61,16 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="true" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RunManager" selected="Application.TesterDonald">
     <configuration name="Tester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -126,27 +128,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="1398" height="611" key="GridCell.Tab.0.bottom" timestamp="1607086746890">
-      <screen x="0" y="25" width="1440" height="797" />
-    </state>
-    <state width="1398" height="639" key="GridCell.Tab.0.bottom/0.25.1440.795@0.25.1440.795" timestamp="1606542987930" />
-    <state width="1398" height="611" key="GridCell.Tab.0.bottom/0.25.1440.797@0.25.1440.797" timestamp="1607086746890" />
-    <state width="1398" height="611" key="GridCell.Tab.0.center" timestamp="1607086746889">
-      <screen x="0" y="25" width="1440" height="797" />
-    </state>
-    <state width="1398" height="639" key="GridCell.Tab.0.center/0.25.1440.795@0.25.1440.795" timestamp="1606542987929" />
-    <state width="1398" height="611" key="GridCell.Tab.0.center/0.25.1440.797@0.25.1440.797" timestamp="1607086746889" />
-    <state width="1398" height="611" key="GridCell.Tab.0.left" timestamp="1607086746889">
-      <screen x="0" y="25" width="1440" height="797" />
-    </state>
-    <state width="1398" height="639" key="GridCell.Tab.0.left/0.25.1440.795@0.25.1440.795" timestamp="1606542987929" />
-    <state width="1398" height="611" key="GridCell.Tab.0.left/0.25.1440.797@0.25.1440.797" timestamp="1607086746889" />
-    <state width="1398" height="611" key="GridCell.Tab.0.right" timestamp="1607086746890">
-      <screen x="0" y="25" width="1440" height="797" />
-    </state>
-    <state width="1398" height="639" key="GridCell.Tab.0.right/0.25.1440.795@0.25.1440.795" timestamp="1606542987930" />
-    <state width="1398" height="611" key="GridCell.Tab.0.right/0.25.1440.797@0.25.1440.797" timestamp="1607086746890" />
   </component>
 </project>

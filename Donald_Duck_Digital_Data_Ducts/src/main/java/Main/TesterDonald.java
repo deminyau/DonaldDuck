@@ -24,7 +24,7 @@ public class TesterDonald {
         System.out.println("5 - K-Nearest Neighbors(k-nn)");
         System.out.println("6 - Generate charts");
         System.out.println("-1 - Exit");
-        System.out.println("Enter step(1-5) to be proceed: ");
+        System.out.println("Enter step(1-6) to be proceed: ");
         step=group11.nextInt();
     }
     
@@ -51,6 +51,18 @@ public class TesterDonald {
         System.out.println("(-1) - Back to previous step");
         System.out.println("Enter step to proceed(1-5): ");
         stepB=group11.nextInt();
+        
+    }
+    
+    public static int stepAfter_stepB;
+    public static void ChoiceMessage_sAsB(){
+        System.out.println("--------Choices--------");
+        System.out.println("In this step, you have two choices.You can only choose one at the same time!");
+        System.out.println("1 - Obtain data using range of row");
+        System.out.println("2 - Obtain data using certain column");
+        System.out.println("(-1) - Back to previous step");
+        System.out.println("Enter step to proceed(1/2): ");
+        stepAfter_stepB=group11.nextInt();
         
     }
     
@@ -122,15 +134,20 @@ public class TesterDonald {
                             InvalidMessage();
                         }
                     }else if(stepB==2){
-                        AreYouSureMessage();
-                        if(aus==1){
+                        ChoiceMessage_sAsB();
+                        if(stepAfter_stepB==1){
                             ConnectorPart2 c2 = new ConnectorPart2();
-                            c2.DisplayPart2b();
-                        }else if(aus==-1){
-                            continue;
+                            c2.DisplayPart2b2();
+                        }else if(stepAfter_stepB==2){
+                            ConnectorPart2 c2 = new ConnectorPart2();
+                            c2.DisplayPart2b1();
+                        }else if(stepAfter_stepB==-1){
+                            ChoiceMessageMD();
                         }else{
                             InvalidMessage();
+                            ChoiceMessage_sAsB();
                         }
+                        ChoiceMessage_sAsB();
                     }else if(stepB==3){
                         AreYouSureMessage();
                         if(aus==1){
@@ -234,5 +251,6 @@ public class TesterDonald {
           }
         }while(step!=-1);
         System.out.println("Please use me next time.Bye bye!!");
+        
     }
 }

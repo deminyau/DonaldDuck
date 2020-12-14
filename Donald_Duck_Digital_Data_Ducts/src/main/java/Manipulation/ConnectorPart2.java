@@ -10,9 +10,13 @@ public class ConnectorPart2 {
         cdf.ConcatenateData();
     }
     
-    public void DisplayPart2b() throws IOException{
+    public void DisplayPart2b1() throws IOException{
         ObtainRowOrColumnData od = new ObtainRowOrColumnData();
         od.ObtainRecordInColumn();
+    }
+    
+    public void DisplayPart2b2() throws IOException{
+        ObtainRowOrColumnData od = new ObtainRowOrColumnData();
         od.ObtainRecordInRow();
     }
     

@@ -71,9 +71,9 @@ public class ObtainRowOrColumnData extends ConnectorPart2 {
         System.out.println("");
         
         System.out.println("Enter name of first columns: ");
-        String NameColumns1=group11.nextLine();
+        String NameColumns1=group11.next();
         System.out.println("Enter name of second columns: ");
-        String NameColumns2=group11.nextLine();
+        String NameColumns2=group11.next();
         
         System.out.println("");
          

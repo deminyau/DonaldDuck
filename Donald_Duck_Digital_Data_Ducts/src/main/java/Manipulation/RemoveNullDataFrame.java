@@ -1,104 +1,89 @@
 package Manipulation;
 
-
-import static Main.TesterDonald.group11;
-import static Manipulation.ConcatenateDataFrame.ReadFile3;
-import static Manipulation.ConcatenateDataFrame.filepath2;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class RemoveNullDataFrame extends ConnectorPart2{
-    public static String Newfilepath;
-    public static String filepath3;
-     
-    
-    public static void GotoNewCsv(){
-        System.out.print("Enter new file name to save data after process: ");
-        Newfilepath=group11.next();
-        System.out.println("");
-    }
     
     public static void deleteRecord(){
-        System.out.print("Enter the number of null columns to be deleted: ");
-        int NumColumn=group11.nextInt();
         
-        String[] ColumnName=new String[NumColumn];
+        Scanner group11 = new Scanner(System.in);
         
-        for(int loop=0;loop<NumColumn;loop++){
-            System.out.print("Enter the name of " +(loop+1) +" column to be deleted: ");
-            ColumnName[loop]=group11.next();
+        System.out.println("Enter file to be inputed: ");
+        String file=group11.nextLine();
+        
+        System.out.println("Enter the number of null columns to be deleted: ");
+        String input =group11.nextLine();
+        
+        int n = Integer.parseInt(input);
+        String [] header = new String[n];
+        for(int i=0;i<n;i++){
+            System.out.println("Enter the name of the column to be deleted: ");
+            header[i]=group11.nextLine();
         }
-
-        GotoNewCsv();
-        ReadFile3();
+   
         try{
-            Scanner csv= new Scanner(new FileInputStream(filepath2));
-            int column1=0; 
-            int row1=0;
+            
+            Scanner csv= new Scanner(new FileInputStream(file));
+            int column=0; 
+            int row=0;
         
             while(csv.hasNextLine()){
                   String s1=csv.nextLine();
                   String [] s1_spilt = s1.trim().split(",");
-                  row1 = s1_spilt.length;
-                  column1 ++;
+                  column = s1_spilt.length;
+                  row ++;
             }
             
-            Scanner csv2= new Scanner(new FileInputStream(filepath2));
-            String[][] line = new String [column1][row1];
-            for(int i = 0; i<column1 ; i++){
+            Scanner csv2= new Scanner(new FileInputStream(file));
+            String[][] data = new String [row][column];
+            for(int i = 0; i<row ; i++){
                 String s1 = csv2.nextLine();
                 s1 += ", ,";
                 String [] s1_split = s1.split(",");
-                for(int j = 0; j<row1; j++){
-                    line[i][j] = s1_split[j];
+                for(int j = 0; j<column; j++){
+                    data [i][j] = s1_split[j];
                 }
             } 
            
-            int remove1=0; 
-            int remove2=0;
-            int i=0;
-            for(int loop=0;loop<NumColumn;loop++){
+            int [] null_column_index = new int [n];
             
-            for (int j=0; j<row1; j++){
-                if(ColumnName[loop].equalsIgnoreCase(line[i][j])){
-                   remove1=j;
-                }
-                else if(ColumnName[loop].equalsIgnoreCase(line[i][j])){
-                   remove2=j;
-                }
-            }
-            }
-            int remove_column=0;
-            for(int k=0;k<column1;k++){      
-               int error1=0; 
-               int error2=0;
-                for(int j=0;j<row1;j++){
-                    if(line[k][j].isBlank() && j==remove1){
-                       error1=-1;
-                    }else if (line[k][j].isBlank() && j==remove2){
-                       error2=-1;
+            for (int i = 0; i<n; i++){
+                for (int j = 0; j<column; j++){
+                    if (header[i].equalsIgnoreCase(data[0][j])){
+                        null_column_index [i]= j;
                     }
-                } 
-                if(error1==-1 && error2==-1){ 
-                   remove_column=k;
-                }       
+                }
             }
-            FileOutputStream fos = new FileOutputStream(Newfilepath,true);
-            PrintWriter pw = new PrintWriter(fos);
-            for(int k=0;k<column1;k++){     
-                if(k==remove_column)
-                  continue;
-            for(int j=0;j<row1;j++){
-               System.out.printf("%-30s", line[k][j]);
-               pw.print(line[k][j]+",");
+            int remove_row = 0;
+            stop :for (int i = 1; i<row; i++){
+            int null_count = 0;
+            for (int k = 0; k<n ; k++){
+                for (int j = 0; j<column; j++){
+                    if (data[i][j].isBlank() && j == null_column_index[k]){
+                        null_count++;
+                    }
+                }
+            }
+            if (null_count == n) {
+                remove_row = i; 
+                   break 
+                   stop;
+            }
             }
             
-            System.out.println("");
-            pw.println();
-            }
+            PrintWriter pw = new PrintWriter (file);
+            for (int i = 0; i<row ; i++){
+                if (i==remove_row) 
+                    continue;
+                for (int j = 0; j<column; j++){
+                    System.out.printf("%-30s", data[i][j]);
+                    pw.print(data[i][j] + ",");
+                } System.out.println("");
+                pw.println();
+            } 
             pw.close();
         }catch(FileNotFoundException e){
             System.out.println("File not found!!");

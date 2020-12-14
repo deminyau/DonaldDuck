@@ -14,13 +14,13 @@ public class RemoveDuplicatedRowInData extends ConnectorPart2 {
     public static String filepath4;
 
     public static void GotoNewCsv() {
-        System.out.print("Enter new file name to save data after process: ");
+        System.out.println("Enter new file name to save data after process: ");
         Newfilepath = group11.next();
         System.out.println();
     }
     public static void ReadFile4() {
         System.out.println();
-        System.out.print("Enter file name that you want to use: ");
+        System.out.println("Enter file name that you want to use: ");
         filepath4 = group11.next();
         System.out.println();
     }
@@ -85,7 +85,7 @@ public class RemoveDuplicatedRowInData extends ConnectorPart2 {
                 }
                 System.out.print("have the same name (duplication)!");
                 System.out.println(); //user makes decision
-                System.out.print("Choose line to be kept (e.g. 1) or input -1 to remove all lines: ");
+                System.out.println("Choose line to be kept (e.g. 1) or input -1 to remove all lines: ");
                 int choice = group11.nextInt();
                 System.out.println();
 

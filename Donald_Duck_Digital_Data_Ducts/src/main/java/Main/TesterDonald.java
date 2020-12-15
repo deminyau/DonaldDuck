@@ -135,19 +135,31 @@ public class TesterDonald {
                         }
                     }else if(stepB==2){
                         ChoiceMessage_sAsB();
-                        if(stepAfter_stepB==1){
-                            ConnectorPart2 c2 = new ConnectorPart2();
-                            c2.DisplayPart2b2();
-                        }else if(stepAfter_stepB==2){
-                            ConnectorPart2 c2 = new ConnectorPart2();
-                            c2.DisplayPart2b1();
-                        }else if(stepAfter_stepB==-1){
-                            ChoiceMessageMD();
-                        }else{
-                            InvalidMessage();
-                            ChoiceMessage_sAsB();
-                        }
-                        ChoiceMessage_sAsB();
+                        do{
+                            if(stepAfter_stepB==1){
+                                AreYouSureMessage();
+                                if(aus==1){
+                                    ConnectorPart2 c2 = new ConnectorPart2();
+                                    c2.DisplayPart2b2();
+                                }else if(aus==-1){
+                                    break;
+                                }else{
+                                    InvalidMessage();
+                                }
+                                ChoiceMessage_sAsB();
+                            }else if(stepAfter_stepB==2){
+                                AreYouSureMessage();
+                                if(aus==1){
+                                    ConnectorPart2 c2 = new ConnectorPart2();
+                                c2.DisplayPart2b1();
+                                }else if(aus==-1){
+                                    continue;
+                                }else{
+                                    InvalidMessage();
+                                }
+                                ChoiceMessage_sAsB();
+                            }
+                        }while(stepAfter_stepB!=-1);
                     }else if(stepB==3){
                         AreYouSureMessage();
                         if(aus==1){

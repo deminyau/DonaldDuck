@@ -18,7 +18,7 @@ public class Scalers extends ConnectorPart4{
         try{
             System.out.println("");
             ReadFile5();
-            System.out.println("Please enter data from which cloumn: ");
+            System.out.print("Please enter data from which cloumn: ");
             Scanner sc= new Scanner(System.in);
             String header = sc.nextLine();
             File a = new File (filepath5);
@@ -48,12 +48,12 @@ public class Scalers extends ConnectorPart4{
                 double value = Double.parseDouble(s2_split[column]);
                 data[k] = value; k++;
             }
-            System.out.println("The values of " + header + " are: ");      
+            System.out.println("\nThe values of " + header + " are: ");      
             for (double value : data){
                 System.out.print(value + "  ");
             } 
-            System.out.println("");
-            System.out.println("What do you wish to do with the data (1 for standard scaling/ 2 for min max scaling): ");
+            System.out.println("\n\n");
+            System.out.print("What do you wish to do with the data (1 for standard scaling/ 2 for min max scaling): ");
             int key = sc.nextInt();
             double sum = 0; double sumofsquare = 0;
             if (key == 1){
@@ -66,7 +66,7 @@ public class Scalers extends ConnectorPart4{
                    double answer = ((sumofsquare*row)-squareofsum)/(row*(row-1));
                    double standard_deviation = Math.pow(answer, 0.5);
                    double average = sum/row;
-                   System.out.println("The values after standard scaling: ");
+                   System.out.println("\nThe values after standard scaling: ");
                 for(int i = 0; i<row; i++) {
                    double standard = (data[i]-average)/standard_deviation;
                    System.out.printf("%-15f", standard);
@@ -83,7 +83,7 @@ public class Scalers extends ConnectorPart4{
                     }
                 } 
                 double range = max - min;
-                System.out.println("The values after min max scaling: ");
+                System.out.println("\nThe values after min max scaling: ");
                 for (int i = 0; i<row; i++){ 
                     double minmax = (data[i]-min)/range;
                     System.out.printf("%-15f" , minmax);

@@ -29,17 +29,17 @@ public class ConstructDataframeFromCsvFile extends ConnectorPart1 {
             while (csv.hasNextLine()){
                 String s1 = csv.nextLine();
                 String [] s1_spilt = s1.split(",");
-                row = s1_spilt.length;
-                column ++;
+                column = s1_spilt.length;
+                row ++;
                 totalRecord++;
             }
             
             Scanner csv2= new Scanner(new FileInputStream(filename)); 
-            String [][] file = new String [column][row];
-            for (int i=0;i<column;i++){
+            String [][] file = new String [row][column];
+            for (int i=0;i<row;i++){
                 String s1 = csv2.nextLine();
                 String [] s1_split = s1.split(",");
-                for (int j = 0; j<row; j++){
+                for (int j = 0; j<column; j++){
                     file[i][j] = s1_split[j];
                     System.out.printf("%-30s", file[i][j]);
                 }

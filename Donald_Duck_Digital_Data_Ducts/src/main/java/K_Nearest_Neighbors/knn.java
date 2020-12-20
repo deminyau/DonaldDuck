@@ -179,12 +179,32 @@ public class knn extends ConnectorPart5 {
             distance[i]=CalDistance(testdata,indepforcal[i]);
             abcopy[i][0]=distance[i];
         }
+        float[][]kMAE=new float[row-1][2];
+        float sumerror=0;
+        int n=row-1;
+        for(int g=0;g<kMAE.length;g++){
+            kMAE[g][0]=g+1;
+        }
+        for(int kvalue=1;kvalue<=row-1;kvalue++){
+            for(int z=0;z<indepforcal.length;z++){
+                sumerror+=AE(ab,indepforcal[z],kvalue);
+            }
+            kMAE[kvalue-1][1]=sumerror/indepforcal.length;
+            sumerror=0;
+        }
+        System.out.println("left is value of k, right is value of Mean Absolute Error");
+        for(int i=0;i<kMAE.length;i++){
+            for(int j=0;j<2;j++){
+                System.out.print(kMAE[i][j]+" ");
+            }
+            System.out.println(" ");
+        }
         float [] temparray= new float[2];//temporary array for swapping
         //ascending sort the distance
         for (int i = 0; i < distance.length; i++){
             for (int j = 0; j < distance.length-1; j++) {
                if (distance[j]> distance[j+1]){
-                    //swap between rows in indepanddeptCopy
+                    //swap between rows in abcopy
                     temparray=abcopy[j];
                     abcopy[j]=abcopy[j+1];
                     abcopy[j+1]=temparray;
@@ -237,5 +257,58 @@ public class knn extends ConnectorPart5 {
            return k-1;
         else
            return k;
+    }
+    public static float AbsError(float actual, float predict){
+        float error=Math.abs(actual-predict);
+        return error;
+    }
+    public static float AE(float[][]rawdata,float test, int k){
+        float actual=-1000;//instead of initialize to 0, scare later if training data really got value 0 then got error cannot detect
+        for(int i=0;i<rawdata.length;i++){
+            if(test==rawdata[i][0]){
+                actual=rawdata[i][1];
+            }
+        }
+        float[]indepforcal=new float[rawdata.length];// independant values for calculation
+        float[][]rawcopy=new float[rawdata.length][rawdata[0].length];
+        for(int i=0;i<rawdata.length;i++){
+            for (int j=0;j<rawdata[0].length;j++){
+                rawcopy[i][j]=rawdata[i][j];
+            }
+        }
+        for(int i=0;i<indepforcal.length;i++){
+            indepforcal[i]=rawdata[i][0];}
+        float[] distance=new float[indepforcal.length];
+        for(int i=0;i<rawdata.length;i++){
+            distance[i]=CalDistance(test,indepforcal[i]);
+            rawcopy[i][0]=distance[i];
+        }
+        float [] temparray= new float[2];//temporary array for swapping
+        //ascending sort the distance
+        for (int i = 0; i < distance.length; i++){
+            for (int j = 0; j < distance.length-1; j++) {
+               if (distance[j]> distance[j+1]){
+                    //swap between rows in abcopy
+                    temparray=rawcopy[j];
+                    rawcopy[j]=rawcopy[j+1];
+                    rawcopy[j+1]=temparray;
+                    //swap between values of the column being used as sorting criteria that has been copied into 1D array distance 
+                    float temp = distance[j]; 
+                    distance[j] = distance[j+1]; 
+                    distance[j+1] = temp; 
+                        }
+                    }
+                }
+        float mean=0;
+        float sum=0;
+        for(int i=0;i<k;i++){
+            sum+=rawcopy[i][1];
+            }
+        mean=sum/k;  
+        if(actual!=-1000){
+            return AbsError(actual,mean);
+        }   
+        else
+            return -999;//easy to check if this come out sure got problem
     }
 }

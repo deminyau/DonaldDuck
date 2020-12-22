@@ -4,8 +4,10 @@ import static Manipulation.ConcatenateDataFrame.ReadFile3;
 import static Manipulation.ConcatenateDataFrame.filepath2;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
-
+import org.json.simple.JSONArray;
 public class DataSorting extends ConnectorPart2{
     
     public static void Sorting(){
@@ -194,6 +196,26 @@ public class DataSorting extends ConnectorPart2{
                 System.out.printf("%-30s", file[i][j]);
             }
                 System.out.println("");            
+        }
+        System.out.println("Do you want to generate a JSON file for the processed data?");
+        String json=sc.next();
+        if(json.compareToIgnoreCase("yes")==0){
+            JSONArray jsonArray = new JSONArray();
+            for (String[] w : file) {
+                JSONArray arr = new JSONArray();
+                for (String v : w) {
+                 arr.add(v); // or some other conversion
+                }
+                jsonArray.add(arr);
+            }
+            try (FileWriter jsonout = new FileWriter("jsonfile.json")) {
+ 
+            jsonout.write(jsonArray.toJSONString());
+            jsonout.flush();
+ 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         }
     }
     public static boolean IsInt(String x){ 

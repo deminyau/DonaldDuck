@@ -2,8 +2,11 @@ package StatisticsAndImputers;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
+import org.json.simple.JSONArray;
 
 public class FillMissingValue extends ConnectorPart3{
     private static String filepath;
@@ -50,7 +53,7 @@ public class FillMissingValue extends ConnectorPart3{
             for (int j = 0; j<column; j++){
                 if (file1 [i][j].isBlank() ){
                     System.out.println("Blank space found in column " + header_split[j] + " at row " + i);
-                    System.out.print("Please enter value: ");
+                    System.out.println("Please enter value: ");
                     file1[i][j] = sc4.nextLine();
                     for (int k = 0; k<column; k++){ 
                         System.out.printf("%-30s", file1[i][k]);
@@ -72,6 +75,35 @@ public class FillMissingValue extends ConnectorPart3{
             pw.println();
         }
         pw.close();
+        
+        System.out.println("Do you want to generate a JSON file for the processed data?");
+        System.out.println(" If YES press (1) If don't want press anything to proceed.");
+        int json=group11.nextInt();
+       
+        if(json==1){
+            JSONArray jsonArray = new JSONArray();
+            for (String[] w : file1) {
+                JSONArray arr = new JSONArray();
+                for (String v : w) {
+                 arr.add(v); // or some other conversion
+                }
+                jsonArray.add(arr);
+            }
+            try (FileWriter jsonout = new FileWriter("file.json")) {
+ 
+            jsonout.write(jsonArray.toJSONString());
+            jsonout.flush();
+ 
+            } catch (IOException e) {
+                 e.printStackTrace();
+            }
+            
+            System.out.println("Generating (file).json ......");
+            System.out.println("(file).json done!");
+            System.out.println("Please check your file for more information.");
+        }else{
+        }
+        
         }catch(FileNotFoundException e){
             System.out.println("File not found!!");
             System.out.println("");

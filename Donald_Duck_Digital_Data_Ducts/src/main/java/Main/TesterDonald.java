@@ -2,6 +2,7 @@ package Main;
 
 import DataFrame.ConnectorPart1;
 import ExtraFeature.Chart;
+import static ExtraFeature.JsonFileConvertor.PrintJsonFile;
 import K_Nearest_Neighbors.ConnectorPart5;
 import Manipulation.ConnectorPart2;
 import Scalling.ConnectorPart4;
@@ -23,8 +24,9 @@ public class TesterDonald {
         System.out.println("4 - Scalers");
         System.out.println("5 - K-Nearest Neighbors(k-nn)");
         System.out.println("6 - Generate charts");
+        System.out.println("7 - Convert file typr to (.json) ");
         System.out.println("-1 - Exit");
-        System.out.println("Enter step(1-6) to be proceed: ");
+        System.out.println("Enter step(1-7) to be proceed: ");
         step=group11.nextInt();
     }
     
@@ -48,8 +50,9 @@ public class TesterDonald {
         System.out.println("3 - Data sorting");
         System.out.println("4 - Remove duplicated data in row");
         System.out.println("5 - Remove data with null value");
+        System.out.println("6 - Search valid data");
         System.out.println("(-1) - Back to previous step");
-        System.out.println("Enter step to proceed(1-5): ");
+        System.out.println("Enter step to proceed(1-6): ");
         stepB=group11.nextInt();
         
     }
@@ -190,6 +193,16 @@ public class TesterDonald {
                         }else{
                             InvalidMessage();
                         }
+                    }else if(stepB==6){
+                        AreYouSureMessage();
+                        if(aus==1){
+                            ConnectorPart2 c2 = new ConnectorPart2();
+                            c2.DisplayPart2Extra();
+                        }else if(aus==-1){
+                            continue;
+                        }else{
+                            InvalidMessage();
+                        }
                     }
                 }while(stepB!=-1);
                 ChoiceMessage1();
@@ -260,6 +273,18 @@ public class TesterDonald {
                 InvalidMessage();
                 System.out.println("");
             }  
+              
+          }else if(step==7){
+              System.out.println("Are u sure u want to proceed? If yes please enter (1). If NO please enter (-1) to back to the previous step: ");
+              int stepG=group11.nextInt();
+              if(stepG==1){
+                  PrintJsonFile();
+              }else if(stepG==-1){
+                ChoiceMessage1();
+              }else{
+                InvalidMessage();
+                System.out.println("");
+              }  
           }
         }while(step!=-1);
         System.out.println("Please use me next time.Bye bye!!");

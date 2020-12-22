@@ -34,4 +34,10 @@ public class ConnectorPart2 {
         RemoveNullDataFrame rndf = new RemoveNullDataFrame();
         rndf.deleteRecord();
     }
+    
+    public void DisplayPart2Extra(){
+        SearchName s = new SearchName();
+        s.Searchdata();
+    }
+
 }

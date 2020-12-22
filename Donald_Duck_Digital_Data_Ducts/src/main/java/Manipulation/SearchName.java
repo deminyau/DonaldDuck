@@ -44,11 +44,13 @@ public class SearchName extends ConnectorPart2{
                     }
                 if (index>0){
                 System.out.println(name + " found at row " + (index+1));
-                for (int i = 0; i<row ; i++){
+                int i = 0;                                                                              
+                for (int k = 0; k<2 ; k++){
                 for (int j = 0; j<column; j++){
-                    if (i == 0 || i == index ){
                     System.out.printf("%-30s", file[i][j]);} 
-                    } System.out.println(""); }
+                i = index;
+                System.out.println("");}
+                
                 }else{
                     System.out.println("Name could not be found");
                 }

@@ -38,7 +38,8 @@ public class SearchName extends ConnectorPart2{
                   
                     for (int j=0;j<column;j++){
                         if (s1_split[j].equalsIgnoreCase(name)) {
-                            index = i;}  
+                            index = i;
+                        }  
                         file[i][j] = s1_split[j];}
                     }
                 if (index>0){
@@ -48,8 +49,7 @@ public class SearchName extends ConnectorPart2{
                     if (i == 0 || i == index ){
                     System.out.printf("%-30s", file[i][j]);} 
                     } System.out.println(""); }
-                }
-                else{
+                }else{
                     System.out.println("Name could not be found");
                 }
                

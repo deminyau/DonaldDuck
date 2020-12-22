@@ -220,6 +220,13 @@ public class DataSorting extends ConnectorPart2{
             e.printStackTrace();
         }
             System.out.println("(file).json is generating....");
+            
+            try{
+            Thread.sleep(2000);
+            }catch(Exception e) {
+                System.out.println(e);
+            }
+            
             System.out.println("(file).json done. Please check ur files for more information.");
         }
     }

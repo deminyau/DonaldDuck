@@ -1,5 +1,7 @@
 package ExtraFeature;
 
+import static DataFrame.SaveDataframeToCsvFile.ReadCsv;
+import static DataFrame.SaveDataframeToCsvFile.filepath;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -15,8 +17,9 @@ public class JsonFileConvertor {
         int row  = 0;
         String[][]file=null;
         
+        ReadCsv();
         try {
-            Scanner csv= new Scanner(new FileInputStream("OverallData.csv"));
+            Scanner csv= new Scanner(new FileInputStream(filepath));
             
             while (csv.hasNextLine()){
                 String s1 = csv.nextLine();
@@ -25,7 +28,7 @@ public class JsonFileConvertor {
                 row ++;
             }
             
-            Scanner csv2= new Scanner(new FileInputStream("OverallData.csv")); 
+            Scanner csv2= new Scanner(new FileInputStream(filepath)); 
             file = new String [row][column];
             for (int i=0;i<row;i++){
                 String s1 = csv2.nextLine();
@@ -61,6 +64,13 @@ public class JsonFileConvertor {
                  e.printStackTrace();
             }
             System.out.println("(file).json is generating....");
+            
+            try{
+               Thread.sleep(2000);
+            }catch(Exception e) {
+                System.out.println(e);
+            }
+            
             System.out.println("(file).json done. Please check ur files for more information.");
         }else{
         }

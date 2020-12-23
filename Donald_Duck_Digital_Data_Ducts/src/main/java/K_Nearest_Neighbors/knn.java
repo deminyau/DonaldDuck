@@ -157,8 +157,85 @@ public class knn extends ConnectorPart5 {
         float[]indepforcal=new float[row-1];// independant values for calculation
         for(int i=0;i<indepforcal.length;i++){
             indepforcal[i]=ab[i][0];}
-        int k=CalK(row-1);
-        System.out.println("From the total number of training data available, we recommend you to perform a "+k+"-Nearest Neighbor calculation, would you like to customize the value of k?");
+        //calculate distance from sample data to each training data
+        float[] distance=new float[indepforcal.length];
+        for(int i=0;i<indepforcal.length;i++){
+            distance[i]=CalDistance(testdata,indepforcal[i]);
+            abcopy[i][0]=distance[i];
+        }
+        float[][]kMAE=new float[row-1][2];
+        float[][]kMAPE=new float[row-1][2];
+        double sumerror=0;
+        double sumpercent=0;
+        int n=row-1;
+        int k=0;
+        if(action>0){
+            for(int g=0;g<kMAE.length;g++){// assign value ok k to each row for reference
+                kMAE[g][0]=g+1;
+                kMAPE[g][0]=g+1;
+            }
+            for(int kvalue=1;kvalue<=row-1;kvalue++){//loop to find MAE and MAPE(Mean Absolute Error, Mean Absolute Percantage Error)
+                for(int z=0;z<indepforcal.length;z++){
+                    sumerror+=AE(ab,indepforcal[z],kvalue,1);
+                    sumpercent+=AE(ab,indepforcal[z],kvalue,2);
+                }
+                kMAE[kvalue-1][1]=Float.parseFloat(Double.toString(sumerror/indepforcal.length));
+                sumerror=0;
+                if(Float.parseFloat(Double.toString(sumpercent*100/indepforcal.length))!=Float.parseFloat(Double.toString(sumpercent*100/indepforcal.length))){
+                    kMAPE[kvalue-1][1]=0;
+                }
+                else{
+                    kMAPE[kvalue-1][1]=Float.parseFloat(Double.toString(sumpercent*100/indepforcal.length));
+                }
+                sumpercent=0;
+            }
+            System.out.println("k  Mean Average Error");
+            for(int i=0;i<kMAE.length;i++){//print all MAE for reference
+                for(int j=0;j<2;j++){
+                    if(j==0){
+                        System.out.printf("%2.0f",kMAE[i][j]);
+                    }
+                    else
+                        System.out.printf("%10.2f",kMAE[i][j]);
+                }
+                System.out.println(" ");
+            }
+            System.out.println("k\tMean Average Percentage Error(%)");
+            for(int i=0;i<kMAPE.length;i++){//print all MAPE for reference
+                for(int j=0;j<2;j++){
+                    if(j==0){
+                        System.out.printf("%2.0f",kMAPE[i][j]);
+                    }
+                    else
+                        System.out.printf("%10.2f",kMAPE[i][j]);
+                }
+                System.out.println(" ");
+            }
+            float minMAE=kMAE[0][1];
+            int MAEk=(int)kMAE[0][0];
+            int MAPEk=(int)kMAPE[0][0];
+            float minMAPE=kMAPE[0][1];
+            for(int i=1;i<kMAE.length;i++){//find the k with the lowest error
+                if(kMAE[i][1]<minMAE){
+                    minMAE=kMAE[i][1];
+                    MAEk=(int)kMAE[i][0];
+                }
+                if(kMAPE[i][1]<minMAPE){
+                    minMAPE=kMAPE[i][1];
+                    MAPEk=(int)kMAPE[i][0];
+                }
+            }
+            if(MAEk%2!=0)//make sure k is odd number to avoid contradiction, even number of k nearest neighbor is not ideal
+                k=MAEk;//in case MAE and MAPE gives different result of optimal k, still use MAE as the reference over MAPE, else if MAE and MAPE suggest the same k, using MAEk as final k wouldn't be a problem
+            else{
+                if(MAPEk%2!=0)
+                    k=MAPEk;
+                else
+                    k=MAEk-1;
+            }
+        }
+        //add calK for classification here
+        System.out.println("From the error matric models used, we recommend you to perform a "+k+"-Nearest Neighbor calculation, would you like to customize the value of k?");
         String yesorno=sc.next();
         boolean kinvalid=false;
         if(yesorno.compareToIgnoreCase("yes")==0){//let user to decide the value of k, loop until a reasonable k is given by the user
@@ -172,32 +249,6 @@ public class knn extends ConnectorPart5 {
                 }   
             }
             while(kinvalid==true);
-        }
-        //calculate distance from sample data to each training data
-        float[] distance=new float[indepforcal.length];
-        for(int i=0;i<indepforcal.length;i++){
-            distance[i]=CalDistance(testdata,indepforcal[i]);
-            abcopy[i][0]=distance[i];
-        }
-        float[][]kMAE=new float[row-1][2];
-        float sumerror=0;
-        int n=row-1;
-        for(int g=0;g<kMAE.length;g++){
-            kMAE[g][0]=g+1;
-        }
-        for(int kvalue=1;kvalue<=row-1;kvalue++){
-            for(int z=0;z<indepforcal.length;z++){
-                sumerror+=AE(ab,indepforcal[z],kvalue);
-            }
-            kMAE[kvalue-1][1]=sumerror/indepforcal.length;
-            sumerror=0;
-        }
-        System.out.println("left is value of k, right is value of Mean Absolute Error");
-        for(int i=0;i<kMAE.length;i++){
-            for(int j=0;j<2;j++){
-                System.out.print(kMAE[i][j]+" ");
-            }
-            System.out.println(" ");
         }
         float [] temparray= new float[2];//temporary array for swapping
         //ascending sort the distance
@@ -250,19 +301,19 @@ public class knn extends ConnectorPart5 {
         float distance= (float)(Math.sqrt(Math.pow((sample-traindata),2)));
         return distance;    
     }
-    
-    public static int CalK(int numofdata){//method to calculate recommended value of k based on number of sample data available
-        int k=(int)(Math.round((Math.sqrt(numofdata*1.0))/2));
-        if(k%2==0)//make sure k is odd number to avoid contradiction, even number of k nearest neighbor is not ideal
-           return k-1;
+    public static double AbsError(float actual, float predict, int MAE){//basiclly to perform Math.abs();
+        double error;
+        if(MAE==1){
+            error=Math.abs(actual-predict);
+        }
         else
-           return k;
-    }
-    public static float AbsError(float actual, float predict){
-        float error=Math.abs(actual-predict);
+            if(actual!=0)
+                error=Math.abs((actual-predict)/actual);
+            else
+                error=2*Math.abs(actual-predict)/(Math.abs(actual)+Math.abs(predict));
         return error;
     }
-    public static float AE(float[][]rawdata,float test, int k){
+    public static double AE(float[][]rawdata,float test, int k, int MAE){
         float actual=-1000;//instead of initialize to 0, scare later if training data really got value 0 then got error cannot detect
         for(int i=0;i<rawdata.length;i++){
             if(test==rawdata[i][0]){
@@ -304,10 +355,13 @@ public class knn extends ConnectorPart5 {
         for(int i=0;i<k;i++){
             sum+=rawcopy[i][1];
             }
-        mean=sum/k;  
-        if(actual!=-1000){
-            return AbsError(actual,mean);
-        }   
+        mean=sum/k;
+        if(actual!=-1000&&MAE==1){//for MAE
+            return AbsError(actual,mean,1);
+        }
+        else if(actual!=-1000&&MAE==2){//for MAPE
+            return AbsError(actual,mean,2);
+        }
         else
             return -999;//easy to check if this come out sure got problem
     }

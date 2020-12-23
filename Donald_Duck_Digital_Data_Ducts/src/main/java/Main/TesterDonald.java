@@ -7,6 +7,7 @@ import K_Nearest_Neighbors.ConnectorPart5;
 import Manipulation.ConnectorPart2;
 import Scalling.ConnectorPart4;
 import StatisticsAndImputers.ConnectorPart3;
+import Website.ConnectorWeb;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -80,6 +81,16 @@ public class TesterDonald {
 
     }
     
+    public static int stepWS;
+    public static void ChoiceMessageWS(){
+        System.out.println("--------Page Web Scraper--------");
+        System.out.println("1 - Get image from website");
+        System.out.println("2 - Get infomation from website and store into csv file");
+        System.out.println("(-1) - Back to previous step");
+        System.out.println("Enter step to proceed(1/2): ");
+        stepWS=group11.nextInt();
+    }
+    
     public static int aus;
     public static void AreYouSureMessage(){
         System.out.println("Are u sure u want to proceed? If YES please enter (1).If NO please enter (-1) to back to the previous step:");
@@ -119,6 +130,9 @@ public class TesterDonald {
                         }else{
                             InvalidMessage();
                         }
+                    }else{
+                        InvalidMessage();
+                        ChoiceMessageAND();
                     }
                 }while(stepA!=-1);
                 ChoiceMessage1();
@@ -203,6 +217,9 @@ public class TesterDonald {
                         }else{
                             InvalidMessage();
                         }
+                    }else{
+                        InvalidMessage();
+                        ChoiceMessageMD();
                     }
                 }while(stepB!=-1);
                 ChoiceMessage1();
@@ -229,6 +246,9 @@ public class TesterDonald {
                         }else{
                             InvalidMessage();
                         }
+                    }else{
+                        InvalidMessage();
+                        ChoiceMessageS(); 
                     } 
                 }while(stepC!=-1);
                 ChoiceMessage1();
@@ -284,7 +304,38 @@ public class TesterDonald {
               }else{
                 InvalidMessage();
                 System.out.println("");
-              }  
+              }
+          }else if(step==8){
+              do{
+                   ChoiceMessageWS();  
+                    if(stepWS==1){
+                        AreYouSureMessage();
+                        if(aus==1){
+                            ConnectorWeb cw = new ConnectorWeb();
+                            cw.DisplayImage();
+                        }else if(aus==-1){
+                            continue;
+                        }else{
+                            InvalidMessage();
+                        }
+                    }else if(stepC==2){
+                        AreYouSureMessage();
+                        if(aus==1){
+                            
+                        }else if(aus==-1){
+                            continue;
+                        }else{
+                            InvalidMessage();
+                        }
+                    }else{
+                        InvalidMessage();
+                        ChoiceMessageWS(); 
+                    } 
+                }while(stepC!=-1);
+                ChoiceMessage1();
+          }else{
+              InvalidMessage();
+              ChoiceMessage1();
           }
         }while(step!=-1);
         System.out.println("Please use me next time.Bye bye!!");

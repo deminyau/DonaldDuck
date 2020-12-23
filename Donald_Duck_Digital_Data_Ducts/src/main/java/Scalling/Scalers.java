@@ -18,7 +18,7 @@ public class Scalers extends ConnectorPart4{
         try{
             System.out.println("");
             ReadFile5();
-            System.out.print("Please enter data from which cloumn: ");
+            System.out.println("Please enter data from which cloumn: ");
             Scanner sc= new Scanner(System.in);
             String header = sc.nextLine();
             File a = new File (filepath5);
@@ -53,7 +53,7 @@ public class Scalers extends ConnectorPart4{
                 System.out.print(value + "  ");
             } 
             System.out.println("\n\n");
-            System.out.print("What do you wish to do with the data (1 for standard scaling/ 2 for min max scaling): ");
+            System.out.println("What do you wish to do with the data (1 for standard scaling/ 2 for min max scaling): ");
             int key = sc.nextInt();
             double sum = 0; double sumofsquare = 0;
             if (key == 1){

@@ -50,12 +50,14 @@ public class RemoveDuplicatedRowInData extends ConnectorPart2 {
                 System.out.println();
             }
 
+            String duplicatedName = "";
             int[] detector = new int[numberOfRow]; //detect duplication at specific index
             for (int i = 0; i < numberOfRow - 1; i++) {
                 for (int j = i + 1; j < numberOfRow; j++) {
                     if (arrangement[i][0].equalsIgnoreCase(arrangement[j][0])) {
                         detector[i] = i;
                         detector[j] = j;
+                        duplicatedName = arrangement[i][0];
                     }
                 }
             }
@@ -75,7 +77,7 @@ public class RemoveDuplicatedRowInData extends ConnectorPart2 {
                 for (int p = 0; p < d; p++) { //display lines with name duplication
                     System.out.print("Line " + detector2[p] + ", ");
                 }
-                System.out.print("have the same name (duplication)!");
+                System.out.print("have the same name (" + duplicatedName + ")!");
                 System.out.println(); //user makes decision
                 System.out.println("Choose line to be kept (e.g. 1) or input -1 to remove all lines: ");
                 int choice = group11.nextInt();

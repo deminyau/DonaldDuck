@@ -23,18 +23,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6fa3cd3-cad9-416e-a62f-db01d3d3cb7f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_googlecode_json_simple_json_simple_1_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jfree_jcommon_1_0_16.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jfree_jfreechart_1_0_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jsoup_jsoup_1_13_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Donald_Duck_Digital_Data_Ducts.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Donald_Duck_Digital_Data_Ducts.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TestingYDM/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TestingYDM/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TestingYDM/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TestingYDM/.idea/libraries/jcommon_1_0_23.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TestingYDM/.idea/libraries/jfreechart_1_0_19.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TestingYDM/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TestingYDM/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TestingYDM/TestingYDM.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TestingYDM/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TestingYDM/src/main/java/Testing.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TestingYDM/target/classes/Testing.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Manipulation/RemoveDuplicatedRowInData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manipulation/RemoveDuplicatedRowInData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/K_Nearest_Neighbors/knn.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/K_Nearest_Neighbors/knn.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main/TesterDonald.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main/TesterDonald.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Manipulation/DataSorting.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Manipulation/DataSorting.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Manipulation/RemoveDuplicatedRowInData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Manipulation/RemoveDuplicatedRowInData.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

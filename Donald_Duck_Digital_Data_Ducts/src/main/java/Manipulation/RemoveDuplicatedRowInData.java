@@ -1,8 +1,6 @@
 package Manipulation;
 
 import static Main.TesterDonald.group11;
-import static Manipulation.ConcatenateDataFrame.ReadFile3;
-import static Manipulation.ConcatenateDataFrame.filepath2;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -10,14 +8,9 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class RemoveDuplicatedRowInData extends ConnectorPart2 {
-    public static String Newfilepath;
     public static String filepath4;
 
-    public static void GotoNewCsv() {
-        System.out.println("Enter new file name to save data after process: ");
-        Newfilepath = group11.next();
-        System.out.println();
-    }
+
     public static void ReadFile4() {
         System.out.println();
         System.out.println("Enter file name that you want to use: ");
@@ -27,12 +20,11 @@ public class RemoveDuplicatedRowInData extends ConnectorPart2 {
 
     public static void DeleteDuplicatedRow() {
 
-        GotoNewCsv();
-        ReadFile3();
+        ReadFile4();
         try {
 
             Scanner group11 = new Scanner(System.in);
-            Scanner csv = new Scanner(new FileInputStream(filepath2));
+            Scanner csv = new Scanner(new FileInputStream(filepath4));
             int numberOfRow = 0;
             int numberOfColumn = 0;
 
@@ -43,7 +35,7 @@ public class RemoveDuplicatedRowInData extends ConnectorPart2 {
                 numberOfRow++;
             }
 
-            Scanner csv2 = new Scanner(new FileInputStream(filepath2));
+            Scanner csv2 = new Scanner(new FileInputStream(filepath4));
             String[][] arrangement = new String[numberOfRow][numberOfColumn];
             for (int i = 0; i < numberOfRow; i++) { //copy data into an array
                 String s1 = csv2.nextLine();
@@ -89,7 +81,7 @@ public class RemoveDuplicatedRowInData extends ConnectorPart2 {
                 int choice = group11.nextInt();
                 System.out.println();
 
-                FileOutputStream fos = new FileOutputStream(Newfilepath, true);
+                FileOutputStream fos = new FileOutputStream(filepath4);
                 PrintWriter pw = new PrintWriter(fos);
                 int m = 0;
                 for (int q = 0; q < numberOfRow; q++) { //correction of data depends on user's decision

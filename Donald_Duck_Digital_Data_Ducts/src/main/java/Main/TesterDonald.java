@@ -104,7 +104,7 @@ public class TesterDonald {
     }
     
     public static void main(String[] args) throws IOException {
-        
+        System.out.println("");//add itroduction here!!
         ChoiceMessage1();
         System.out.println("");
         do{
@@ -247,10 +247,7 @@ public class TesterDonald {
                         }else{
                             InvalidMessage();
                         }
-                    }else{
-                        InvalidMessage();
-                        ChoiceMessageS(); 
-                    } 
+                    }
                 }while(stepC!=-1);
                 ChoiceMessage1();
 

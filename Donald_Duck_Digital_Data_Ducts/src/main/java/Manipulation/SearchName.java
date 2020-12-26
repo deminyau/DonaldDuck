@@ -14,8 +14,7 @@ public class SearchName extends ConnectorPart2{
         
         File filename = new File (SearchFile);
         System.out.println("Enter the name of person you wish to search: ");
-        String name = group11.nextLine();
-        group11.next();
+        String name = group11.next();
         
             try {
                 Scanner csv= new Scanner (filename);

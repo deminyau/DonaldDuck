@@ -21,7 +21,6 @@ public class DataScraper extends ConnectorWeb{
         
         System.out.println("Enter file name to store the data from website:");
         String fileName = group11.next();
-        System.out.println("");
         FileWriter writer = new FileWriter(fileName);
         
         System.out.println("Extracting data from URl....");

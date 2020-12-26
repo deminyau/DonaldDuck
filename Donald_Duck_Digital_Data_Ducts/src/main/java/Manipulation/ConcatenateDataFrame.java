@@ -12,13 +12,13 @@ public class ConcatenateDataFrame extends ConnectorPart2{
     public static String filepath2;
     
     public static void ReadFile2(){
-        System.out.println("Enter main file: ");
+        System.out.println("Enter name of file as output: ");
         filepath1=group11.next();
         System.out.println("");
     }
     
     public static void ReadFile3(){
-        System.out.println("Enter file: ");
+        System.out.println("Enter name of file to be inputed: ");
         filepath2=group11.next();
     }
     

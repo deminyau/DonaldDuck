@@ -1,7 +1,5 @@
-Name,Department,CurrentCGPA,Expected Graduation Salary,Actual Graduation Salary,Married,Age
-Meow,Artificial Intelligence,3.7,1000000,1000,yes,18
-Woof,Software Engineering,3,4200,4200,no ,18
-LWY,Information system,4.3,1000,1000000,yes ,18
-Chiew zhe wei,Artificial Intelligence,4,5000,2101,yes,20
-Tan,Data Sceince,2.89,3000,2010,yes ,18
-kong,datascience,2,10000,1000,no ,20
+Name,Department,CurrentCGPA,Expected Graduation Salary,Actual Graduation Salary
+Meow,Artificial Intelligence,3.7,1000000,1000
+Woof,Software Engineering,3,4200,4200
+LWY,Information system,4.3,1000,1000000
+kong,datascience,2,10000,1000

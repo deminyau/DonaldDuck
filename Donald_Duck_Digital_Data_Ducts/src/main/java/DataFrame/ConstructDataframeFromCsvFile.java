@@ -16,8 +16,7 @@ public class ConstructDataframeFromCsvFile extends ConnectorPart1 {
     
     public static void ScanDataFromFile(){
         ReadFile();
-        System.out.println("-----------------------------------------------------------------------"
-                + "---------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------------------------------");
         System.out.println("Data in DataStorage: ");
         
         int totalRecord=0;

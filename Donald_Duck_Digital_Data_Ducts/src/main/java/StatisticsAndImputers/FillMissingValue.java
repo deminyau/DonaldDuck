@@ -77,7 +77,7 @@ public class FillMissingValue extends ConnectorPart3{
         pw.close();
         
         System.out.println("Do you want to generate a JSON file for the processed data?");
-        System.out.println(" If YES press (1) If don't want press any number to proceed.");
+        System.out.println(" If YES press (1) If don't want press anything to proceed.");
         int json=group11.nextInt();
        
         if(json==1){

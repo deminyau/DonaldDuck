@@ -23,15 +23,15 @@ public class ImageScraper extends ConnectorWeb{
             String title = document.title();
             System.out.println("Title: "+title);
             
+            System.out.println(document.select("tr").size());
+            
+           
             System.out.println("Getting all images...");
             Elements image = document.getElementsByTag("img");
             
             for(Element src: image){
                 System.out.println(src.attr("abs:src"));
-                pw.println(src.attr("abs:src"));
-               
             }
-            pw.close();
         }catch (Exception ex) {
             ex.printStackTrace();
         }

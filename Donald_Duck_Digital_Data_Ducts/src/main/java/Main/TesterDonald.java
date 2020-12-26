@@ -26,8 +26,9 @@ public class TesterDonald {
         System.out.println("5 - K-Nearest Neighbors(k-nn)");
         System.out.println("6 - Generate charts");
         System.out.println("7 - Convert file typr to (.json) ");
+        System.out.println("8 - Web scraping ");
         System.out.println("-1 - Exit");
-        System.out.println("Enter step(1-7) to be proceed: ");
+        System.out.println("Enter step(1-8) to be proceed: ");
         step=group11.nextInt();
     }
     
@@ -307,7 +308,7 @@ public class TesterDonald {
               }
           }else if(step==8){
               do{
-                   ChoiceMessageWS();  
+                    ChoiceMessageWS();  
                     if(stepWS==1){
                         AreYouSureMessage();
                         if(aus==1){
@@ -318,20 +319,18 @@ public class TesterDonald {
                         }else{
                             InvalidMessage();
                         }
-                    }else if(stepC==2){
+                    }else if(stepWS==2){
                         AreYouSureMessage();
                         if(aus==1){
-                            
+                            ConnectorWeb cw = new ConnectorWeb();
+                            cw.DisplayWebsiteData();
                         }else if(aus==-1){
                             continue;
                         }else{
                             InvalidMessage();
                         }
-                    }else{
-                        InvalidMessage();
-                        ChoiceMessageWS(); 
-                    } 
-                }while(stepC!=-1);
+                    }
+                }while(stepWS!=-1);
                 ChoiceMessage1();
           }else{
               InvalidMessage();

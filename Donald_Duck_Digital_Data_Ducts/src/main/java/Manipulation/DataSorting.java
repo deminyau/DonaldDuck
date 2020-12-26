@@ -108,6 +108,9 @@ public class DataSorting extends ConnectorPart2{
                for (int i = 1; i < y; i++){
                     for (int j = 0; j < y-1; j++) {
                         if (TempArray[j] < TempArray[j+1]){
+                            TempArray2= file[j+1];//j+1 because first row of column names already skipped, things at TempArray[0] represents the row at file[1][]
+                            file[j+1]=file[j+2];
+                            file[j+2]=TempArray2;                            
                             int temp = TempArray[j]; 
                             TempArray[j] = TempArray[j+1]; 
                             TempArray[j+1] = temp; 
@@ -144,6 +147,9 @@ public class DataSorting extends ConnectorPart2{
                for (int i = 1; i < y; i++){
                     for (int j = 0; j < y-1; j++) {
                         if (TempArray[j] < TempArray[j+1]){
+                            TempArray2= file[j+1];//j+1 because first row of column names already skipped, things at TempArray[0] represents the row at file[1][]
+                            file[j+1]=file[j+2];
+                            file[j+2]=TempArray2;
                             double temp = TempArray[j]; 
                             TempArray[j] = TempArray[j+1]; 
                             TempArray[j+1] = temp; 
@@ -179,6 +185,9 @@ public class DataSorting extends ConnectorPart2{
                for (int i = 1; i < y; i++){
                     for (int j = 0; j < y-1; j++) {
                         if (TempArray[j].compareToIgnoreCase(TempArray[j+1])<0){
+                            TempArray2= file[j+1];//j+1 because first row of column names already skipped, things at TempArray[0] represents the row at file[1][]
+                            file[j+1]=file[j+2];
+                            file[j+2]=TempArray2;
                             String temp = TempArray[j]; 
                             TempArray[j] = TempArray[j+1]; 
                             TempArray[j+1] = temp; 

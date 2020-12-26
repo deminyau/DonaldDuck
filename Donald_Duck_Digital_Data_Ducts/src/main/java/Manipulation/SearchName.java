@@ -10,11 +10,11 @@ public class SearchName extends ConnectorPart2{
         Scanner group11 = new Scanner(System.in);
         
         System.out.println("Enter file name: ");
-        String SearchFile = group11.next();
+        String SearchFile = group11.nextLine();
         
         File filename = new File (SearchFile);
         System.out.println("Enter the name of person you wish to search: ");
-        String name = group11.next();
+        String name = group11.nextLine();
         
             try {
                 Scanner csv= new Scanner (filename);
@@ -29,7 +29,7 @@ public class SearchName extends ConnectorPart2{
                 }
             
                 Scanner csv2= new Scanner(filename); 
-                String[][] file = new String [row][column];
+                String[][] data = new String [row][column];
                   int index = 0;
                 for(int i=0;i<row;i++){
                     String s1 = csv2.nextLine();
@@ -40,14 +40,14 @@ public class SearchName extends ConnectorPart2{
                         if (s1_split[j].equalsIgnoreCase(name)) {
                             index = i;
                         }  
-                        file[i][j] = s1_split[j];}
+                        data[i][j] = s1_split[j];}
                     }
                 if (index>0){
                 System.out.println(name + " found at row " + (index+1));
                 int i = 0;                                                                              
                 for (int k = 0; k<2 ; k++){
                 for (int j = 0; j<column; j++){
-                    System.out.printf("%-30s", file[i][j]);} 
+                    System.out.printf("%-30s", data[i][j]);} 
                 i = index;
                 System.out.println("");}
                 

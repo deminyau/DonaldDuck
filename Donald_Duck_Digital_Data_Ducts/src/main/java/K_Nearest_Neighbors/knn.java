@@ -12,10 +12,13 @@ public class knn extends ConnectorPart5 {
 
         String[][]file=null;
         Scanner group11= new Scanner(System.in);
-
-        System.out.println("Input the name of the file which has the training data for K-NN: ");
-        String filename=group11.nextLine();
+        String filename;
+        boolean wrongfile=false;
+        do{
+            wrongfile=false;
             try {
+                System.out.println("Input the name of the file which has the training data for K-NN: ");
+                filename=group11.nextLine();
                 Scanner csv= new Scanner(new FileInputStream(filename));
                 while (csv.hasNextLine()){//calculate number of rows and columns in training data
                     String s1 = csv.nextLine();
@@ -37,8 +40,11 @@ public class knn extends ConnectorPart5 {
                 }
             }
             catch (FileNotFoundException e){
-                System.out.println("File not found!!");
+                System.out.println("File not found!! Please enter the correct file name.");
+                wrongfile=true;
             }
+        }
+        while(wrongfile);
         //process file
         Scanner sc=new Scanner(System.in);
         // point aray x to the first row of the file(column names)
@@ -115,6 +121,7 @@ public class knn extends ConnectorPart5 {
             if(action==0)
                 System.out.println("Invalid input, please enter again.");}
         float[][] result=null;// used to store frequency of each class for classification
+        int k=0;
         // array ab is to store independant values and dependant values, make a copy and name it as abcopy
         float [][] ab= new float[row-1][2];
         float [][] abcopy=new float[row-1][2];
@@ -152,7 +159,34 @@ public class knn extends ConnectorPart5 {
                         result[count][1]=0;
                         count++; 
                 }
-            }  
+            }
+            float[][]resultcopy=new float[result.length][2];
+            for(int g=0;g<result.length;g++){
+                for(int h=0;h<2;h++){
+                    resultcopy[g][h]=result[g][h];
+                }
+            }
+            double[][] kAccuracy=kAccuracy(resultcopy,ab);
+            System.out.println("k\tAccuracy from Confusion Matrix(%)");
+            for(int i=0;i<kAccuracy.length;i++){//print all k with respective accuracy for reference
+                for(int j=0;j<2;j++){
+                    if(j==0){
+                        System.out.printf("%2.0f",kAccuracy[i][j]);
+                    }
+                    else
+                        System.out.printf("%10.2f",kAccuracy[i][j]);
+                }
+                System.out.println(" ");
+            }
+            double bestk=kAccuracy[0][0];
+            double highestacc=kAccuracy[0][1];
+            for(int c=1;c<kAccuracy.length;c++){
+                if(kAccuracy[c][1]>highestacc){
+                    highestacc=kAccuracy[c][1];
+                    bestk=kAccuracy[c][0];
+                }
+            }
+            k=(int)bestk;
         }
         float[]indepforcal=new float[row-1];// independant values for calculation
         for(int i=0;i<indepforcal.length;i++){
@@ -168,7 +202,6 @@ public class knn extends ConnectorPart5 {
         double sumerror=0;
         double sumpercent=0;
         int n=row-1;
-        int k=0;
         if(action>0){
             for(int g=0;g<kMAE.length;g++){// assign value ok k to each row for reference
                 kMAE[g][0]=g+1;
@@ -243,7 +276,7 @@ public class knn extends ConnectorPart5 {
                 System.out.println("Please enter your intended value of k: (Please make sure the value of k is reasonable)");
                 k=sc.nextInt();
                 kinvalid=false;
-                if(k<=0){
+                if(k<=0||k>row-1){
                     kinvalid=true;
                     System.out.println("This value of k is invalid, please enter again: ");
                 }   
@@ -280,7 +313,7 @@ public class knn extends ConnectorPart5 {
         if(action<0){
             for(int i=0;i<result.length;i++){
                 for(int j=0;j<k;j++){
-                    if(abcopy[j][1]==result[i][0]){
+                    if(abcopy[j][1]==result[i][0]){//class frequency counter
                         result[i][1]++;
                     }
                 }
@@ -343,7 +376,6 @@ public class knn extends ConnectorPart5 {
                     temparray=rawcopy[j];
                     rawcopy[j]=rawcopy[j+1];
                     rawcopy[j+1]=temparray;
-                    //swap between values of the column being used as sorting criteria that has been copied into 1D array distance 
                     float temp = distance[j]; 
                     distance[j] = distance[j+1]; 
                     distance[j+1] = temp; 
@@ -365,4 +397,115 @@ public class knn extends ConnectorPart5 {
         else
             return -999;//easy to check if this come out sure got problem
     }
+    public static float FindActual(float[][]rawdata,float test){
+        float actual=-1000;//instead of initialize to 0, scare later if training data really got value 0 then got error cannot detect
+        for(int i=0;i<rawdata.length;i++){
+            if(test==rawdata[i][0]){
+                actual=rawdata[i][1];
+            }
+        }
+        return actual;
+    }
+    public static float PredictClass(float[][]rawdata,float test, int k,float[][]result){  
+        float actual=FindActual(rawdata,test);
+        float[]indepforcal=new float[rawdata.length];// independant values for calculation
+        float[][]rawcopy=new float[rawdata.length][rawdata[0].length];
+        for(int i=0;i<rawdata.length;i++){
+            for (int j=0;j<rawdata[0].length;j++){
+                rawcopy[i][j]=rawdata[i][j];
+            }
+        }
+        for(int i=0;i<indepforcal.length;i++){
+            indepforcal[i]=rawdata[i][0];
+        }
+        float[] distance=new float[indepforcal.length];
+        for(int i=0;i<rawdata.length;i++){
+            distance[i]=CalDistance(test,indepforcal[i]);
+            rawcopy[i][0]=distance[i];
+        }
+        float [] temparray= new float[2];//temporary array for swapping
+        //ascending sort the distance
+        for (int i = 0; i < distance.length; i++){
+            for (int j = 0; j < distance.length-1; j++) {
+               if (distance[j]> distance[j+1]){
+                    //swap between rows in abcopy
+                    temparray=rawcopy[j];
+                    rawcopy[j]=rawcopy[j+1];
+                    rawcopy[j+1]=temparray;
+                    float temp = distance[j]; 
+                    distance[j] = distance[j+1]; 
+                    distance[j+1] = temp; 
+                }
+            }
+        }
+        for(int i=0;i<result.length;i++){
+            for(int j=0;j<k;j++){
+                if(rawcopy[j][1]==result[i][0]){//class frequency counter
+                    result[i][1]++;
+                }
+            }
+        }           
+        //find the mode class
+        float mode=result[0][1];
+        float modeclass=result[0][0];
+        for(int i=1;i<result.length;i++){
+            if(result[i][1]>mode){
+                mode=result[i][1];
+                modeclass=result[i][0];
+            }
+        }
+        float predicted=modeclass;
+        return predicted;
+    }
+    public static int[][] ConfusionMatrix(float[][]result,float[][]rawdata,int k){
+        int[][]vs=new int[result.length][result.length];
+        for(int i=0;i<vs.length;i++){// initialize all counter of confusion matrix to 0
+            for(int j=0;j<vs.length;j++){
+                vs[i][j]=0;
+            }
+        }
+        for(int i=0;i<rawdata.length;i++){
+            float actual=FindActual(rawdata, rawdata[i][0]);
+            float predicted=PredictClass(rawdata, rawdata[i][0], k,result);
+            for(int x=0;x<result.length;x++){
+                if(actual==result[x][0]){
+                    if(actual==predicted){
+                        vs[x][x]++;
+                    }
+                    else{
+                        for(int j=0;j<result.length;j++){
+                            if(predicted==result[j][0]){
+                                vs[x][j]++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return vs;
+    }
+    public static double Accuracy(int[][]vs){
+        int total=0,correct=0;
+        for(int i=0;i<vs.length;i++){
+            for(int j=0;j<vs.length;j++){
+                total+=vs[i][j];
+                if(i==j){
+                    correct+=vs[i][i];
+                }
+            }
+        }
+        double accuracy=correct*1.0/total*100;
+        return accuracy;
+    }
+    public static double [][] kAccuracy(float[][]result,float[][]rawdata){
+        double [][]kAccuracy=new double[rawdata.length][2];
+        for(int z=0;z<kAccuracy.length;z++){
+            kAccuracy[z][0]=z+1;
+        }
+        for(int k=1;k<=rawdata.length;k++){
+            int[][]vs=ConfusionMatrix(result,rawdata,k);
+            kAccuracy[k-1][1]=Accuracy(vs);
+        }
+        return kAccuracy;
+    }    
 }

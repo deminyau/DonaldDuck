@@ -334,7 +334,8 @@ public class TesterDonald {
               ChoiceMessage1();
           }
         }while(step!=-1);
-        System.out.println("Please use me next time.Bye bye!!");
+        System.out.println("");
+        System.out.println("Exit successfully");
         
     }
 }

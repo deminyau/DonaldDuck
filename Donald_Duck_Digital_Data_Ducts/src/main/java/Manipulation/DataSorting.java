@@ -208,36 +208,6 @@ public class DataSorting extends ConnectorPart2{
         }
         
         System.out.println("");
-        System.out.println("Do you want to generate a JSON file for the processed data?");
-        System.out.println("If yes press (1) If don't want press any thing to proceed.");
-        int json=sc.nextInt();
-        if(json==1){
-            JSONArray jsonArray = new JSONArray();
-            for (String[] w : file) {
-                JSONArray arr = new JSONArray();
-                for (String v : w) {
-                 arr.add(v); // or some other conversion
-                }
-                jsonArray.add(arr);
-            }
-            try (FileWriter jsonout = new FileWriter("jsonfile.json")) {
- 
-            jsonout.write(jsonArray.toJSONString());
-            jsonout.flush();
- 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-            System.out.println("(file).json is generating....");
-            
-            try{
-            Thread.sleep(2000);
-            }catch(Exception e) {
-                System.out.println(e);
-            }
-            
-            System.out.println("(file).json done. Please check ur files for more information.");
-        }
     }
     public static boolean IsInt(String x){ 
         try {  

@@ -17,13 +17,13 @@ public class RemoveNullDataFrame extends ConnectorPart2{
         System.out.println("Enter file to be inputed: ");
         String file=group11.nextLine();
         
-        System.out.println("Enter the number of null columns to be deleted: ");
+        System.out.println("Enter the number of null columns to be detected: ");
         String input =group11.nextLine();
         
         int n = Integer.parseInt(input);
         String [] header = new String[n];
         for(int i=0;i<n;i++){
-            System.out.println("Enter the name of the column to be deleted: ");
+            System.out.println("Enter the name of the column to be detected: ");
             header[i]=group11.nextLine();
         }
    

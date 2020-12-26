@@ -18,7 +18,7 @@ public class Scalers extends ConnectorPart4{
         try{
             System.out.println("");
             ReadFile5();
-            System.out.println("Please enter data from which cloumn: ");
+            System.out.println("Please enter the name of column: ");
             Scanner sc= new Scanner(System.in);
             String header = sc.nextLine();
             File a = new File (filepath5);

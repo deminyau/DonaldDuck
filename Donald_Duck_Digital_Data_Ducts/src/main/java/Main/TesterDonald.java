@@ -22,11 +22,11 @@ public class TesterDonald {
         System.out.println("1 - Adding new data");
         System.out.println("2 - Managing data");
         System.out.println("3 - Statistic");
-        System.out.println("4 - Scalers");
-        System.out.println("5 - K-Nearest Neighbors(k-nn)");//K-zc
-        System.out.println("6 - Generate charts");//L-dm
-        System.out.println("7 - Convert file type to (.json) ");//M-zc
-        System.out.println("8 - Web scraping ");//N-dm
+        System.out.println("4 - Scalers");//K-zw
+        System.out.println("5 - K-Nearest Neighbors(k-nn)");//L-zc
+        System.out.println("6 - Generate charts");//M-dm
+        System.out.println("7 - Convert file type to (.json) ");//N-zc
+        System.out.println("8 - Web scraping ");//O-dm
         System.out.println("-1 - Exit");
         System.out.println("Enter step(1-8) to be proceed: ");
         step=group11.nextInt();
@@ -115,7 +115,7 @@ public class TesterDonald {
         ChoiceMessage1();
         System.out.println("");
         do{
-          if(step==1){
+          if(step==1){  
                 do{
                     ChoiceMessageAND();
                     if(stepA==1){

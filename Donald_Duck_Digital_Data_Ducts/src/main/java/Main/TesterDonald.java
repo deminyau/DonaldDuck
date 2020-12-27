@@ -25,8 +25,8 @@ public class TesterDonald {
         System.out.println("4 - Scalers");
         System.out.println("5 - K-Nearest Neighbors(k-nn)");//K-zc
         System.out.println("6 - Generate charts");//L-dm
-        System.out.println("7 - Convert file typr to (.json) ");//M-zc
-        System.out.println("8 - Web scraping ");//-N
+        System.out.println("7 - Convert file type to (.json) ");//M-zc
+        System.out.println("8 - Web scraping ");//N-dm
         System.out.println("-1 - Exit");
         System.out.println("Enter step(1-8) to be proceed: ");
         step=group11.nextInt();

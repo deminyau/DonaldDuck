@@ -23,10 +23,10 @@ public class TesterDonald {
         System.out.println("2 - Managing data");
         System.out.println("3 - Statistic");
         System.out.println("4 - Scalers");
-        System.out.println("5 - K-Nearest Neighbors(k-nn)");
-        System.out.println("6 - Generate charts");
-        System.out.println("7 - Convert file typr to (.json) ");
-        System.out.println("8 - Web scraping ");
+        System.out.println("5 - K-Nearest Neighbors(k-nn)");//K-zc
+        System.out.println("6 - Generate charts");//L-dm
+        System.out.println("7 - Convert file typr to (.json) ");//M-zc
+        System.out.println("8 - Web scraping ");//-N
         System.out.println("-1 - Exit");
         System.out.println("Enter step(1-8) to be proceed: ");
         step=group11.nextInt();
@@ -35,8 +35,8 @@ public class TesterDonald {
     public static int stepA;
     public static void ChoiceMessageAND(){
         System.out.println("--------------Adding new data--------------");
-        System.out.println("1 - Display data from csv file");
-        System.out.println("2 - Key in data ");
+        System.out.println("1 - Display data from csv file");//A-dm
+        System.out.println("2 - Key in data ");//B-dm
         System.out.println("(-1) - Back to previous step");
         System.out.println("Enter step to proceed(1/2): ");
         stepA=group11.nextInt();
@@ -48,12 +48,12 @@ public class TesterDonald {
         System.out.println();
         System.out.println("");
         System.out.println("--------------Managing data--------------");
-        System.out.println("1 - Concatenate data");
-        System.out.println("2 - Obtain specific data");
-        System.out.println("3 - Data sorting");
-        System.out.println("4 - Remove duplicated data in row");
-        System.out.println("5 - Remove data with null value");
-        System.out.println("6 - Data Browser");
+        System.out.println("1 - Concatenate data");//C-zw
+        System.out.println("2 - Obtain specific data");//D-zw
+        System.out.println("3 - Data sorting");//E-zc
+        System.out.println("4 - Remove duplicated data in row");//F-jy
+        System.out.println("5 - Remove data with null value");//G-zw
+        System.out.println("6 - Data Browser");//H-zw
         System.out.println("(-1) - Back to previous step");
         System.out.println("Enter step to proceed(1-6): ");
         stepB=group11.nextInt();
@@ -77,8 +77,8 @@ public class TesterDonald {
     public static void ChoiceMessageS(){
         System.out.println("");
         System.out.println("--------------Statistics--------------");
-        System.out.println("1 - Get overall statistics");
-        System.out.println("2 - Fill missing values");
+        System.out.println("1 - Get overall statistics");//I-jy
+        System.out.println("2 - Fill missing values");//J-zw
         System.out.println("(-1) - Back to previous step");
         System.out.println("Enter step to proceed(1/2): ");
         stepC=group11.nextInt();

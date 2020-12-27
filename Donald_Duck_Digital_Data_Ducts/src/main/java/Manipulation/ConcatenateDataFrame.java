@@ -12,13 +12,13 @@ public class ConcatenateDataFrame extends ConnectorPart2{
     public static String filepath2;
     
     public static void ReadFile2(){
-        System.out.println("Enter name of file as output: ");
+        System.out.println("Enter main file: ");
         filepath1=group11.next();
         System.out.println("");
     }
     
     public static void ReadFile3(){
-        System.out.println("Enter name of file to be inputed: ");
+        System.out.println("Enter subfile to be concatenated: ");
         filepath2=group11.next();
     }
     
@@ -48,21 +48,21 @@ public class ConcatenateDataFrame extends ConnectorPart2{
             }  
                
             Scanner csv3= new Scanner(new FileInputStream(filepath1));
-            String [][] file1 = new String [row1][column1];
+            String [][] data1 = new String [row1][column1];
             for (int i = 0; i<row1 ; i++){ //read from file 1
                 String s1 = csv3.nextLine();
                 String [] s1_split = s1.trim().split(",");
                 for (int j = 0; j<column1; j++){
-                    file1[i][j] = s1_split[j];
+                    data1[i][j] = s1_split[j];
                 }
             }
             Scanner csv4= new Scanner(new FileInputStream(filepath2));
-            String [][] file2 = new String[row2][column2];
+            String [][] data2 = new String[row2][column2];
             for (int i = 0; i<row2; i++){
                 String s2 = csv4.nextLine();
                 String [] s2_split = s2.trim().split(",");
                 for (int j = 0; j<column2 ; j++){
-                    file2[i][j] = s2_split[j];
+                    data2[i][j] = s2_split[j];
                 }
             }
             System.out.println("----------------------------------------------------------------------------------------------------------------------");
@@ -72,12 +72,12 @@ public class ConcatenateDataFrame extends ConnectorPart2{
                 for (int i = 0; i<row1; i++ ){
                     int column = 0;
                     for (int j = 0; j<column1; j++){
-                        System.out.printf("%-30s", file1[i][j]);
-                        pw.print(file1[i][j] + ",");
+                        System.out.printf("%-30s", data1[i][j]);
+                        pw.print(data1[i][j] + ",");
                     } 
                     while(column<column2){
-                         System.out.printf("%-30s", file2[i][column]); 
-                         pw.print(file2[i][column] + ",");
+                         System.out.printf("%-30s", data2[i][column]); 
+                         pw.print(data2[i][column] + ",");
                          column++;
                     }
                     System.out.println(""); 
@@ -87,16 +87,16 @@ public class ConcatenateDataFrame extends ConnectorPart2{
             }else if (column1 == column2){
                 for (int i = 0; i<row1; i++ ){
                     for (int j = 0; j<column1; j++){
-                        System.out.printf("%-30s", file1[i][j]);
-                        pw.print(file1[i][j] + ",");
+                        System.out.printf("%-30s", data1[i][j]);
+                        pw.print(data1[i][j] + ",");
                     }
                     System.out.println(""); 
                     pw.println();
                 }
                 for (int i = 1; i<row2; i++ ){
                     for (int j = 0; j<column2; j++){
-                        System.out.printf("%-30s", file2[i][j]);
-                        pw.print(file2[i][j] + ",");
+                        System.out.printf("%-30s", data2[i][j]);
+                        pw.print(data2[i][j] + ",");
                     }
                     System.out.println(""); 
                     pw.println();

@@ -34,29 +34,33 @@ public class ObtainRowOrColumnData extends ConnectorPart2 {
             }
             
             Scanner csv2= new Scanner(new FileInputStream(filename)); 
-            String [][] file = new String [column][row];
+            String [][] data = new String [column][row];
             for (int i=0;i<column;i++){
                 String s1 = csv2.nextLine();
                 String [] s1_split = s1.split(",");
                 for (int j = 0; j<row; j++){
-                    file[i][j] = s1_split[j];
+                    data[i][j] = s1_split[j];
                 }
             } 
-            int i=RowRange1;
+             for(int j=0; j<row; j++){
+                System.out.printf("%-30s", data[0][j]);
+            }
+            System.out.println("");
+            
             for (int j=0; j<row; j++){
-                System.out.printf("%-30s", file[i][j]);
+                System.out.printf("%-30s", data[RowRange1][j]);
             }
             System.out.println("");
             
-            i=RowRange2;
+            
             for(int j=0; j<row; j++){
-                System.out.printf("%-30s", file[i][j]);
+                System.out.printf("%-30s", data[RowRange2][j]);
             }
             System.out.println("");
             
-            for (i=RowRange2+1;i<column;i++){
+            for (int i=RowRange2+1;i<column;i++){
                for(int j=0; j<row; j++){
-                   System.out.printf("%-30s", file[i][j]);
+                   System.out.printf("%-30s", data[i][j]);
                }
                 System.out.println("");
             }
@@ -96,21 +100,21 @@ public class ObtainRowOrColumnData extends ConnectorPart2 {
             }
             
             Scanner csv2= new Scanner(filename); 
-            String[][] file = new String [row][column];
+            String[][] data = new String [row][column];
                 
             for(int i=0;i<row;i++){
                 String s1 = csv2.nextLine();
                 s1 += ", ,";
                 String [] s1_split = s1.split(",");
                 for (int j=0;j<column;j++){
-                    file[i][j] = s1_split[j];
+                    data[i][j] = s1_split[j];
                 } 
             }
             
             int [] column_index = new int [n];
             for (int k = 0; k<n; k++){ 
                 for (int j = 0; j<column ; j++){
-                    if (header[k].equalsIgnoreCase(file[0][j])){ 
+                    if (header[k].equalsIgnoreCase(data[0][j])){ 
                         column_index[k] = j;
                     }
                 }
@@ -120,7 +124,7 @@ public class ObtainRowOrColumnData extends ConnectorPart2 {
                 for ( int k = 0 ; k< n ;k++){
                     for (int j = 0; j<column; j++){
                         if (j == column_index[k]){
-                            System.out.printf("%-30s", file [i][j]);
+                            System.out.printf("%-30s", data [i][j]);
                         }
                     } 
                 } 

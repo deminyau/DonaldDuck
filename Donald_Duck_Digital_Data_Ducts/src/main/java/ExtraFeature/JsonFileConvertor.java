@@ -42,11 +42,7 @@ public class JsonFileConvertor {
         }catch (FileNotFoundException e){
             System.out.println("File not found!!");
         }
-        System.out.println("");
-        System.out.println("Do you want to generate a JSON file for the processed data?");
-        System.out.println("If yes press (1) If don't want press any thing to proceed.");
-        int json=group11.nextInt();
-        if(json==1){
+        
             JSONArray jsonArray = new JSONArray();
             for (String[] w : file) {
                 JSONArray arr = new JSONArray();
@@ -72,7 +68,6 @@ public class JsonFileConvertor {
             }
             
             System.out.println("(file).json done. Please check ur files for more information.");
-        }else{
-        }
+        
     }
 }

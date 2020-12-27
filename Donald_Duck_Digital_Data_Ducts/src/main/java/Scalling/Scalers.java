@@ -49,8 +49,11 @@ public class Scalers extends ConnectorPart4{
                 data[k] = value; k++;
             }
             System.out.println("\nThe values of " + header + " are: ");      
-            for (double value : data){
-                System.out.print(value + "  ");
+            int count = 0;
+            for (double value : data){ 
+                if (count%10 == 0) System.out.println("");
+                count++;
+                System.out.printf("-15.2f" , value);
             } 
             System.out.println("\n\n");
             System.out.println("What do you wish to do with the data (1 for standard scaling/ 2 for min max scaling): ");
@@ -67,7 +70,10 @@ public class Scalers extends ConnectorPart4{
                    double standard_deviation = Math.pow(answer, 0.5);
                    double average = sum/row;
                    System.out.println("\nThe values after standard scaling: ");
-                for(int i = 0; i<row; i++) {
+                   count = 0;
+                   for(int i = 0; i<row; i++) {
+                   if (count%10 == 0) System.out.println("");
+                   count++;
                    double standard = (data[i]-average)/standard_deviation;
                    System.out.printf("%-15f", standard);
                 }
@@ -84,7 +90,10 @@ public class Scalers extends ConnectorPart4{
                 } 
                 double range = max - min;
                 System.out.println("\nThe values after min max scaling: ");
-                for (int i = 0; i<row; i++){ 
+                count = 0;
+                for (int i = 0; i<row; i++){
+                    if (count%10 == 0) System.out.println("");
+                    count++;
                     double minmax = (data[i]-min)/range;
                     System.out.printf("%-15f" , minmax);
                 }

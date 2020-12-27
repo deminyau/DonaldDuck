@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class ConstructDataframeFromCsvFile extends ConnectorPart1 {
     
     public static String filename;
-    public static void ReadFile(){
+    public static void ReadFile(){ //read csv file
         System.out.println("This file is used to display records.");
         System.out.println("Enter file: ");
         filename=group11.next();
@@ -35,17 +35,17 @@ public class ConstructDataframeFromCsvFile extends ConnectorPart1 {
             }
             
             Scanner csv2= new Scanner(new FileInputStream(filename)); 
-            String [][] file = new String [row][column];
+            String [][] data = new String [row][column];
             for (int i=0;i<row;i++){
                 String s1 = csv2.nextLine();
                 String [] s1_split = s1.split(",");
                 for (int j = 0; j<column; j++){
-                    file[i][j] = s1_split[j];
-                    System.out.printf("%-30s", file[i][j]);
+                    data[i][j] = s1_split[j];
+                    System.out.printf("%-30s", data[i][j]);
                 }
                 System.out.println("");
             }             
-            System.out.print("Total records: "+(totalRecord-1));
+            System.out.print("Total records: "+(totalRecord-1));//Print total records
             System.out.println("");
             csv.close();
             

@@ -33,13 +33,13 @@ public class FillMissingValue extends ConnectorPart3{
         }
                      
         Scanner sc2 = new Scanner(a); 
-        String [][] file1 = new String [row][column];
+        String [][] data = new String [row][column];
         for(int i = 0; i<row ; i++){ //read from file 1
             String s1 = sc2.nextLine();
             s1 += ", ,";
             String [] s1_split = s1.trim().split(",");
             for(int j = 0; j<column; j++){
-                file1[i][j] = s1_split[j];
+                data[i][j] = s1_split[j];
                 System.out.printf("%-30s" , s1_split[j]);
             }
             System.out.println("");
@@ -51,12 +51,12 @@ public class FillMissingValue extends ConnectorPart3{
         String [] header_split = header.split(",");
         for (int i = 0; i<row ; i++){
             for (int j = 0; j<column; j++){
-                if (file1 [i][j].isBlank() ){
+                if (data [i][j].isBlank() ){
                     System.out.println("Blank space found in column " + header_split[j] + " at row " + i);
                     System.out.println("Please enter value: ");
-                    file1[i][j] = sc4.nextLine();
+                    data[i][j] = sc4.nextLine();
                     for (int k = 0; k<column; k++){ 
-                        System.out.printf("%-30s", file1[i][k]);
+                        System.out.printf("%-30s", data[i][k]);
                     }
                     System.out.println("\n\n");;
                 }
@@ -68,8 +68,8 @@ public class FillMissingValue extends ConnectorPart3{
         PrintWriter pw = new PrintWriter(a);
         for(int i = 0; i<row ; i++){
             for(int j = 0; j<column ; j++){
-                System.out.printf("%-30s", file1[i][j]);
-                pw.print(file1[i][j] + ",");
+                System.out.printf("%-30s", data[i][j]);
+                pw.print(data[i][j] + ",");
             }
             System.out.println(""); 
             pw.println();
@@ -82,7 +82,7 @@ public class FillMissingValue extends ConnectorPart3{
        
         if(json==1){
             JSONArray jsonArray = new JSONArray();
-            for (String[] w : file1) {
+            for (String[] w : data) {
                 JSONArray arr = new JSONArray();
                 for (String v : w) {
                  arr.add(v); // or some other conversion

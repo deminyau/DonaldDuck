@@ -23,32 +23,37 @@ public class DataScraper extends ConnectorWeb{
         String fileName = group11.next();
         FileWriter writer = new FileWriter(fileName);
         
-        System.out.println("Extracting data from URl....");
-        System.out.println("");
-        
-        Document doc = Jsoup.connect(url).get();
-        Element tableElement = doc.select("table").first();
+        try {
+            System.out.println("Extracting data from URl....");
+            System.out.println("");
+            Document doc = Jsoup.connect(url).get();
+            Element tableElement = doc.select("table").first();
 
-        Elements tableHeaderEles = tableElement.select("tr");
-        for (int i = 0; i < tableHeaderEles.size(); i++) {
-            System.out.println(tableHeaderEles.get(i).text());
-        }
-        
-        Elements tableRowElements = tableElement.select(":not(thead) tr");
-
-        for (int i = 0; i < tableRowElements.size(); i++) {
-            Element row = tableRowElements.get(i);
-            Elements rowItems = row.select("td");
-            for (int j = 0; j < rowItems.size(); j++) {
-                
-                writer.append(rowItems.get(j).text());
-                
-                if(j != rowItems.size() ){
-                    writer.append(',');
-                }
+            Elements tableHeaderEles = tableElement.select("tr");
+            for (int i = 0; i < tableHeaderEles.size(); i++) {
+                System.out.println(tableHeaderEles.get(i).text());
             }
-            writer.append('\n');
+        
+            Elements tableRowElements = tableElement.select(":not(thead) tr");
+
+            for (int i = 0; i < tableRowElements.size(); i++) {
+                Element row = tableRowElements.get(i);
+                Elements rowItems = row.select("td");
+                for (int j = 0; j < rowItems.size(); j++) {
+                
+                    writer.append(rowItems.get(j).text());
+                
+                    if(j != rowItems.size() ){
+                        writer.append(',');
+                    }
+                }
+                 writer.append('\n');
+            }
+            writer.close();
+        } catch(IOException e) {
+            System.out.println("Error with file output");
+        } catch(Exception ex) {
+            ex.printStackTrace();
         }
-        writer.close();
     }
 }

@@ -16,7 +16,7 @@ public class ImageScraper extends ConnectorWeb{
         
         System.out.println("Enter file name to store the image url:");
         String fileImage = group11.next();
-        
+        System.out.println("");
         try {
             PrintWriter pw = new PrintWriter(fileImage);
             final Document document = Jsoup.connect(url).get();
@@ -31,7 +31,9 @@ public class ImageScraper extends ConnectorWeb{
             
             for(Element src: image){
                 System.out.println(src.attr("abs:src"));
+                pw.println(src.attr("abs:src"));
             }
+            pw.close();
         }catch (Exception ex) {
             ex.printStackTrace();
         }

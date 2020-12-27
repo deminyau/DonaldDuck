@@ -335,8 +335,6 @@ public class TesterDonald {
                         }else{
                             InvalidMessage();
                         }
-                    }else{
-                        InvalidMessage();
                     }
                 }while(stepWS!=-1);
                 ChoiceMessage1();

@@ -23,9 +23,6 @@ public class ImageScraper extends ConnectorWeb{
             String title = document.title();
             System.out.println("Title: "+title);
             
-            System.out.println(document.select("tr").size());
-            
-           
             System.out.println("Getting all images...");
             Elements image = document.getElementsByTag("img");
             

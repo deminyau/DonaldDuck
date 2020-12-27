@@ -7,7 +7,6 @@ public class ConnectorPart1 {
     public void DisplayPart1a(){
         ConstructDataframeFromCsvFile cd = new ConstructDataframeFromCsvFile();
         cd.ScanDataFromFile();
-        
     }
     
     public void DisplayPart1b() throws IOException{

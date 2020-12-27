@@ -2,6 +2,7 @@ package K_Nearest_Neighbors;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class knn extends ConnectorPart5 {
@@ -161,12 +162,15 @@ public class knn extends ConnectorPart5 {
                 }
             }
             float[][]resultcopy=new float[result.length][2];
+            float[][]resultcopy2=new float[result.length][2];
             for(int g=0;g<result.length;g++){
                 for(int h=0;h<2;h++){
                     resultcopy[g][h]=result[g][h];
+                    resultcopy2[g][h]=result[g][h];
                 }
             }
             double[][] kAccuracy=kAccuracy(resultcopy,ab);
+            double[][] F1score=AllF1(ab, resultcopy2);
             System.out.println("k\tAccuracy from Confusion Matrix(%)");
             for(int i=0;i<kAccuracy.length;i++){//print all k with respective accuracy for reference
                 for(int j=0;j<2;j++){
@@ -178,6 +182,18 @@ public class knn extends ConnectorPart5 {
                 }
                 System.out.println(" ");
             }
+            System.out.println("");
+            System.out.println("k\tF1 score");
+            for(int i=0;i<F1score.length;i++){//print all k with respective F1 score for reference
+                for(int j=0;j<2;j++){
+                    if(j==0){
+                        System.out.printf("%2.0f",F1score[i][j]);
+                    }
+                    else
+                        System.out.printf("%10.2f",F1score[i][j]);
+                }
+                System.out.println(" ");
+            }
             double bestk=kAccuracy[0][0];
             double highestacc=kAccuracy[0][1];
             for(int c=1;c<kAccuracy.length;c++){
@@ -186,7 +202,22 @@ public class knn extends ConnectorPart5 {
                     bestk=kAccuracy[c][0];
                 }
             }
-            k=(int)bestk;
+            double bestF1=F1score[0][0];
+            double highestF1=F1score[0][1];
+            for(int c=1;c<F1score.length;c++){
+                if(F1score[c][1]>highestF1){
+                    highestF1=F1score[c][1];
+                    bestF1=F1score[c][0];
+                }
+            }
+            if((int)bestF1!=(int)bestk){
+                k=(int)bestF1;
+                System.out.println("Confusion matrix suggested that the optimal value of k is: "+(int)bestk+" while the F1 score suggested the best k is: "+bestF1);
+                System.out.println("By default, we recommend to follow the suggestion from F1 score, if you would like to change, you may do so in the next step.");
+            }
+            else{
+                k=(int)bestF1;
+            }
         }
         float[]indepforcal=new float[row-1];// independant values for calculation
         for(int i=0;i<indepforcal.length;i++){
@@ -267,22 +298,32 @@ public class knn extends ConnectorPart5 {
                     k=MAEk-1;
             }
         }
-        //add calK for classification here
         System.out.println("From the error matric models used, we recommend you to perform a "+k+"-Nearest Neighbor calculation, would you like to customize the value of k?");
-        String yesorno=sc.next();
+        System.out.println("If yes, enter your intended value of k directly. Otherwise, enter any alphabet to continue.");
         boolean kinvalid=false;
-        if(yesorno.compareToIgnoreCase("yes")==0){//let user to decide the value of k, loop until a reasonable k is given by the user
+        int tempk=k;
+        try{
+            int yesorno=sc.nextInt();
             do{
-                System.out.println("Please enter your intended value of k: (Please make sure the value of k is reasonable)");
-                k=sc.nextInt();
+                k=yesorno;
                 kinvalid=false;
                 if(k<=0||k>row-1){
                     kinvalid=true;
-                    System.out.println("This value of k is invalid, please enter again: ");
+                    System.out.println("This value of k is not reasonable, please enter again: ");
+                    try{
+                        yesorno=sc.nextInt();
+                    }
+                    catch(InputMismatchException a){
+                        System.out.println("You have entered non-digit values, we assume that you have changed your mind and would like to proceed with the recommended value of k.");    
+                        kinvalid=false;
+                        k=tempk;
+                    }
                 }   
             }
-            while(kinvalid==true);
+            while(kinvalid);
         }
+        catch(InputMismatchException e){
+        } 
         float [] temparray= new float[2];//temporary array for swapping
         //ascending sort the distance
         for (int i = 0; i < distance.length; i++){
@@ -508,4 +549,25 @@ public class knn extends ConnectorPart5 {
         }
         return kAccuracy;
     }    
+    public static double F1Score(int[][]vs){//This error metric is applicable if and only if the classification involves 2 classes only (true/false)
+        if(vs.length==2){
+            int TP=vs[0][0];
+            int FP=vs[1][0];
+            int FN=vs[0][1];
+            double F1score= TP/(TP+((FP+FN)*0.5));
+            return F1score;
+        }
+        else
+            return -999;
+    }
+    public static double[][]AllF1(float[][]rawdata,float[][]result){
+        double[][]F1=new double[rawdata.length][2];
+        if(result.length==2){
+            for(int i=0;i<rawdata.length;i++){
+                F1[i][0]=i+1;
+                F1[i][1]=F1Score(ConfusionMatrix(result,rawdata,i+1));
+            }
+        }
+        return F1;
+    }
 }

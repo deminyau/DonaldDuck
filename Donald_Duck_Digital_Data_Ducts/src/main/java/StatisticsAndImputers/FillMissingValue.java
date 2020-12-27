@@ -82,7 +82,7 @@ public class FillMissingValue extends ConnectorPart3{
        
         if(json==1){
             JSONArray jsonArray = new JSONArray();
-            for (String[] w : file1) {
+            for (String[] w : data) {
                 JSONArray arr = new JSONArray();
                 for (String v : w) {
                  arr.add(v); // or some other conversion

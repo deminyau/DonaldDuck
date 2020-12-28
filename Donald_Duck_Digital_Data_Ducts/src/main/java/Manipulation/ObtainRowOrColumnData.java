@@ -52,8 +52,8 @@ public class ObtainRowOrColumnData extends ConnectorPart2 {
             }
             System.out.println("");
             
-            for (int i=RowRange2;i<column;i++){ //display second row enter by users and rows after 
-               for(int j=0; j<row; j++){
+            for (int i=RowRange2;i<row;i++){ //display second row enter by users and rows after 
+               for(int j=0; j<column; j++){
                    System.out.printf("%-30s", data[i][j]);
                }
                 System.out.println("");

@@ -4,8 +4,11 @@ import static Manipulation.ConcatenateDataFrame.ReadFile3;
 import static Manipulation.ConcatenateDataFrame.filepath2;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import org.json.simple.JSONArray;
 public class DataSorting extends ConnectorPart2{
@@ -206,17 +209,36 @@ public class DataSorting extends ConnectorPart2{
             }
                 System.out.println("");            
         }
-        
+        try {
+            PrintWriter out = new PrintWriter(new FileOutputStream(filepath2));//overwrite the original file
+            for (int i = 0; i <file.length; i++) {
+                for(int j=0;j<file[0].length;j++){
+                    out.print(file[i][j]);
+                    if(j!=file[0].length-1){
+                        out.print(",");
+                    }
+                }
+                out.println();
+            }
+            out.close();
+            System.out.println("Sorted data saved successfully into file "+filepath2+" !");
+        } catch (IOException e) {
+            System.out.println("problem writing to the file");
+        }
         System.out.println("");
         System.out.println("Do you want to generate a JSON file for the processed data?");
-        System.out.println("If yes press (1) If don't want press any thing to proceed.");
-        int json=sc.nextInt();
+        System.out.println("If yes press (1). If don't want input anything to proceed.");
+        int json=0;
+        try{
+            json=sc.nextInt();
+        }
+        catch(InputMismatchException b){}
         if(json==1){
             JSONArray jsonArray = new JSONArray();
             for (String[] w : file) {
                 JSONArray arr = new JSONArray();
                 for (String v : w) {
-                 arr.add(v); // or some other conversion
+                 arr.add(v);
                 }
                 jsonArray.add(arr);
             }

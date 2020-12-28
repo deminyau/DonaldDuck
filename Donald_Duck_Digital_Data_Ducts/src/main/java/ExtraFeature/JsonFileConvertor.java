@@ -51,7 +51,7 @@ public class JsonFileConvertor {
                 }
                 jsonArray.add(arr);
             }
-            try (FileWriter jsonout = new FileWriter("file.json")) {
+            try (FileWriter jsonout = new FileWriter(filepath.substring(0,filepath.length()-3)+"json")) {
  
             jsonout.write(jsonArray.toJSONString());
             jsonout.flush();
@@ -59,7 +59,7 @@ public class JsonFileConvertor {
             } catch (IOException e) {
                  e.printStackTrace();
             }
-            System.out.println("(file).json is generating....");
+            System.out.println(filepath.substring(0,filepath.length()-3)+"json is generating....");
             
             try{
                Thread.sleep(2000);
@@ -67,7 +67,7 @@ public class JsonFileConvertor {
                 System.out.println(e);
             }
             
-            System.out.println("(file).json done. Please check ur files for more information.");
+            System.out.println(filepath.substring(0,filepath.length()-3)+"json done. Please check ur files for more information.");
         
     }
 }

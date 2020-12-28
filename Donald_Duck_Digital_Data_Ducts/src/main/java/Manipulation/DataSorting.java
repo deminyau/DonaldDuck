@@ -17,7 +17,7 @@ public class DataSorting extends ConnectorPart2{
         ReadFile3();
         int column = 0; 
         int row  = 0;
-        String[][]file=null;
+        String[][]data=null;
         try {
             Scanner csv= new Scanner(new FileInputStream(filepath2));
             
@@ -29,13 +29,13 @@ public class DataSorting extends ConnectorPart2{
             }
             
             Scanner csv2= new Scanner(new FileInputStream(filepath2)); 
-            file = new String [row][column];
+            data = new String [row][column];
             //System.out.println(row+" "+column);
             for (int i=0;i<row;i++){
                 String s1 = csv2.nextLine();
                 String [] s1_split = s1.split(",");
                 for (int j = 0; j<column; j++){
-                    file[i][j] = s1_split[j];
+                    data[i][j] = s1_split[j];
                     System.out.printf("%-30s", s1_split[j]);
                 }
                  System.out.println("");
@@ -48,7 +48,7 @@ public class DataSorting extends ConnectorPart2{
         int sortindex=-1;
         int ascordsc=0;
         Scanner sc=new Scanner(System.in);
-        String[] x=file[0];// read the first row of data(the name of the columns) to array x
+        String[] x=data[0];// read the first row of data(the name of the columns) to array x
         boolean wronginput=false;
         int columnindex=-1;
         System.out.println("");
@@ -84,21 +84,21 @@ public class DataSorting extends ConnectorPart2{
                 
         }
         System.out.println("");
-        if(IsInt(file[1][sortindex])==true){//use the first element in the column to check whether the whole column is int
+        if(IsInt(data[1][sortindex])==true){//use the first element in the column to check whether the whole column is int
            int[] TempArray=new int[row-1];
            int y= TempArray.length;
            String[] TempArray2= new String[column];
            for(int i=0;i<y;i++){
-                TempArray[i]=Integer.parseInt(file[i+1][sortindex]);// file[i+1] is to skip first row which are column names, hence index 0 at TempArray saves index 1 of file etc.
+                TempArray[i]=Integer.parseInt(data[i+1][sortindex]);// file[i+1] is to skip first row which are column names, hence index 0 at TempArray saves index 1 of file etc.
             } 
            if(ascordsc>0){
                 for (int i = 1; i < y; i++){
                     for (int j = 0; j < y-1; j++) {
                         if (TempArray[j] > TempArray[j+1]){
                             //swap between rows in file
-                            TempArray2= file[j+1];//j+1 because first row of column names already skipped, things at TempArray[0] represents the row at file[1][]
-                            file[j+1]=file[j+2];
-                            file[j+2]=TempArray2;
+                            TempArray2= data[j+1];//j+1 because first row of column names already skipped, things at TempArray[0] represents the row at file[1][]
+                            data[j+1]=data[j+2];
+                            data[j+2]=TempArray2;
                             //swap between values of the column being used as sorting criteria that has been copied into 1D array TempArray 
                             int temp = TempArray[j]; 
                             TempArray[j] = TempArray[j+1]; 
@@ -111,9 +111,9 @@ public class DataSorting extends ConnectorPart2{
                for (int i = 1; i < y; i++){
                     for (int j = 0; j < y-1; j++) {
                         if (TempArray[j] < TempArray[j+1]){
-                            TempArray2= file[j+1];//j+1 because first row of column names already skipped, things at TempArray[0] represents the row at file[1][]
-                            file[j+1]=file[j+2];
-                            file[j+2]=TempArray2;                            
+                            TempArray2= data[j+1];//j+1 because first row of column names already skipped, things at TempArray[0] represents the row at file[1][]
+                            data[j+1]=data[j+2];
+                            data[j+2]=TempArray2;                            
                             int temp = TempArray[j]; 
                             TempArray[j] = TempArray[j+1]; 
                             TempArray[j+1] = temp; 
@@ -123,21 +123,21 @@ public class DataSorting extends ConnectorPart2{
            }
         }
        
-        else if(IsFloat(file[1][sortindex])==true){//use the first element in the column to check whether the whole column is float
+        else if(IsFloat(data[1][sortindex])==true){//use the first element in the column to check whether the whole column is float
            double[] TempArray=new double[row-1];
            int y= TempArray.length;
            String[] TempArray2= new String[column];
            for(int i=0;i<y;i++){
-                TempArray[i]=Float.parseFloat(file[i+1][sortindex]);// file[i+1] is to skip first row which are column names, hence index 0 at TempArray saves index 1 of file etc.
+                TempArray[i]=Float.parseFloat(data[i+1][sortindex]);// file[i+1] is to skip first row which are column names, hence index 0 at TempArray saves index 1 of file etc.
             } 
             if(ascordsc>0){
                 for (int i = 1; i < y; i++){
                     for (int j = 0; j < y-1; j++) {
                        if (TempArray[j] > TempArray[j+1]){
                             //swap between rows in file
-                            TempArray2= file[j+1];//j+1 because first row of column names already skipped, things at TempArray[0] represents the row at file[1][]
-                            file[j+1]=file[j+2];
-                            file[j+2]=TempArray2;
+                            TempArray2= data[j+1];//j+1 because first row of column names already skipped, things at TempArray[0] represents the row at file[1][]
+                            data[j+1]=data[j+2];
+                            data[j+2]=TempArray2;
                             //swap between values of the column being used as sorting criteria that has been copied into 1D array TempArray 
                             double temp = TempArray[j]; 
                             TempArray[j] = TempArray[j+1]; 
@@ -150,9 +150,9 @@ public class DataSorting extends ConnectorPart2{
                for (int i = 1; i < y; i++){
                     for (int j = 0; j < y-1; j++) {
                         if (TempArray[j] < TempArray[j+1]){
-                            TempArray2= file[j+1];//j+1 because first row of column names already skipped, things at TempArray[0] represents the row at file[1][]
-                            file[j+1]=file[j+2];
-                            file[j+2]=TempArray2;
+                            TempArray2= data[j+1];//j+1 because first row of column names already skipped, things at TempArray[0] represents the row at file[1][]
+                            data[j+1]=data[j+2];
+                            data[j+2]=TempArray2;
                             double temp = TempArray[j]; 
                             TempArray[j] = TempArray[j+1]; 
                             TempArray[j+1] = temp; 
@@ -166,16 +166,16 @@ public class DataSorting extends ConnectorPart2{
            int y= TempArray.length;
            String[] TempArray2= new String[column];
            for(int i=0;i<y;i++){
-                TempArray[i]=(file[i+1][sortindex]);// file[i+1] is to skip first row which are column names, hence index 0 at TempArray saves index 1 of file etc.
+                TempArray[i]=(data[i+1][sortindex]);// file[i+1] is to skip first row which are column names, hence index 0 at TempArray saves index 1 of file etc.
             } 
             if(ascordsc>0){
                 for (int i = 1; i < y; i++){
                     for (int j = 0; j < y-1; j++) {
                         if (TempArray[j].compareToIgnoreCase(TempArray[j+1])>0){
                             //swap between rows in file
-                            TempArray2= file[j+1];//j+1 because first row of column names already skipped, things at TempArray[0] represents the row at file[1][]
-                            file[j+1]=file[j+2];
-                            file[j+2]=TempArray2;
+                            TempArray2= data[j+1];//j+1 because first row of column names already skipped, things at TempArray[0] represents the row at file[1][]
+                            data[j+1]=data[j+2];
+                            data[j+2]=TempArray2;
                             //swap between values of the column being used as sorting criteria that has been copied into 1D array TempArray 
                             String temp = TempArray[j]; 
                             TempArray[j] = TempArray[j+1]; 
@@ -188,9 +188,9 @@ public class DataSorting extends ConnectorPart2{
                for (int i = 1; i < y; i++){
                     for (int j = 0; j < y-1; j++) {
                         if (TempArray[j].compareToIgnoreCase(TempArray[j+1])<0){
-                            TempArray2= file[j+1];//j+1 because first row of column names already skipped, things at TempArray[0] represents the row at file[1][]
-                            file[j+1]=file[j+2];
-                            file[j+2]=TempArray2;
+                            TempArray2= data[j+1];//j+1 because first row of column names already skipped, things at TempArray[0] represents the row at file[1][]
+                            data[j+1]=data[j+2];
+                            data[j+2]=TempArray2;
                             String temp = TempArray[j]; 
                             TempArray[j] = TempArray[j+1]; 
                             TempArray[j+1] = temp; 
@@ -205,16 +205,16 @@ public class DataSorting extends ConnectorPart2{
         System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------");
         for(int i=0;i<row;i++){
             for(int j=0;j<column;j++){
-                System.out.printf("%-30s", file[i][j]);
+                System.out.printf("%-30s", data[i][j]);
             }
                 System.out.println("");            
         }
         try {
             PrintWriter out = new PrintWriter(new FileOutputStream(filepath2));//overwrite the original file
-            for (int i = 0; i <file.length; i++) {
-                for(int j=0;j<file[0].length;j++){
-                    out.print(file[i][j]);
-                    if(j!=file[0].length-1){
+            for (int i = 0; i <data.length; i++) {
+                for(int j=0;j<data[0].length;j++){
+                    out.print(data[i][j]);
+                    if(j!=data[0].length-1){
                         out.print(",");
                     }
                 }
@@ -235,14 +235,14 @@ public class DataSorting extends ConnectorPart2{
         catch(InputMismatchException b){}
         if(json==1){
             JSONArray jsonArray = new JSONArray();
-            for (String[] w : file) {
+            for (String[] w : data) {
                 JSONArray arr = new JSONArray();
                 for (String v : w) {
                  arr.add(v);
                 }
                 jsonArray.add(arr);
             }
-            try (FileWriter jsonout = new FileWriter("jsonfile.json")) {
+            try (FileWriter jsonout = new FileWriter(filepath2.substring(0,filepath2.length()-3)+"json")) {
  
             jsonout.write(jsonArray.toJSONString());
             jsonout.flush();
@@ -250,15 +250,15 @@ public class DataSorting extends ConnectorPart2{
         } catch (IOException e) {
             e.printStackTrace();
         }
-            System.out.println("(file).json is generating....");
+            System.out.println(filepath2.substring(0,filepath2.length()-3)+"json is generating....");
             
             try{
-            Thread.sleep(2000);
+            Thread.sleep(1000);
             }catch(Exception e) {
                 System.out.println(e);
             }
             
-            System.out.println("(file).json done. Please check ur files for more information.");
+            System.out.println(filepath2.substring(0,filepath2.length()-3)+"json done. Please check ur files for more information.");
         }
     }
     public static boolean IsInt(String x){ 

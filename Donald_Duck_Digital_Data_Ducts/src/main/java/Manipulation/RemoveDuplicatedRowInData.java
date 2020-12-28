@@ -36,16 +36,16 @@ public class RemoveDuplicatedRowInData extends ConnectorPart2 {
             }
 
             Scanner csv2 = new Scanner(new FileInputStream(filepath4));
-            String[][] arrangement = new String[numberOfRow][numberOfColumn];
+            String[][] data = new String[numberOfRow][numberOfColumn];
             for (int i = 0; i < numberOfRow; i++) { //copy data into an array
                 String s1 = csv2.nextLine();
                 String[] s1_split = s1.split(",");
-                System.arraycopy(s1_split, 0, arrangement[i], 0, numberOfColumn);
+                System.arraycopy(s1_split, 0, data[i], 0, numberOfColumn);
             }
 
             for (int i = 0; i < numberOfRow; i++) { //display out all the data in array
                 for (int j = 0; j < numberOfColumn; j++) {
-                    System.out.printf("%-30s", arrangement[i][j]);
+                    System.out.printf("%-30s", data[i][j]);
                 }
                 System.out.println();
             }
@@ -54,10 +54,10 @@ public class RemoveDuplicatedRowInData extends ConnectorPart2 {
             int[] detector = new int[numberOfRow]; //detect duplication at specific index
             for (int i = 0; i < numberOfRow - 1; i++) {
                 for (int j = i + 1; j < numberOfRow; j++) {
-                    if (arrangement[i][0].equalsIgnoreCase(arrangement[j][0])) {
+                    if (data[i][0].equalsIgnoreCase(data[j][0])) {
                         detector[i] = i;
                         detector[j] = j;
-                        duplicatedName = arrangement[i][0];
+                        duplicatedName = data[i][0];
                     }
                 }
             }
@@ -102,11 +102,11 @@ public class RemoveDuplicatedRowInData extends ConnectorPart2 {
                         }
                     }
                     for (int r = 0; r < numberOfColumn; r++) {
-                        System.out.printf("%-30s", arrangement[q][r]);
+                        System.out.printf("%-30s", data[q][r]);
                         if (r == numberOfColumn - 1)
-                            pw.print(arrangement[q][r] + "\n");
+                            pw.print(data[q][r] + "\n");
                         else
-                            pw.print(arrangement[q][r] + ",");
+                            pw.print(data[q][r] + ",");
                     }
                     System.out.println();
                 }

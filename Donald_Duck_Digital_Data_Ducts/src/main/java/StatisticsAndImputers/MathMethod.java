@@ -14,7 +14,7 @@ public class MathMethod extends ConnectorPart3 {
         System.out.println();
     }
 
-    public static void ComputeMath() throws FileNotFoundException {
+    public static void ComputeMath() {
 
         ReadCsv2();
         try {
@@ -30,16 +30,16 @@ public class MathMethod extends ConnectorPart3 {
             }
 
             Scanner sc2 = new Scanner(a);
-            String[][] arrangement = new String[numberOfRow][numberOfColumn];
+            String[][] data = new String[numberOfRow][numberOfColumn];
             for (int i = 0; i < numberOfRow; i++) { //copy data into an array
                 String s1 = sc2.nextLine();
                 String[] s1_split = s1.split(",");
-                System.arraycopy(s1_split, 0, arrangement[i], 0, numberOfColumn);
+                System.arraycopy(s1_split, 0, data[i], 0, numberOfColumn);
             }
 
             for (int i = 0; i < numberOfRow; i++) { //display out all the data in array
                 for (int j = 0; j < numberOfColumn; j++) {
-                    System.out.printf("%-30s", arrangement[i][j]);
+                    System.out.printf("%-30s", data[i][j]);
                 }
                 System.out.println();
             }
@@ -52,7 +52,7 @@ public class MathMethod extends ConnectorPart3 {
                 double total = 0;
                 double total2 = 0;
                 for (int i = 1; i < numberOfRow; i++) { //min and max
-                    double actual = Double.parseDouble(arrangement[i][j]);
+                    double actual = Double.parseDouble(data[i][j]);
                     total += actual;
                     total2 += (Math.pow(actual, 2));
                     if (actual > max) { //determine max
@@ -63,7 +63,7 @@ public class MathMethod extends ConnectorPart3 {
                 }
                 double[] newArray = new double[numberOfRow - 1]; //new array for sorting
                 for (int i = 1; i < numberOfRow; i++) {
-                    newArray[i - 1] = Double.parseDouble(arrangement[i][j]);
+                    newArray[i - 1] = Double.parseDouble(data[i][j]);
                 }
                 for (int pass = 1; pass < newArray.length; pass++) { //data sorting
                     for (int i = 0; i < newArray.length - 1; i++) {
@@ -78,8 +78,7 @@ public class MathMethod extends ConnectorPart3 {
                 if ((newArray.length) % 2 != 0) { //determine median
                     median = newArray[((newArray.length + 1) / 2) - 1];
                 } else {
-                    median = (newArray[newArray.length / 2] + newArray[(newArray.length / 2) - 1])
-                            * 1.0 / 2;
+                    median = (newArray[newArray.length / 2] + newArray[(newArray.length / 2) - 1]) / 2;
                 }
                 StringBuilder mode = new StringBuilder(); //only mode is string because it is possible that there is no mode / 2 or more mode
                 double num = 0;
@@ -88,14 +87,16 @@ public class MathMethod extends ConnectorPart3 {
                 for (double v : newArray) { //determine mode(duplication)--(highest frequency) using data being sorted
                     if (v == num) {
                         count++;
-                    } else {
+                    }
+                    else {
                         num = v;
                         count = 1;
                     }
                     if (count == maxCount) {
                         if (count > 1) {
                             mode.append(", ").append(num);
-                        } else {
+                        }
+                        else {
                             mode = new StringBuilder("No mode");
                         }
                     }
@@ -123,7 +124,9 @@ public class MathMethod extends ConnectorPart3 {
 
                 System.out.println("Min: " + min);
                 System.out.println("Max: " + max);
-                System.out.println("Mode: " + mode);
+                if ("No mode".equals(mode.toString()))
+                    maxCount = 0;
+                System.out.println("Mode: " + mode + " (" + maxCount + ") ");
                 System.out.println("Median: " + median);
                 System.out.println("Mean: " + mean);
                 System.out.println("Range: " + range);
@@ -137,7 +140,7 @@ public class MathMethod extends ConnectorPart3 {
 
                 String[] newArray2 = new String[numberOfRow - 1]; //new array for sorting
                 for (int i = 1; i < numberOfRow; i++) {
-                    newArray2[i - 1] = arrangement[i][j];
+                    newArray2[i - 1] = data[i][j];
                 }
                 for (int pass = 1; pass < newArray2.length; pass++) { //data sorting
                     for (int i = 0; i < newArray2.length - 1; i++) {
@@ -155,14 +158,16 @@ public class MathMethod extends ConnectorPart3 {
                 for (String s : newArray2) { //determine mode(duplication)--(highest frequency) using data being sorted
                     if (s.equals(num)) {
                         count++;
-                    } else {
+                    }
+                    else {
                         num = s;
                         count = 1;
                     }
                     if (count == maxCount) {
                         if (count > 1) {
                             mode.append(", ").append(num);
-                        } else {
+                        }
+                        else {
                             mode = new StringBuilder("No mode");
                         }
                     }
@@ -179,7 +184,9 @@ public class MathMethod extends ConnectorPart3 {
                 if (j == 1) {
                     System.out.println("<Department>");
                 }
-                System.out.println("Mode: " + mode);
+                if ("No mode".equals(mode.toString()))
+                    maxCount = 0;
+                System.out.println("Mode: " + mode + " (" + maxCount + ") ");
                 System.out.println();
             }
         } catch (FileNotFoundException e) {

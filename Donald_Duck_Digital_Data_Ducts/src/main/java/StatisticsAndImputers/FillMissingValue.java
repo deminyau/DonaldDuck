@@ -25,7 +25,7 @@ public class FillMissingValue extends ConnectorPart3{
         File a = new File(filepath);
         Scanner sc1 = new Scanner (a);
         int column = 0; int row  = 0;
-        while (sc1.hasNextLine()){
+        while (sc1.hasNextLine()){ // scan csv first time to get number of row and column for 2D array
             String s1 = sc1.nextLine();
             String [] s1_spilt = s1.split(",");
             column = s1_spilt.length;
@@ -34,7 +34,7 @@ public class FillMissingValue extends ConnectorPart3{
                      
         Scanner sc2 = new Scanner(a); 
         String [][] data = new String [row][column];
-        for(int i = 0; i<row ; i++){ //read from file 1
+        for(int i = 0; i<row ; i++){ //scan and store data from csv into 2d array
             String s1 = sc2.nextLine();
             s1 += ", ,";
             String [] s1_split = s1.trim().split(",");
@@ -45,16 +45,15 @@ public class FillMissingValue extends ConnectorPart3{
             System.out.println("");
         }   
         System.out.println("\n\n");     
-        Scanner sc3 = new Scanner(a);
-        String header = sc3.nextLine();
+       
         Scanner sc4 = new Scanner (System.in);
-        String [] header_split = header.split(",");
-        for (int i = 0; i<row ; i++){
+        
+        for (int i = 1; i<row ; i++){
             for (int j = 0; j<column; j++){
-                if (data [i][j].isBlank() ){
-                    System.out.println("Blank space found in column " + header_split[j] + " at row " + i);
+                if (data [i][j].isBlank() ){ //detect null values from 2d array
+                    System.out.println("Blank space found in column " + data[0][j] + " at row " + i);
                     System.out.println("Please enter value: ");
-                    data[i][j] = sc4.nextLine();
+                    data[i][j] = sc4.nextLine(); //store new input value into 2d array earlier
                     for (int k = 0; k<column; k++){ 
                         System.out.printf("%-30s", data[i][k]);
                     }
@@ -66,7 +65,7 @@ public class FillMissingValue extends ConnectorPart3{
         System.out.println("                                        There is no missing value                                          ");
         System.out.println("-----------------------------------------------------------------------------------------------------------");
         PrintWriter pw = new PrintWriter(a);
-        for(int i = 0; i<row ; i++){
+        for(int i = 0; i<row ; i++){ //write the updated 2D array back into csv file
             for(int j = 0; j<column ; j++){
                 System.out.printf("%-30s", data[i][j]);
                 pw.print(data[i][j] + ",");

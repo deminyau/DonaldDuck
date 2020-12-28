@@ -27,7 +27,7 @@ public class Scalers extends ConnectorPart4{
             String []s1_split = s1.split(",");
             int column = 0;  
             
-            for(int i = 0; i<s1_split.length; i++){
+            for(int i = 0; i<s1_split.length; i++){ //determine the index for column where data is used
                if(s1_split[i].equalsIgnoreCase(header)){ 
                    column = i; 
                }
@@ -40,26 +40,26 @@ public class Scalers extends ConnectorPart4{
         
             double[] data = new double [row];
             Scanner sc3 = new Scanner(a);
-            String test2 = sc3.nextLine();
+            String test2 = sc3.nextLine(); // scan the first row (header) since it is not used in calculation
             int k = 0;
-            while (sc3.hasNextLine()){
+            while (sc3.hasNextLine()){ //store data from single column into 1-D array for calculations 
                 String s2 = sc3.nextLine();
                 String [] s2_split = s2.split(",");
-                double value = Double.parseDouble(s2_split[column]);
+                double value = Double.parseDouble(s2_split[column]); // convert the string to double
                 data[k] = value; k++;
             }
             System.out.println("\nThe values of " + header + " are: ");      
             int count = 0;
             for (double value : data){ 
-                if (count%10 == 0) System.out.println("");
-                count++;
+                if (count%10 == 0) System.out.println(""); 
+                count++; // to move output to new line when elements in a line reach 10
                 System.out.printf("-15.2f" , value);
             } 
             System.out.println("\n\n");
             System.out.println("What do you wish to do with the data (1 for standard scaling/ 2 for min max scaling): ");
             int key = sc.nextInt();
             double sum = 0; double sumofsquare = 0;
-            if (key == 1){
+            if (key == 1){ //perform standard scaling
                 for(int i = 0; i<row; i++) {
                    sum += data[i];
                    double square = data[i]*data[i];
@@ -77,7 +77,7 @@ public class Scalers extends ConnectorPart4{
                    double standard = (data[i]-average)/standard_deviation;
                    System.out.printf("%-15f", standard);
                 }
-            }else if(key == 2){
+            }else if(key == 2){ //perform minmax scaling
                 double min = data[0]; 
                 double max = data[0]; 
                 for(int i = 0; i<row; i++){
@@ -93,7 +93,7 @@ public class Scalers extends ConnectorPart4{
                 count = 0;
                 for (int i = 0; i<row; i++){
                     if (count%10 == 0) System.out.println("");
-                    count++;
+                    count++; // move output to new line when elements in a row reach 10
                     double minmax = (data[i]-min)/range;
                     System.out.printf("%-15f" , minmax);
                 }

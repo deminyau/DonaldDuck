@@ -17,13 +17,13 @@ public class RemoveNullDataFrame extends ConnectorPart2{
         System.out.println("Enter file to be inputed: ");
         String file=group11.nextLine();
         
-        System.out.println("Enter the number of null columns to be detected: ");
+        System.out.println("Enter the number of null columns to be detected: "); //how many column to be taken into account
         String input =group11.nextLine();
         
         int n = Integer.parseInt(input);
         String [] header = new String[n];
         for(int i=0;i<n;i++){
-            System.out.println("Enter the name of the column to be detected: ");
+            System.out.println("Enter the name of the column to be detected: "); 
             header[i]=group11.nextLine();
         }
    
@@ -33,7 +33,7 @@ public class RemoveNullDataFrame extends ConnectorPart2{
             int column=0; 
             int row=0;
         
-            while(csv.hasNextLine()){
+            while(csv.hasNextLine()){ //scan csv first time to get number of rows and columns for 2d array
                   String s1=csv.nextLine();
                   String [] s1_spilt = s1.trim().split(",");
                   column = s1_spilt.length;
@@ -42,7 +42,7 @@ public class RemoveNullDataFrame extends ConnectorPart2{
             
             Scanner csv2= new Scanner(new FileInputStream(file));
             String[][] data = new String [row][column];
-            for(int i = 0; i<row ; i++){
+            for(int i = 0; i<row ; i++){ //scan csv second time to store data into 2d array
                 String s1 = csv2.nextLine();
                 s1 += ", ,";
                 String [] s1_split = s1.split(",");
@@ -56,7 +56,7 @@ public class RemoveNullDataFrame extends ConnectorPart2{
             for (int i = 0; i<n; i++){
                 for (int j = 0; j<column; j++){
                     if (header[i].equalsIgnoreCase(data[0][j])){
-                        null_column_index [i]= j;
+                        null_column_index [i]= j; // find the column index for column name enter by user
                     }
                 }
             }
@@ -66,20 +66,20 @@ public class RemoveNullDataFrame extends ConnectorPart2{
             for (int k = 0; k<n ; k++){
                 for (int j = 0; j<column; j++){
                     if (data[i][j].isBlank() && j == null_column_index[k]){
-                        null_count++;
+                        null_count++; // if column is blank and is at column index
                     }
                 }
             }
-            if (null_count == n) {
-                remove_row = i; 
+            if (null_count == n) { //check whether the number of null column is equal to number enter by user
+                remove_row = i; // Assign the whole row to be removed later
                    break 
                    stop;
             }
             }
             
-            PrintWriter pw = new PrintWriter (file);
+            PrintWriter pw = new PrintWriter (file); //rewrite and display the elements into csv file without a certain row
             for (int i = 0; i<row ; i++){
-                if (i==remove_row) 
+                if (i==remove_row) // skip this row to remove it
                     continue;
                 for (int j = 0; j<column; j++){
                     System.out.printf("%-30s", data[i][j]);

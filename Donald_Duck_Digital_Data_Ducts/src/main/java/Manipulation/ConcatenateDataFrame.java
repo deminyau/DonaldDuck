@@ -18,7 +18,7 @@ public class ConcatenateDataFrame extends ConnectorPart2{
     }
     
     public static void ReadFile3(){
-        System.out.println("Enter subfile to be concatenated: ");
+        System.out.println("Enter file name: ");
         filepath2=group11.next();
     }
     

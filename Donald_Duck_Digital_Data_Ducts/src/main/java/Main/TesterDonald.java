@@ -26,7 +26,7 @@ public class TesterDonald {
         System.out.println("5 - K-Nearest Neighbors(k-nn)");//L-zc
         System.out.println("6 - Generate charts");//M-dm
         System.out.println("7 - Convert file type to (.json) ");//N-zc
-        System.out.println("8 - Web scraping ");//O-dm
+        System.out.println("8 - Web scraping ");
         System.out.println("-1 - Exit");
         System.out.println("Enter step(1-8) to be proceed: ");
         step=group11.nextInt();
@@ -89,8 +89,8 @@ public class TesterDonald {
     public static void ChoiceMessageWS(){
         System.out.println("");
         System.out.println("---------------Web Scraper--------------");
-        System.out.println("1 - Get image from website");
-        System.out.println("2 - Get infomation from website and store into csv file");
+        System.out.println("1 - Get image from website");//O-dm
+        System.out.println("2 - Get infomation from website and store into csv file");//P-dm
         System.out.println("(-1) - Back to previous step");
         System.out.println("Enter step to proceed(1/2): ");
         stepWS=group11.nextInt();
@@ -225,8 +225,6 @@ public class TesterDonald {
                         }else{
                             InvalidMessage();
                         }
-                    }else{
-                        InvalidMessage();
                     }
                 }while(stepB!=-1);
                 ChoiceMessage1();
@@ -253,10 +251,7 @@ public class TesterDonald {
                         }else{
                             InvalidMessage();
                         }
-                    }else{
-                        InvalidMessage();
-                        ChoiceMessageS(); 
-                    } 
+                    }
                 }while(stepC!=-1);
                 ChoiceMessage1();
 

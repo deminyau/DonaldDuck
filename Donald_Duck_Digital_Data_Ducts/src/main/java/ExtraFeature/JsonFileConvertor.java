@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 public class JsonFileConvertor {
     public static void PrintJsonFile(){
@@ -42,32 +43,33 @@ public class JsonFileConvertor {
         }catch (FileNotFoundException e){
             System.out.println("File not found!!");
         }
-        
-            JSONArray jsonArray = new JSONArray();
-            for (String[] w : file) {
-                JSONArray arr = new JSONArray();
-                for (String v : w) {
-                 arr.add(v); // or some other conversion
-                }
-                jsonArray.add(arr);
+        String[][] file2=new String[column][row-1];
+        for(int i=1;i<file.length;i++){
+            for(int j=0;j<file[0].length;j++){
+                file2[j][i-1]=file[i][j];
             }
-            try (FileWriter jsonout = new FileWriter(filepath.substring(0,filepath.length()-3)+"json")) {
+        }
+        JSONObject jsonObject = new JSONObject();      
+        for (int i=0;i<file2.length;i++) {
+            JSONArray jsonArray=new JSONArray();
+            for(int j=0;j<file2[i].length;j++){
+                jsonArray.add(file2[i][j]);
+            }
+            jsonObject.put(file[0][i],jsonArray);
+        }
+        try (FileWriter jsonout = new FileWriter(filepath.substring(0,filepath.length()-3)+"json")) {
  
-            jsonout.write(jsonArray.toJSONString());
+            jsonout.write(jsonObject.toJSONString());
             jsonout.flush();
- 
-            } catch (IOException e) {
-                 e.printStackTrace();
-            }
-            System.out.println(filepath.substring(0,filepath.length()-3)+"json is generating....");
-            
-            try{
-               Thread.sleep(2000);
-            }catch(Exception e) {
-                System.out.println(e);
-            }
-            
-            System.out.println(filepath.substring(0,filepath.length()-3)+"json done. Please check ur files for more information.");
-        
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(filepath.substring(0,filepath.length()-3)+"json is generating....");
+        try{
+           Thread.sleep(1500);
+        }catch(Exception e) {
+            System.out.println(e);
+        }         
+        System.out.println(filepath.substring(0,filepath.length()-3)+"json done. Please check ur files for more information."); 
     }
 }

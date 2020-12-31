@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 public class DataSorting extends ConnectorPart2{
     
     public static void Sorting(){
@@ -210,7 +211,7 @@ public class DataSorting extends ConnectorPart2{
                 System.out.println("");            
         }
         try {
-            PrintWriter out = new PrintWriter(new FileOutputStream(filepath2));//overwrite the original file
+            PrintWriter out = new PrintWriter(new FileOutputStream("SortedData.csv"));//overwrite the original file
             for (int i = 0; i <data.length; i++) {
                 for(int j=0;j<data[0].length;j++){
                     out.print(data[i][j]);
@@ -221,7 +222,7 @@ public class DataSorting extends ConnectorPart2{
                 out.println();
             }
             out.close();
-            System.out.println("Sorted data saved successfully into file "+filepath2+" !");
+            System.out.println("Sorted data saved successfully into file SortedData.csv !");
         } catch (IOException e) {
             System.out.println("problem writing to the file");
         }
@@ -234,31 +235,34 @@ public class DataSorting extends ConnectorPart2{
         }
         catch(InputMismatchException b){}
         if(json==1){
-            JSONArray jsonArray = new JSONArray();
-            for (String[] w : data) {
-                JSONArray arr = new JSONArray();
-                for (String v : w) {
-                 arr.add(v);
+            String[][] file2=new String[column][row-1];
+            for(int i=1;i<data.length;i++){
+                for(int j=0;j<data[0].length;j++){
+                    file2[j][i-1]=data[i][j];
                 }
-                jsonArray.add(arr);
             }
-            try (FileWriter jsonout = new FileWriter(filepath2.substring(0,filepath2.length()-3)+"json")) {
- 
-            jsonout.write(jsonArray.toJSONString());
-            jsonout.flush();
- 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            JSONObject jsonObject = new JSONObject();      
+            for (int i=0;i<file2.length;i++) {
+                JSONArray jsonArray=new JSONArray();
+                for(int j=0;j<file2[i].length;j++){
+                    jsonArray.add(file2[i][j]);
+                }
+                jsonObject.put(data[0][i],jsonArray);
+            }
+            try (FileWriter jsonout = new FileWriter("SortedData.json")) {
+
+                jsonout.write(jsonObject.toJSONString());
+                jsonout.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             System.out.println(filepath2.substring(0,filepath2.length()-3)+"json is generating....");
-            
             try{
-            Thread.sleep(1000);
+               Thread.sleep(1500);
             }catch(Exception e) {
                 System.out.println(e);
-            }
-            
-            System.out.println(filepath2.substring(0,filepath2.length()-3)+"json done. Please check ur files for more information.");
+            }         
+            System.out.println(filepath2.substring(0,filepath2.length()-3)+"json done. Please check ur files for more information."); 
         }
     }
     public static boolean IsInt(String x){ 

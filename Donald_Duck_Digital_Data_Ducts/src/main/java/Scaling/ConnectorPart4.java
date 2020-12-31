@@ -1,4 +1,4 @@
-package Scalling;
+package Scaling;
 
 
 public class ConnectorPart4 {

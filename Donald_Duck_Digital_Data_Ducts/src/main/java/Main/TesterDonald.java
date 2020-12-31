@@ -5,7 +5,7 @@ import ExtraFeature.Chart;
 import static ExtraFeature.JsonFileConvertor.PrintJsonFile;
 import K_Nearest_Neighbors.ConnectorPart5;
 import Manipulation.ConnectorPart2;
-import Scalling.ConnectorPart4;
+import Scaling.ConnectorPart4;
 import StatisticsAndImputers.ConnectorPart3;
 import Website.ConnectorWeb;
 import java.io.IOException;

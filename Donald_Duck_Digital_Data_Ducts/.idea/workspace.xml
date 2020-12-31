@@ -24,12 +24,15 @@
   <component name="ChangeListManager">
     <list default="true" id="b6fa3cd3-cad9-416e-a62f-db01d3d3cb7f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/StatisticsAndImputers/MathMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/StatisticsAndImputers/MathMethod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataStorage.csv" beforeDir="false" afterPath="$PROJECT_DIR$/DataStorage.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main/TesterDonald.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main/TesterDonald.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Scalling/ConnectorPart4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Scaling/ConnectorPart4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Scalling/Scalers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Scaling/Scalers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistics.csv" beforeDir="false" afterPath="$PROJECT_DIR$/statistics.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/K_Nearest_Neighbors/knn.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/K_Nearest_Neighbors/knn.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main/TesterDonald.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main/TesterDonald.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Manipulation/DataSorting.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Manipulation/DataSorting.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Manipulation/ObtainRowOrColumnData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Manipulation/ObtainRowOrColumnData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Scalling/Scalers.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Scalling/Scalers.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/StatisticsAndImputers/FillMissingValue.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/StatisticsAndImputers/FillMissingValue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Scalling/ConnectorPart4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Scalling/Scalers.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +129,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/K_Nearest_Neighbors/knn.java</url>
-          <line>287</line>
+          <line>290</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

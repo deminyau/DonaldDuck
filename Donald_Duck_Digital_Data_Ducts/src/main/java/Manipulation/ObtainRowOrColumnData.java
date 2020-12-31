@@ -6,6 +6,8 @@ import static Main.TesterDonald.group11;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class ObtainRowOrColumnData extends ConnectorPart2 {
@@ -42,22 +44,28 @@ public class ObtainRowOrColumnData extends ConnectorPart2 {
                     data[i][j] = s1_split[j];
                 }
             } 
+            PrintWriter pw = new PrintWriter(new FileOutputStream("ObtainRowOrColumn.csv"));//write data into new csv file
              for(int j=0; j<column; j++){ //display first row (header)
                 System.out.printf("%-30s", data[0][j]);
-            }
+                pw.print(data[0][j] + ",");
+             }
             System.out.println("");
-            
+            pw.println();
             for (int j=0; j<column; j++){ //display first row enter by users
                 System.out.printf("%-30s", data[RowRange1][j]);
+                pw.print(data[RowRange1][j] + ",");
             }
             System.out.println("");
-            
+            pw.println();
             for (int i=RowRange2;i<row;i++){ //display second row enter by users and rows after 
                for(int j=0; j<column; j++){
                    System.out.printf("%-30s", data[i][j]);
+                   pw.print(data[i][j] + ",");
                }
                 System.out.println("");
+                pw.println();
             }
+            pw.close();
         }catch (FileNotFoundException e){
             System.out.println("File not found!!");
         }
@@ -104,7 +112,7 @@ public class ObtainRowOrColumnData extends ConnectorPart2 {
                     data[i][j] = s1_split[j];
                 } 
             }
-            
+            PrintWriter pw = new PrintWriter(new FileOutputStream("ObtainRowOrColumnData.csv"));
             int [] column_index = new int [n];
             for (int k = 0; k<n; k++){ //determine index of the column to be displayed
                 for (int j = 0; j<column ; j++){
@@ -119,12 +127,14 @@ public class ObtainRowOrColumnData extends ConnectorPart2 {
                     for (int j = 0; j<column; j++){
                         if (j == column_index[k]){
                             System.out.printf("%-30s", data [i][j]);
+                            pw.print(data[i][j] + ","); //write the data into new csv file
                         }
                     } 
                 } 
                 System.out.println(""); 
+                pw.println();
                 i++;
-                }
+                } pw .close();
             }catch(FileNotFoundException e){
             System.out.println("File not found!!");
             } 

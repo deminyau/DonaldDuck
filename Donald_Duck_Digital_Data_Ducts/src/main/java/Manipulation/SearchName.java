@@ -1,7 +1,10 @@
 package Manipulation;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 
@@ -43,13 +46,16 @@ public class SearchName extends ConnectorPart2{
                         data[i][j] = s1_split[j];}
                     }
                 if (index>0){ //to check whether name exist
+                   PrintWriter pw = new PrintWriter(new FileOutputStream("SearchName.csv"));
                 System.out.println(name + " found at row " + (index+1));
                 int i = 0;                                                                              
                 for (int k = 0; k<2 ; k++){ // Loop twice to print out header (first row) and row with searched name
                 for (int j = 0; j<column; j++){
-                    System.out.printf("%-30s", data[i][j]);} 
+                    System.out.printf("%-30s", data[i][j]);
+                    pw.print(data[i][j] + ",");} //write to a new csv file
                 i = index;
-                System.out.println("");}
+                System.out.println(""); pw.println();}
+                pw.close();
                 
                 }else{
                     System.out.println("Name could not be found");

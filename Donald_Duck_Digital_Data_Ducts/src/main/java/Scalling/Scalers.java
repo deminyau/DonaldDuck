@@ -3,6 +3,8 @@ package Scalling;
 import static Main.TesterDonald.group11;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Scalers extends ConnectorPart4{
@@ -58,8 +60,12 @@ public class Scalers extends ConnectorPart4{
             System.out.println("\n\n");
             System.out.println("What do you wish to do with the data (1 for standard scaling/ 2 for min max scaling): ");
             int key = sc.nextInt();
+            PrintWriter pw = new PrintWriter(new FileOutputStream("scalers.csv"));
+
+            // write the scale value into a csv file
             double sum = 0; double sumofsquare = 0;
             if (key == 1){ //perform standard scaling
+                pw.println("Standard scaling");
                 for(int i = 0; i<row; i++) {
                    sum += data[i];
                    double square = data[i]*data[i];
@@ -72,12 +78,14 @@ public class Scalers extends ConnectorPart4{
                    System.out.println("\nThe values after standard scaling: ");
                    count = 0;
                    for(int i = 0; i<row; i++) {
-                   if (count%10 == 0) System.out.println("");
+                   if (count%10 == 0){System.out.println(""); pw.println();}
                    count++;
                    double standard = (data[i]-average)/standard_deviation;
                    System.out.printf("%-15f", standard);
+                   pw.print(standard+ ",");
                 }
             }else if(key == 2){ //perform minmax scaling
+                pw.println("MinMax scaling");
                 double min = data[0]; 
                 double max = data[0]; 
                 for(int i = 0; i<row; i++){
@@ -92,14 +100,16 @@ public class Scalers extends ConnectorPart4{
                 System.out.println("\nThe values after min max scaling: ");
                 count = 0;
                 for (int i = 0; i<row; i++){
-                    if (count%10 == 0) System.out.println("");
+                    if (count%10 == 0){ System.out.println(""); pw.println();}
                     count++; // move output to new line when elements in a row reach 10
                     double minmax = (data[i]-min)/range;
                     System.out.printf("%-15f" , minmax);
+                    pw.print(minmax + ",");
                 }
             }else 
                 System.out.println("invalid key!"); 
             System.out.println("");
+            pw.close();
         } catch (FileNotFoundException e){
             System.out.println("error in file input");
         }

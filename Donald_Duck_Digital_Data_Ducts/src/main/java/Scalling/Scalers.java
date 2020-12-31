@@ -53,7 +53,7 @@ public class Scalers extends ConnectorPart4{
             for (double value : data){ 
                 if (count%10 == 0) System.out.println(""); 
                 count++; // to move output to new line when elements in a line reach 10
-                System.out.printf("-15.2f" , value);
+                System.out.printf("%-15.2f" , value);
             } 
             System.out.println("\n\n");
             System.out.println("What do you wish to do with the data (1 for standard scaling/ 2 for min max scaling): ");

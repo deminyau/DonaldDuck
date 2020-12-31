@@ -2,6 +2,9 @@ package K_Nearest_Neighbors;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -349,6 +352,18 @@ public class knn extends ConnectorPart5 {
             }
             mean=sum/k;
             System.out.println("Predicted regression value of "+file[0][dependantindex]+" based on "+k+" nearest neighbor for the given "+ file[0][independantindex]+" which is "+ testdata+" is: "+ mean);
+            try {
+                PrintWriter out1 = new PrintWriter(new FileOutputStream("RegressorResult.csv"));
+                out1.println("distance,dependant value");
+                for (int i = 0; i < abcopy.length; i++) {
+                    out1.println(abcopy[i][0]+","+abcopy[i][1]);
+                }
+                out1.println("Predicted regression value of "+file[0][dependantindex]+" based on "+k+" nearest neighbor for the given "+ file[0][independantindex]+" which is "+ testdata+" is: "+ mean);
+                out1.close();
+                System.out.println("Result is saved into RegressorResult.csv ! Check your file.");
+            } catch (IOException e) {
+                System.out.println("problem with output");
+            }
         }     
         //classification
         if(action<0){
@@ -369,6 +384,18 @@ public class knn extends ConnectorPart5 {
                 }
             }
             System.out.println("Predicted classification of "+file[0][dependantindex]+" based on "+k+" nearest neighbor for the given "+ file[0][independantindex]+" which is "+ testdata+" is class: "+modeclass+" with the frequency of "+(int)mode);
+            try {
+                PrintWriter out2 = new PrintWriter(new FileOutputStream("ClassifierResult.csv"));
+                out2.println("class,frequency within k neighbors");
+                for (int i = 0; i < result.length; i++) {
+                    out2.println(result[i][0]+","+result[i][1]);
+                }
+                out2.println("Predicted classification of "+file[0][dependantindex]+" based on "+k+" nearest neighbor for the given "+ file[0][independantindex]+" which is "+ testdata+" is class: "+modeclass+" with the frequency of "+(int)mode);
+                out2.close();
+                System.out.println("Result is saved into ClassifierResult.csv ! Check your file.");
+            } catch (IOException e) {
+                System.out.println("problem with output");
+            }
         }
     }
     public static float CalDistance(float sample,float traindata){// method to calculate distance

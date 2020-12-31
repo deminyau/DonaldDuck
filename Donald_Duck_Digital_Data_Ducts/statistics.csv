@@ -1,0 +1,9 @@
+<Current CGPA>,<Expected Graduation Salary>,<Actual Graduation Salary>,<Name>,<Department>
+Min: 1.33,Min: 1000.0,Min: 1000.0,Mode: Jonathan Lee; Yang Mie Mie (9),Mode: Software Engineering (53)
+Max: 4.0,Max: 8100.0,Max: 12000.0,
+Mode: 3.0 (60),Mode: 2500.0 (69),Mode: 8000.0 (60),
+Median: 3.0,Median: 5500.0,Median: 5000.0,
+Mean: 3.073846153846154,Mean: 4796.989966555184,Mean: 6126.086956521739,
+Range: 2.67,Range: 7100.0,Range: 11000.0,
+Variance: 0.3557519359834815,Variance: 3166735.87573792,Variance: 7014552.086372919,
+Standard Deviation: 0.5964494412634498,Standard Deviation: 1779.5324879692193,Standard Deviation: 2648.4999691094804,

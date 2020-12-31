@@ -1,7 +1,6 @@
 package StatisticsAndImputers;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.Scanner;
 
 public class MathMethod extends ConnectorPart3 {
@@ -17,6 +16,7 @@ public class MathMethod extends ConnectorPart3 {
     public static void ComputeMath() {
 
         ReadCsv2();
+        String[][] outputCSV = new String[9][5];
         try {
             File a = new File(filepath2);
             Scanner sc1 = new Scanner(a);
@@ -45,6 +45,7 @@ public class MathMethod extends ConnectorPart3 {
             }
             System.out.println();
 
+            int p = 0;
             for (int j = 2; j < 5; j++) { //for Current CGPA, Expected Graduation Salary and Actual Graduation Salary
 
                 double min = Double.MAX_VALUE;
@@ -94,7 +95,7 @@ public class MathMethod extends ConnectorPart3 {
                     }
                     if (count == maxCount) {
                         if (count > 1) {
-                            mode.append(", ").append(num);
+                            mode.append("; ").append(num);
                         }
                         else {
                             mode = new StringBuilder("No mode");
@@ -113,29 +114,44 @@ public class MathMethod extends ConnectorPart3 {
                 double standardDeviation = Math.sqrt(variance);
 
                 if (j == 2) {
-                    System.out.println("<Current CGPA>");
+                    outputCSV[0][0] = "<Current CGPA>";
+                    System.out.println(outputCSV[0][0]);
                 }
                 if (j == 3) {
-                    System.out.println("<Expected Graduation Salary>");
+                    outputCSV[0][1] = "<Expected Graduation Salary>";
+                    System.out.println(outputCSV[0][1]);
                 }
                 if (j == 4) {
-                    System.out.println("<Actual Graduation Salary>");
+                    outputCSV[0][2] = "<Actual Graduation Salary>";
+                    System.out.println(outputCSV[0][2]);
                 }
 
-                System.out.println("Min: " + min);
-                System.out.println("Max: " + max);
+                outputCSV[1][p] = "Min: " + min;
+                outputCSV[2][p] = "Max: " + max;
                 if ("No mode".equals(mode.toString()))
                     maxCount = 0;
-                System.out.println("Mode: " + mode + " (" + maxCount + ") ");
-                System.out.println("Median: " + median);
-                System.out.println("Mean: " + mean);
-                System.out.println("Range: " + range);
-                System.out.println("Variance: " + variance);
-                System.out.println("Standard Deviation: " + standardDeviation);
+                outputCSV[3][p] = "Mode: " + mode + " (" + maxCount + ")";
+                outputCSV[4][p] = "Median: " + median;
+                outputCSV[5][p] = "Mean: " + mean;
+                outputCSV[6][p] = "Range: " + range;
+                outputCSV[7][p] = "Variance: " + variance;
+                outputCSV[8][p] = "Standard Deviation: " + standardDeviation;
+
+                System.out.println(outputCSV[1][p]);
+                System.out.println(outputCSV[2][p]);
+                System.out.println(outputCSV[3][p]);
+                System.out.println(outputCSV[4][p]);
+                System.out.println(outputCSV[5][p]);
+                System.out.println(outputCSV[6][p]);
+                System.out.println(outputCSV[7][p]);
+                System.out.println(outputCSV[8][p]);
                 System.out.println();
+
+                p++;
 
             }
 
+            int q = 3;
             for (int j = 0; j < 2; j++) { //for MODE of Name and Department
 
                 String[] newArray2 = new String[numberOfRow - 1]; //new array for sorting
@@ -165,7 +181,7 @@ public class MathMethod extends ConnectorPart3 {
                     }
                     if (count == maxCount) {
                         if (count > 1) {
-                            mode.append(", ").append(num);
+                            mode.append("; ").append(num);
                         }
                         else {
                             mode = new StringBuilder("No mode");
@@ -179,18 +195,48 @@ public class MathMethod extends ConnectorPart3 {
                     }
                 }
                 if (j == 0) {
-                    System.out.println("<Name>");
+                    outputCSV[0][3] = "<Name>";
+                    System.out.println(outputCSV[0][3]);
                 }
                 if (j == 1) {
-                    System.out.println("<Department>");
+                    outputCSV[0][4] = "<Department>";
+                    System.out.println(outputCSV[0][4]);
                 }
+
                 if ("No mode".equals(mode.toString()))
                     maxCount = 0;
-                System.out.println("Mode: " + mode + " (" + maxCount + ") ");
+                outputCSV[1][q] = "Mode: " + mode + " (" + maxCount + ")";
+
+                System.out.println(outputCSV[1][q]);
                 System.out.println();
+
+                q++;
+
             }
         } catch (FileNotFoundException e) {
             System.out.println("File not found!!");
+        }
+
+        try {
+            PrintWriter output = new PrintWriter(new FileOutputStream("statistics.csv"));
+            for (int i = 0; i < outputCSV.length; i++) {
+                for (int j = 0; j < outputCSV[i].length; j++) {
+                    if (j == 3 && i > 1)
+                        output.print("");
+                    else if (j == 4 && i > 1)
+                        output.println("");
+                    else {
+                        if (j == outputCSV[i].length - 1)
+                            output.println(outputCSV[i][j]);
+                        else
+                            output.print(outputCSV[i][j] + ",");
+                    }
+                }
+            }
+            output.close();
+        }
+        catch (IOException e) {
+            System.out.println("Problem with file output");
         }
 
     }

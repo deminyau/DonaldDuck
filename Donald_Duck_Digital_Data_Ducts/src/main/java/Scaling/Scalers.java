@@ -65,7 +65,7 @@ public class Scalers extends ConnectorPart4{
             // write the scale value into a csv file
             double sum = 0; double sumofsquare = 0;
             if (key == 1){ //perform standard scaling
-                pw.println("Standard scaling");
+                pw.println(header + "," + "Standard scaling");// write header (first row)into csv
                 pw.println(header + ": ");
                 for(int i = 0; i<row; i++) {
                    sum += data[i];
@@ -80,15 +80,14 @@ public class Scalers extends ConnectorPart4{
                    System.out.println("\nThe values after standard scaling: ");
                    count = 0;
                    for(int i = 0; i<row; i++) {
-                   if (count%10 == 0){System.out.println(""); pw.println();}
+                   if (count%10 == 0){System.out.println("");}
                    count++;
                    double standard = (data[i]-average)/standard_deviation;
                    System.out.printf("%-15f", standard);
-                   pw.print(standard+ ",");
+                   pw.printf("%.2f , %f \n" ,data[i],standard); //write original value and value after scalling into csv
                 }
             }else if(key == 2){ //perform minmax scaling
-                pw.println("MinMax scaling");
-                pw.println(header + ": ");
+                pw.println(header + ","  +"MinMax scaling");
                 double min = data[0]; 
                 double max = data[0]; 
                 for(int i = 0; i<row; i++){
@@ -104,11 +103,11 @@ public class Scalers extends ConnectorPart4{
                 System.out.println("\nThe values after min max scaling: ");
                 count = 0;
                 for (int i = 0; i<row; i++){
-                    if (count%10 == 0){ System.out.println(""); pw.println();}
+                    if (count%10 == 0){ System.out.println("");}
                     count++; // move output to new line when elements in a row reach 10
                     double minmax = (data[i]-min)/range;
                     System.out.printf("%-15f" , minmax);
-                    pw.print(minmax + ",");
+                    pw.printf("%.2f , %f \n" ,data[i],minmax); //write original value and value after scalling into csv
                 }
             }else 
                 System.out.println("invalid key!"); 

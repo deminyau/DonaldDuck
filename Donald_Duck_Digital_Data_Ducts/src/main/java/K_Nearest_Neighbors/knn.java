@@ -186,16 +186,18 @@ public class knn extends ConnectorPart5 {
                 System.out.println(" ");
             }
             System.out.println("");
-            System.out.println("k\tF1 score");
-            for(int i=0;i<F1score.length;i++){//print all k with respective F1 score for reference
-                for(int j=0;j<2;j++){
-                    if(j==0){
-                        System.out.printf("%2.0f",F1score[i][j]);
+            if(F1score[0][0]!=0){
+                System.out.println("k\tF1 score");
+                for(int i=0;i<F1score.length;i++){//print all k with respective F1 score for reference
+                    for(int j=0;j<2;j++){
+                        if(j==0){
+                            System.out.printf("%2.0f",F1score[i][j]);
+                        }
+                        else
+                            System.out.printf("%10.2f",F1score[i][j]);
                     }
-                    else
-                        System.out.printf("%10.2f",F1score[i][j]);
+                    System.out.println(" ");
                 }
-                System.out.println(" ");
             }
             double bestk=kAccuracy[0][0];
             double highestacc=kAccuracy[0][1];
@@ -213,13 +215,15 @@ public class knn extends ConnectorPart5 {
                     bestF1=F1score[c][0];
                 }
             }
-            if((int)bestF1!=(int)bestk){
+            if((int)bestF1!=(int)bestk&&unique<=2){
                 k=(int)bestF1;
                 System.out.println("Confusion matrix suggested that the optimal value of k is: "+(int)bestk+" while the F1 score suggested the best k is: "+bestF1);
                 System.out.println("By default, we recommend to follow the suggestion from F1 score, if you would like to change, you may do so in the next step.");
             }
             else{
-                k=(int)bestF1;
+                k=(int)bestk;
+                System.out.println("Confusion matrix suggested that the optimal value of k is: "+(int)bestk+" while the F1 score cannot be used for this training data because it has more than 2 classes");
+                System.out.println("By default, we recommend to follow the suggestion from Confusion Matrix, if you would like to change, you may do so in the next step.");
             }
         }
         float[]indepforcal=new float[row-1];// independant values for calculation
@@ -301,6 +305,36 @@ public class knn extends ConnectorPart5 {
                     k=MAEk-1;
             }
         }
+        float [] temparray= new float[2];//temporary array for swapping
+        //ascending sort the distance
+        for (int i = 0; i < distance.length; i++){
+            for (int j = 0; j < distance.length-1; j++) {
+               if (distance[j]> distance[j+1]){
+                    //swap between rows in abcopy
+                    temparray=abcopy[j];
+                    abcopy[j]=abcopy[j+1];
+                    abcopy[j+1]=temparray;
+                    //swap between values of the column being used as sorting criteria that has been copied into 1D array distance 
+                    float temp = distance[j]; 
+                    distance[j] = distance[j+1]; 
+                    distance[j+1] = temp; 
+                        }
+                    }
+                }
+        float nearest=abcopy[0][0];
+        int maybek=1;
+        for (int i = 1; i < abcopy.length; i++){
+            if(abcopy[i][0]==nearest){
+                maybek++;
+            }
+        }
+        
+        if(maybek!=k){
+            System.out.println("We found "+maybek+" records in the training data that have equal shortest distance from the instance value you have entered.");
+            System.out.println("We strongly suggest you to use this number as the value of k (only for this instance value)for accurate prediction.");
+            System.out.println("You can modify the value of k to "+maybek+" in the next step.");
+        }
+        
         System.out.println("From the error matric models used, we recommend you to perform a "+k+"-Nearest Neighbor calculation, would you like to customize the value of k?");
         System.out.println("If yes, enter your intended value of k directly. Otherwise, enter any alphabet to continue.");
         boolean kinvalid=false;
@@ -327,7 +361,7 @@ public class knn extends ConnectorPart5 {
         }
         catch(InputMismatchException e){
         } 
-        float [] temparray= new float[2];//temporary array for swapping
+        /*float [] temparray= new float[2];//temporary array for swapping
         //ascending sort the distance
         for (int i = 0; i < distance.length; i++){
             for (int j = 0; j < distance.length-1; j++) {
@@ -342,7 +376,7 @@ public class knn extends ConnectorPart5 {
                     distance[j+1] = temp; 
                         }
                     }
-                }
+                }*/
         //regression
         float mean=0;
         float sum=0;

@@ -22,7 +22,7 @@ public class Chart {
 
         String a = "Software Engineering";
         String b = "Artificial Intelligence";
-        String c = "Computer and System Network";
+        String c = "Computer System and Network";
         String d = "Multimedia";
         String f = "information system";
         String g = "Data Science";

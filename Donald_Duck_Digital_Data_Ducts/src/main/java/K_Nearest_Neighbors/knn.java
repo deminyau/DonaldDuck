@@ -199,7 +199,7 @@ public class knn extends ConnectorPart5 {
                     System.out.println(" ");
                 }
             }
-            double bestk=kAccuracy[0][0];
+            double bestk=kAccuracy[0][0];//find highest accuracy
             double highestacc=kAccuracy[0][1];
             for(int c=1;c<kAccuracy.length;c++){
                 if(kAccuracy[c][1]>highestacc){
@@ -207,7 +207,7 @@ public class knn extends ConnectorPart5 {
                     bestk=kAccuracy[c][0];
                 }
             }
-            double bestF1=F1score[0][0];
+            double bestF1=F1score[0][0];//find highest F1 score
             double highestF1=F1score[0][1];
             for(int c=1;c<F1score.length;c++){
                 if(F1score[c][1]>highestF1){
@@ -329,7 +329,8 @@ public class knn extends ConnectorPart5 {
             }
         }
         
-        if(maybek!=k){
+        if(maybek>k){//for handling special case, usually occurs when the training data set is small, where there are many values have same distance from  a instance value but error metric suggest a smaller k
+            //all data that have equally shortest distance should be taken into consideration since the distance are equally shortest
             System.out.println("We found "+maybek+" records in the training data that have equal shortest distance from the instance value you have entered.");
             System.out.println("We strongly suggest you to use this number as the value of k (only for this instance value)for accurate prediction.");
             System.out.println("You can modify the value of k to "+maybek+" in the next step.");
@@ -339,7 +340,7 @@ public class knn extends ConnectorPart5 {
         System.out.println("If yes, enter your intended value of k directly. Otherwise, enter any alphabet to continue.");
         boolean kinvalid=false;
         int tempk=k;
-        try{
+        try{//allow user to modify value of k by entering a reasonable digit, enter alphabet will skip this part and use recommended k
             int yesorno=sc.nextInt();
             do{
                 k=yesorno;
@@ -361,22 +362,6 @@ public class knn extends ConnectorPart5 {
         }
         catch(InputMismatchException e){
         } 
-        /*float [] temparray= new float[2];//temporary array for swapping
-        //ascending sort the distance
-        for (int i = 0; i < distance.length; i++){
-            for (int j = 0; j < distance.length-1; j++) {
-               if (distance[j]> distance[j+1]){
-                    //swap between rows in abcopy
-                    temparray=abcopy[j];
-                    abcopy[j]=abcopy[j+1];
-                    abcopy[j+1]=temparray;
-                    //swap between values of the column being used as sorting criteria that has been copied into 1D array distance 
-                    float temp = distance[j]; 
-                    distance[j] = distance[j+1]; 
-                    distance[j+1] = temp; 
-                        }
-                    }
-                }*/
         //regression
         float mean=0;
         float sum=0;

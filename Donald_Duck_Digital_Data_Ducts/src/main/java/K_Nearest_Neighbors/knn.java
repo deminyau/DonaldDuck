@@ -215,15 +215,29 @@ public class knn extends ConnectorPart5 {
                     bestF1=F1score[c][0];
                 }
             }
-            if((int)bestF1!=(int)bestk&&unique<=2){
-                k=(int)bestF1;
-                System.out.println("Confusion matrix suggested that the optimal value of k is: "+(int)bestk+" while the F1 score suggested the best k is: "+bestF1);
-                System.out.println("By default, we recommend to follow the suggestion from F1 score, if you would like to change, you may do so in the next step.");
+            if((int)bestF1!=(int)bestk){
+                if(unique==2){
+                    k=(int)bestF1;
+                    System.out.println("Confusion matrix suggested that the optimal value of k is: "+(int)bestk+" while the F1 score suggested the best k is: "+bestF1);
+                    System.out.println("By default, we recommend to follow the suggestion from F1 score, if you would like to change, you may do so in the next step.");
+                }
+                else{
+                    k=(int)bestk;
+                    System.out.println("Confusion matrix suggested that the optimal value of k is: "+(int)bestk+" while the F1 score cannot be used for this training data because it has more than 2 classes");
+                    System.out.println("By default, we recommend to follow the suggestion from Confusion Matrix, if you would like to change, you may do so in the next step.");
+                }
             }
             else{
-                k=(int)bestk;
-                System.out.println("Confusion matrix suggested that the optimal value of k is: "+(int)bestk+" while the F1 score cannot be used for this training data because it has more than 2 classes");
-                System.out.println("By default, we recommend to follow the suggestion from Confusion Matrix, if you would like to change, you may do so in the next step.");
+                if(unique==2){
+                    k=(int)bestF1;
+                    System.out.println("Both confusion matrix and F1 score suggested that the optimal value of k is: "+(int)bestk);
+                    System.out.println("By default, we recommend to follow the suggestion, if you would like to change, you may do so in the next step.");
+                }
+                else{
+                    k=(int)bestk;
+                    System.out.println("Confusion matrix suggested that the optimal value of k is: "+(int)bestk+" while the F1 score cannot be used for this training data because it has more than 2 classes");
+                    System.out.println("By default, we recommend to follow the suggestion from Confusion Matrix, if you would like to change, you may do so in the next step.");
+                }
             }
         }
         float[]indepforcal=new float[row-1];// independant values for calculation

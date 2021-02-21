@@ -1,7 +1,5 @@
 package Manipulation;
 
-import static DataFrame.ConstructDataframeFromCsvFile.ScanDataFromFile;
-import static DataFrame.ConstructDataframeFromCsvFile.filename;
 import static Main.TesterDonald.group11;
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,9 +11,8 @@ import java.util.Scanner;
 public class ObtainRowOrColumnData extends ConnectorPart2 {
     
     public static void ObtainRecordInRow(){
-        ScanDataFromFile();
+        File filename = new File ("DATA.csv");
         
-        System.out.println("");
         System.out.println("");
         System.out.println("Enter start number for range: "); // enter first and second row to be displayed
         int RowRange1=group11.nextInt();                                                    
@@ -72,11 +69,9 @@ public class ObtainRowOrColumnData extends ConnectorPart2 {
     }
     
     public static void ObtainRecordInColumn(){
+        File filename = new File ("DATA.csv");
+        
         Scanner group11 = new Scanner(System.in);
-        
-        File filename = new File ("DataStorage.csv");
-        
-     
         System.out.println("Enter the number of column you want to display: ");
         String input = group11.nextLine(); // enter number of column to displayed
         

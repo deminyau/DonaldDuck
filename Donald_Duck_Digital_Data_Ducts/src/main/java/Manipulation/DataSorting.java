@@ -1,7 +1,7 @@
 package Manipulation;
 
+import static DataFrame.SaveDataframeToCsvFile.ReadCsv;
 import static Manipulation.ConcatenateDataFrame.ReadFile3;
-import static Manipulation.ConcatenateDataFrame.filepath2;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -15,12 +15,14 @@ import org.json.simple.JSONObject;
 public class DataSorting extends ConnectorPart2{
     
     public static void Sorting(){
-        ReadFile3();
+        Scanner group11 = new Scanner(System.in);
+        System.out.println("Enter file: ");
+        String ffile = group11.next();
         int column = 0; 
         int row  = 0;
         String[][]data=null;
         try {
-            Scanner csv= new Scanner(new FileInputStream(filepath2));
+            Scanner csv= new Scanner(new FileInputStream(ffile));
             
             while (csv.hasNextLine()){
                 String s1 = csv.nextLine();
@@ -29,7 +31,7 @@ public class DataSorting extends ConnectorPart2{
                 row ++;
             }
             
-            Scanner csv2= new Scanner(new FileInputStream(filepath2)); 
+            Scanner csv2= new Scanner(new FileInputStream(ffile)); 
             data = new String [row][column];
             //System.out.println(row+" "+column);
             for (int i=0;i<row;i++){
@@ -85,7 +87,7 @@ public class DataSorting extends ConnectorPart2{
                 
         }
         System.out.println("");
-        if(IsInt(data[1][sortindex])==true){//use the first element in the column to check whether the whole column is int
+        /*if(IsInt(data[1][sortindex])==true){//use the first element in the column to check whether the whole column is int
            int[] TempArray=new int[row-1];
            int y= TempArray.length;
            String[] TempArray2= new String[column];
@@ -122,9 +124,9 @@ public class DataSorting extends ConnectorPart2{
                     }
                 }
            }
-        }
+        }*/
        
-        else if(IsFloat(data[1][sortindex])==true){//use the first element in the column to check whether the whole column is float
+        if(IsFloat(data[1][sortindex])==true){//use the first element in the column to check whether the whole column is float
            double[] TempArray=new double[row-1];
            int y= TempArray.length;
            String[] TempArray2= new String[column];
@@ -225,44 +227,6 @@ public class DataSorting extends ConnectorPart2{
             System.out.println("Sorted data saved successfully into file SortedData.csv !");
         } catch (IOException e) {
             System.out.println("problem writing to the file");
-        }
-        System.out.println("");
-        System.out.println("Do you want to generate a JSON file for the processed data?");
-        System.out.println("If yes press (1). If don't want input anything to proceed.");
-        int json=0;
-        try{
-            json=sc.nextInt();
-        }
-        catch(InputMismatchException b){}
-        if(json==1){
-            String[][] file2=new String[column][row-1];
-            for(int i=1;i<data.length;i++){
-                for(int j=0;j<data[0].length;j++){
-                    file2[j][i-1]=data[i][j];
-                }
-            }
-            JSONObject jsonObject = new JSONObject();      
-            for (int i=0;i<file2.length;i++) {
-                JSONArray jsonArray=new JSONArray();
-                for(int j=0;j<file2[i].length;j++){
-                    jsonArray.add(file2[i][j]);
-                }
-                jsonObject.put(data[0][i],jsonArray);
-            }
-            try (FileWriter jsonout = new FileWriter("SortedData.json")) {
-
-                jsonout.write(jsonObject.toJSONString());
-                jsonout.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            System.out.println(filepath2.substring(0,filepath2.length()-3)+"json is generating....");
-            try{
-               Thread.sleep(1500);
-            }catch(Exception e) {
-                System.out.println(e);
-            }         
-            System.out.println(filepath2.substring(0,filepath2.length()-3)+"json done. Please check ur files for more information."); 
         }
     }
     public static boolean IsInt(String x){ 
